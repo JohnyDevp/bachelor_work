@@ -102,7 +102,7 @@ int computeDistance(ppa_t &first, ppa_t &second){
     {
         //the row has 246 cells
         //1 cell in 31-celled-row is 8 cells in 246-celled-row 
-        //WARNING - it is not everywhere like that
+        //!WARNING - it is not everywhere like that
 
     }
 
