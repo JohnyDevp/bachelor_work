@@ -188,7 +188,7 @@ int computeDistance(ppa_t &first, ppa_t &second){
  * @param current_address the address in different section than G
  * @return ppa_t recomputed address for G section (values will overflow standard G section boundaries!!!)
  */
-ppa_t VorPAddressToGAddress(ppa_t &current_address){
+ppa_t FromVorPAddressToGAddress(ppa_t &current_address){
     ppa_t G_recomputed_address;
     //TODO
     return G_recomputed_address;

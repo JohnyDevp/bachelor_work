@@ -10,6 +10,7 @@ Skladová logistika je velmi komplexní obor. Její složitost a propracovanost 
 přičemž je neustále nutné veškeré akce nejprve provést a následně je i registrovat do systému, což bývá náchylné k chybám. Proto je zavedeno používání elektroniky pro zjednodušení výše nastíněné práce. Tímto je zajištěno, že změny týkající se zboží, které provede pracovník, jsou v reálném čase provedeny i v elektronickém systému. \
 Používaná zařízení (velmi často čtečky) navíc mohou sloužit i pro zrychlování práce, například možností načítat kódy požadovaného zboží právě díky použití čtečky.
 4. Skladové prostory firem s miliardovými obraty - zde již je práce velmi efektivně řízena, nicméně začíná se utvářet prostor pro použití automatizace ve formě robotů. Jejich zavedení brání ve většině případů nemožnost finanční návratnosti, právě kvůli malému obratu. Robot s sebou přináší výhodu jednorázové investice a ušetření množství lidí, které ovšem musí na druhou stranu být dostatečně velké na to, aby byl robot v - pro firmu únosné - době splacen. Příkladem takové automatizace může být využití paletových či balících robotů.
+
 # Logistické problémy
 Logistika je obor, kde se ve velkém množství uplatňují optimalizační procesy, které mají sloužit pro zrychlení procesů, úsporu zaměstnanců či zvýšení produktivity na skladech. Mnoho z problémů jsou již známé z historie - patří mezi ně slavný *Problém obchodního cestujícího* či *Problém čínského listonoše*. Některé jsou novodobého rázu - například *Bin packing problem* nebo *Vehicle routing problem*.
 
@@ -24,4 +25,26 @@ Logistika je obor, kde se ve velkém množství uplatňují optimalizační proc
        2. Pokud je box neprázdný a zároveň suma veličin charakterizujících objekty v něm a objektu, který chceme přidat, je menší či rovna maximální kapacitě krabice, pak do ní vložíme objekt.
        3. Jinak opakujeme postup od kroku 1 pro následující box
     2. Best fit
-       1. 
+
+# Problémy a jejich složitost
+Pro výběr vhodného algotimu, či vícero algoritmů se musíme seznámit s hodnotícími kritérii.
+
+Hodnocení kvality algoritmů se odvíjí od dvou základních bodů - časové a prostorové složitosti. Tyto dva parametry jsou ovlivňovány velikostí vstupních dat. Uveďme, že zatímco význam prostorové složitosti je s narůstající kapacitou výpočetních pamětí (a s tím i klesáním ceny za GB) umenšován, význam časové složitosti je obrovský, vezmeme-li v úvahu algoritmy, které mají odhadovaný čas nalezení řešení v řádu staletí. Časová složitost se nejčastěji odhadnuta jako součet časů (považovaných za konstantní) jednotlivých elementárních operací. Vždyc nás zajímá nejhorší možný scénář. 
+
+Příliš náročné algoritmu (viz //TODO reference) je řešeno hledáním tzv. heuristik - algoritmů, které sice nezaručují nalezení optimálního řešení, zato umožňují najít vyhovující (podle předem stanoveného kritéria) řešení v polynomickém čase - takovém, kde existuje funkce představující horní ohraničení složitosti takového algoritmu pro daný počet vstupů //TODO math. T(n) = O(n^k) pro konstantu k>0.
+## Asymptotická složitost
+Nejvíce nás u algoritmů tedy zajímá asymptotická složitost - ta se vyjadřuje jako porovnáním algoritmu s jistou funkcí pro N limitně se blížící nekonečnu.
+- Omikron - horní hranice chování - funkce F, pro kterou platí, že pro jakékoli F(y)>=
+- Omega - dolní hranice chování
+- Theta - třída chování
+
+# Úvod do teorie grafů
+
+# Principy optimalizace
+
+# Přílohy
+- [1]
+<img src="res/image_08_010.jpg">
+# Zdroje
+- [1] https://subscription.packtpub.com/book/application-development/9781785884504/8/ch08lvl1sec54/evaluating-runtime-complexity
+- [2] Honzík,M J.: Algoritmy a datové struktury, 2018
