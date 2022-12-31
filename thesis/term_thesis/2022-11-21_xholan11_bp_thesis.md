@@ -19,28 +19,72 @@ Logistika je obor, kde se ve velkém množství uplatňují optimalizační proc
     Tento problém úzce souvisí s problémem Hamiltonova cyklu - to je cyklus obsahující takovou cestu, na které lze všechny uzly navštívit právě jednou a navrátit se přitom do počátečního vrcholu. (cit. Wróblewski P. Algoritmy)*Pokud najdeme takový (tj. Hamiltonovský) cyklus s minimální sumou jeho hran, vyřešíme slavný problém obchodního cestujícího.*
 - **Problém čínského listonoše (známý jako Chinese postman Problem)** je jakýmsi protějškem problému TSP - zabýváme se totiž při něm hledáním způsobu, jak navštívit všechny hrany daného grafu, a to tak, aby každá byla navštívena v ideálním případě jedenkrát - to je sice předem známo (takový graf by totiž musel být Eulerovským - tedy má všechny uzly sudého stupně a tudíž existuje uzavřený tah obsahující všechny hrany), nicméně je cílem tohoto dosáhnout.
 - **Bin packing problem** opět spadá pod NP-úplné problémy, nicméně existuje řada heuristik pro jeho výpočet. Má mnoho podob, jejichž cílem je vždy poskládání N předmětů do prostoru (boxu) o dané kapacitě  K, či rozměrech X,Y,Z. Možnosti řešení jsou rozděleny od jednodušších ke složitějším. Z povahy problému jistě vidíme, že největší složitost budou mít algoritmy řešící druhou variantu, tedy skládání objektů do prostoru dle rozměrů.
-  - Nejdříve se zaměřme na první variantu. Každý z N předmětů je definován veličinou X, X e R. Dále mějme P boxů, všechny o stejné maximální kapacitě (odpovídající veličině charakterizující předměty) K, K e R. Uveďme, že je nezbytnou podmínkou aby pro každé X náležející N platilo, že X(N) < K. Cílem je naplnit nejmenší možný počet boxů. **Tento typ problému zároveň využíváme v základním řešení bakalářské práce jako zjednodušení výpočtu s reálnými objemy**. Uveďme nyní dva algoritmy, které se zde používají:
-    1. First fit - v cyklu bereme po řadě či náhodně předměty N a vkládáme je vždy zleva do boxů (seřazených zleva doprava) takto: 
-       1. Pokud je box prázdný, potom tam lze objekt vložit. 
-       2. Pokud je box neprázdný a zároveň suma veličin charakterizujících objekty v něm a objektu, který chceme přidat, je menší či rovna maximální kapacitě krabice, pak do ní vložíme objekt.
-       3. Jinak opakujeme postup od kroku 1 pro následující box
-    2. Best fit
+  - Nejdříve se zaměřme na první variantu. Každý z N předmětů je definován veličinou X, X e R. Dále mějme P boxů, všechny o stejné maximální kapacitě (odpovídající veličině charakterizující předměty) K, K e R. Uveďme, že je nezbytnou podmínkou aby pro každé X náležející N platilo, že X(N) < K. Cílem je naplnit nejmenší možný počet boxů. **Tento typ problému zároveň využíváme v základním řešení bakalářské práce jako zjednodušení výpočtu s reálnými objemy**. Uveďme dva základní algoritmy:
+    - First fit - v cyklu bereme po řadě či náhodně předměty N a vkládáme je vždy zleva do boxů (seřazených zleva doprava) takto: 
+       1. Po řadě bereme jednotlivé dosud nezařazené objekty a provedeme následující:
+       2. Pro všechny dosud existující boxy po řadě provedeme:
+             1. Pokud se objekt do daného boxu vejde (podle charakteristické veličiny), potom do něj objekt přidáme a bereme další objekt
+             2. Jinak bereme zkoušíme další box. Pokračujeme krokem 2.
+       3. Vytvoříme nový box a vložíme do něj aktuální objekt. Pokračujeme krokem 2.
+    - Next fit - je nejjednodušší heuristikou pro vytvoření boxů naplněných objekty. Jeho průběh je zjednodušen oproti algoritmu First Fit pouze tím, že daný objekt je vyzkoušen pouze na posledním vytvořeném boxu, pokud se tam nevejde, tak je vytvořen pro něj box další.
 
 # Problémy a jejich složitost
 Pro výběr vhodného algotimu, či vícero algoritmů se musíme seznámit s hodnotícími kritérii.
 
 Hodnocení kvality algoritmů se odvíjí od dvou základních bodů - časové a prostorové složitosti. Tyto dva parametry jsou ovlivňovány velikostí vstupních dat. Uveďme, že zatímco význam prostorové složitosti je s narůstající kapacitou výpočetních pamětí (a s tím i klesáním ceny za GB) umenšován, význam časové složitosti je obrovský, vezmeme-li v úvahu algoritmy, které mají odhadovaný čas nalezení řešení v řádu staletí. Časová složitost se nejčastěji odhadnuta jako součet časů (považovaných za konstantní) jednotlivých elementárních operací. Vždyc nás zajímá nejhorší možný scénář. 
 
-Příliš náročné algoritmu (viz //TODO reference) je řešeno hledáním tzv. heuristik - algoritmů, které sice nezaručují nalezení optimálního řešení, zato umožňují najít vyhovující (podle předem stanoveného kritéria) řešení v polynomickém čase - takovém, kde existuje funkce představující horní ohraničení složitosti takového algoritmu pro daný počet vstupů //TODO math. T(n) = O(n^k) pro konstantu k>0.
+Příliš náročné algoritmy (viz //TODO reference) jsou řešeny pomocí tzv. heuristik - algoritmů, které sice nezaručují nalezení optimálního řešení, zato umožňují najít vyhovující (podle předem stanoveného kritéria) řešení v polynomickém čase - takovém, kde existuje funkce představující horní ohraničení složitosti takového algoritmu pro daný počet vstupů //TODO math. T(n) = O(n^k) pro konstantu k>0.
 ## Asymptotická složitost
-Nejvíce nás u algoritmů tedy zajímá asymptotická složitost - ta se vyjadřuje jako porovnáním algoritmu s jistou funkcí pro N limitně se blížící nekonečnu.
-- Omikron - horní hranice chování - funkce F, pro kterou platí, že pro jakékoli F(y)>=
+U algoritmů zjišťujeme tzv. asymptotickou složitost - ta se vyjadřuje jako porovnáním algoritmu s jistou funkcí pro N limitně se blížící nekonečnu. Podle ní si dokážeme představit, jak se bude algoritmus chovat pro N vstupů, přesněji - jak dlouho jemu bude trvat výpočet.
+- Omikron - horní hranice chování
 - Omega - dolní hranice chování
 - Theta - třída chování
 
 # Úvod do teorie grafů
 
 # Principy optimalizace
+
+
+# Úvod do problematiky řešené úlohy
+
+- V systému je provedeno N objednávek, po čase T (odpovídající tomu, že systém vyhodnotí dostatečnou naplňenost, či podle jiného kritéria (pro nás zde nepodstatné) dojde k `zavlnění` - v této fázi jsou vytvořeny **dávky** (dále **HD** - Hromadný Dodací list - toto označení zastupuje jednoho zákazníka a zjednodušení pojmu dávka) a jednotlivým produktům je **přidělena adresa**; prodejní doklady na **stejného zákazníka a stejnou dodací adresu** jsou spojeny do jednoho **HD**. Výsledná data budou odeslána pro výpočet algoritmu, jakožto výsledku této práce.
+- *Aktuálně systém pokračuje rozřazením HD do vozíků tak, že zohledňuje pouze objem, počet přihrádek ve vozíku (9) a kritérium nedělitelnosti zákazníka. Lidé pak chodí s vozíkem podle fixně řazeného seznamu adres.*
+
+- Vstupem algoritmu (přesněji výpočtu) jsou položky (vázané na zákazníky), které se mají vychystat - *"jeden řádek - jedno místo ve skladu - 1+ kusů zboží - 1+ přepravek na vozíku"*
+- Položky jsou ve formátu tabulky, jejíž sloupce jsou typů vypsaných níže (potenciální hodnoty jsou u nich pro lepší pochopení rovněž vypsány)
+  - HD (Alza Praha 3, CZC Opava, COMFOR Poruba Hlavní třída,...)
+  - Položka (Lenovo IdeaPad AX, Apple MacBook Pro 10, ThinkPad T150,...)
+  - Počet kusů produktu (1, 5, 20,...)
+  - Adresa (G000159545, PO10494564,...) určující místo na skladě
+- K těmto řádkům (položkám) jsou dále k dispozici informace o produktech (viz snímek)
+![Nice Plot](res/info.png)
+  - Tyto informace potřebuji především pro výpočet objemu, abych následně věděl jak to vyskládat do vozíku a kolik přepravek bude třeba.
+
+- **Pravidla** \
+   Pravidla zde napsaná je nutno dodržet, aby nedošlo ve skladu k nekonzistentním situacím.
+  - Jeden zákazník (objednávky od jednoho zákazník na stejné adrese spojené do HD) je nedělitelný mezi vozíky
+  - Vozík má devět přepravek
+    - Rozměry přepravky jsou 28x42x18 cm 
+  - Zboží mající větší rozměry, než se vejde do přepravky musí být stejně vychystáno
+  - Jedna přepravka může obsahovat zboží pouze od jednoho zákazníka (ten samozřejmě může být ve více přepravkách)
+    - Jedna přepravka může obsahovat zboží od *více zákazníků*, pokud každé zboží je položka o jednom kusu
+
+- **Cíl** 
+  <pre>Naskládat co nejefektivněji HD do vozíků tak, aby tvořily celek s <b>nejkratší cestou</b> po skladu při <b>vytížení všech lidí</b> za splnění všech pravidel. Dále položky na vozíku seřadit do seznamu rovněž do co nejkratší trasy.</pre>
+
+- **Statistiky**
+  - Řeším prostor o cca 30000 adresách a 20000 produktech. 
+  - Do algoritmu mi může přijít 1 položka i 2000 položek - pro vše se chovám stejně
+  - Každému vozíku se přiřazovalo 8 HD
+  - Nejvíce bývá aktivních 40 lidí (=40 vozíků) v sezóně, mimo sezónu 15 (=15 vozíků). 
+
+# Base-line řešení
+## Úvod
+Protože aktuální implementace algoritmu, jehož optimalizace je řešena v této práci, téměř neexistuje (vozíky jsou vytvářeny a data v nich řazena čistě náhodně, pouze na bázi splnění kritérií popsaných výše), bylo nutné vytvořit prvotní řešení, které mělo za cíl stát se referenčním a tak poskytnout porovnání pro výslednou implementaci algoritmu. 
+## Popis obecné části implementace
+Tato část byla psána takovým způsobem, aby byla znovupoužitelná pro úpravy algoritmu pro finální řešení.
+
+Její průběh je složen z několika částí. První je zaměřena na samotné načtení dat a vytvoření objektu, skrz který je možno ovlivňovat základním způsobem průběh výpočtu - tímto. 
 
 # Přílohy
 - [1]
