@@ -3,6 +3,7 @@
 
 #include <string>
 #include <stdlib.h>
+#include <vector>
 
 #include "waddress.h"
 
@@ -12,14 +13,10 @@ using namespace std;
 class OItem
 {
 public:
-    int ID;
     int Customer;
     int Product;
-    int Address;
-    string AddressCode; // the address as used in real warehouse
+    string Address; // the address as used in real warehouse
     int Qty;
-    int Wave;
-
     /// @brief address in its representation for algorithm proposes
     WAddress *waddress;
 };

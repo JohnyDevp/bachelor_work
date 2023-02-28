@@ -44,7 +44,7 @@ WarehouseOriginalController::WarehouseOriginalController(vector<OItem> _item_vec
 
         // build the list of data to be shown by the item on the canvas
         vector<QString> data_vect;
-        data_vect.push_back(QString::fromStdString(item->AddressCode));
+        data_vect.push_back(QString::fromStdString(item->Address));
         data_vect.push_back("Customer: " + QString::number(item->Customer));
         data_vect.push_back("Product: " + QString::number(item->Product));
         data_vect.push_back("X: " + QString::number(item->waddress->getWarehouseWAddress().x_coord) + ", Y: " + QString::number(item->waddress->getWarehouseWAddress().y_coord));

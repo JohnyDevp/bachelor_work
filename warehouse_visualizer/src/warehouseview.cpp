@@ -7,6 +7,7 @@ Warehouseview::Warehouseview(QWidget *parent) : QWidget(parent),
                                                 ui(new Ui::Warehouseview)
 {
     ui->setupUi(this);
+    this->setFixedSize(1150, 689);
 
     // set up the scene
     this->scene = new QGraphicsScene(this);
@@ -43,4 +44,25 @@ void Warehouseview::loadUpListWidget(QStringList customers, std::function<void(Q
 
     // connect signals
     connect(this->ui->listWidget, &QListWidget::itemClicked, this, fun);
+}
+
+QTextEdit *Warehouseview::getDetailTextField()
+{
+    return this->ui->textEdit;
+}
+
+bool Warehouseview::getShowOnlySelectedCart_checkbox_value()
+{
+    return this->ui->checkBox_sosc->isChecked();
+}
+
+bool Warehouseview::getDifferCartsCustomers_checkbox_value()
+{
+    return this->ui->checkBox_dcc->isChecked();
+}
+
+void Warehouseview::setRestoreHandler(std::function<void()> fun)
+{
+    // connect signals
+    connect(this->ui->btnRestore, &QPushButton::clicked, this, fun);
 }

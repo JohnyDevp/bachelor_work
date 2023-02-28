@@ -6,7 +6,6 @@
 #include <math.h>
 
 #include "waddress.h"
-
 namespace secG
 {
     // G sector set up
@@ -27,7 +26,7 @@ namespace secG
         (int)(x_offset + side_side_vertical_cor_width + (7 + 10) * big_cell_width + side_middle_vertical_cor_width + middle_vertical_cor_width * 0.5),                                      // middle
         (int)(x_offset + side_side_vertical_cor_width + (7 + 10 + 7) * big_cell_width + side_middle_vertical_cor_width + middle_vertical_cor_width + side_middle_vertical_cor_width * 0.5), // right from middle
         (int)(x_offset + side_side_vertical_cor_width + (7 + 10 + 7) * big_cell_width + side_middle_vertical_cor_width + middle_vertical_cor_width + side_middle_vertical_cor_width + 7.0 * big_cell_width + side_side_vertical_cor_width * 0.5)};
-    const vector<int> rows_246_celled = {0, 1, 2, 40};
+    const vector<int> rows_246_celled = {0, 1, 2, 3, 36, 37, 38, 39, 40};
 }
 
 namespace secV
@@ -83,7 +82,6 @@ inline namespace ver1
             return SECTOR_ADDR_T();
         }
     }
-
     inline namespace measuring
     {
         inline int getDistanceInSectorG(WAddress first_addr, WAddress second_addr)

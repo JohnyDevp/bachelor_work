@@ -14,7 +14,8 @@
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
+    this->setFixedSize(355, 130);
+    
     // connect buttons to their slots
     connect(ui->btnLoadFinalJson, &QPushButton::pressed, this, &MainWindow::btnLoadFinalJson_click);
     connect(ui->btnShowOriginalJson, &QPushButton::pressed, this, &MainWindow::btnShowOriginalJson_click);
@@ -44,6 +45,7 @@ void MainWindow::btnLoadOriginalJson_click()
 
     // pass the loaded data to controller responsible for showing the original json file
     this->woc = new WarehouseOriginalController(item_vect);
+    this->ui->btnShowOriginalJson->setEnabled(true);
 }
 
 void MainWindow::btnShowOriginalJson_click()
@@ -55,12 +57,28 @@ void MainWindow::btnShowOriginalJson_click()
 
 void MainWindow::btnLoadFinalJson_click()
 {
-    Q_DEBUG_PRINTOUT("btnLoadFinalJson_click")
+    // load the file path and pass it to the loading_function
+    Q_DEBUG_PRINTOUT("btnLoadOriginalJson_click")
+    QUrl file_name = QFileDialog::getOpenFileUrl(this, tr("Select original JSON file"), QUrl("/home"), tr("*.json"));
+    if (file_name.isEmpty())
+    {
+        // check whether the file has been chosen
+        Q_DEBUG_PRINTOUT("None file selected!")
+        return;
+    }
+    Q_DEBUG_PRINTOUT(file_name.toString())
+    vector<Cart> cart_vect;
+    load_final_json_data(qPrintable(file_name.path()), &cart_vect);
+
+    // pass the loaded data to controller responsible for showing the original json file
+    this->wfc = new WarehouseFinalController(cart_vect);
+    this->ui->btnShowFinalJson->setEnabled(true);
 }
 
 void MainWindow::btnShowFinalJson_click()
 {
     Q_DEBUG_PRINTOUT("btnShowFinalJson_click")
+    wfc->showGraphics();
 }
 
 void MainWindow::btnCompare_click()

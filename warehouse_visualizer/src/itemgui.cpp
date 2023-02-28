@@ -11,7 +11,6 @@ ItemGui::ItemGui(float _x_coord, float _y_coord, float _width, float _height, QC
     setAcceptHoverEvents(true);
 
     this->setPos(0, 0);
-    cout << "x: " << this->x_coord << " y: " << this->y_coord << endl;
 }
 
 ItemGui::~ItemGui()
@@ -36,19 +35,7 @@ void ItemGui::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, Q
         painter->fillRect(this->boundingRect(), this->color);
     }
 
-    if (this->data_displayed)
-    {
-        QFont font("arial", 10); //-> for text length measure
-        QFontMetrics fontMetrics(font);
-        painter->setFont(font);
-
-        int i = 0; // helper variable for moving line by line
-        for (auto data_t : this->data_to_show)
-        {
-            painter->drawText(this->x_coord + this->width + 1, this->y_coord + i, data_t);
-            i += 11; // move the text line by line
-        }
-    }
+    // this->drawData(painter);
 }
 
 void ItemGui::setColor2(QColor color)
@@ -71,19 +58,31 @@ void ItemGui::unfocus()
 void ItemGui::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     Q_DEBUG_PRINTOUT("mousePressEvent")
-    if (this->data_displayed)
-    {
-        // data are displayed - so hide them
-    }
-    else
-    {
-        // data are hidden - so display them
-    }
+
     // update the canvas
     this->sc->update();
     // change the state of display marking variable
-    this->data_displayed = !this->data_displayed;
+    // this->data_displayed = !this->data_displayed;
+
+    // write the data to the textbox
 
     // let continue the mouse press event
     QGraphicsItem::mousePressEvent(event);
+}
+
+void ItemGui::drawData(QPainter *painter)
+{
+    if (this->data_displayed)
+    {
+        QFont font("arial", 10); //-> for text length measure
+        QFontMetrics fontMetrics(font);
+        painter->setFont(font);
+
+        int i = 0; // helper variable for moving line by line
+        for (auto data_t : this->data_to_show)
+        {
+            painter->drawText(this->x_coord + this->width + 1, this->y_coord + i, data_t);
+            i += 11; // move the text line by line
+        }
+    }
 }

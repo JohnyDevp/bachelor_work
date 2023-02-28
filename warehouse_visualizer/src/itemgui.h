@@ -7,6 +7,7 @@
 #include <QDebug>
 #include <vector>
 #include "overtaken/objects.h"
+#include <QTextEdit>
 
 using namespace std;
 
@@ -21,6 +22,9 @@ public:
 
     // for updating the whole scene after clicking on the object, nothing more
     QGraphicsScene *sc;
+
+    // for writing the 
+    QTextEdit *qtxt;
 
     /// @brief change color of the item for yellow by default
     void setColor2(QColor color = Qt::yellow);
@@ -53,6 +57,10 @@ private:
 
     // whether data are shown already or not
     bool data_displayed = false;
+
+    /// @brief function for drawing the data along the item
+    /// @warning not used
+    void drawData(QPainter *painter);
 };
 
 #endif

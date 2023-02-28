@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1975</width>
-    <height>1042</height>
+    <width>1150</width>
+    <height>689</height>
    </rect>
   </property>
   <property name="mouseTracking">
@@ -21,20 +21,98 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1501</width>
-     <height>1011</height>
+     <width>871</width>
+     <height>681</height>
     </rect>
    </property>
   </widget>
   <widget class="QListWidget" name="listWidget">
    <property name="geometry">
     <rect>
-     <x>1520</x>
+     <x>880</x>
      <y>0</y>
-     <width>256</width>
-     <height>192</height>
+     <width>261</width>
+     <height>171</height>
     </rect>
    </property>
+  </widget>
+  <widget class="QListWidget" name="listWidget_2">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>180</y>
+     <width>261</width>
+     <height>171</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_sosc">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>360</y>
+     <width>241</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Show only selected cart</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_dcc">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>390</y>
+     <width>191</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Differ cart's customers</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnRestore">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>420</y>
+     <width>251</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Restore</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>460</y>
+     <width>258</width>
+     <height>218</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="1" column="0">
+     <widget class="QTextEdit" name="textEdit">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Detail</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

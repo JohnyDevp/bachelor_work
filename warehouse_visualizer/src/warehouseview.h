@@ -6,6 +6,7 @@
 #include "itemgui.h"
 #include "qlistwidget.h"
 #include "interfaces/warehouse_controller_interface.h"
+#include <QTextEdit>
 
 namespace Ui
 {
@@ -28,6 +29,14 @@ public:
 
     // fill the listwidget with customers
     void loadUpListWidget(QStringList customers, std::function<void(QListWidgetItem *)> fun);
+
+    QTextEdit *getDetailTextField();
+
+    bool getShowOnlySelectedCart_checkbox_value();
+
+    bool getDifferCartsCustomers_checkbox_value();
+
+    void setRestoreHandler(std::function<void()> fun);
 
 private:
     Ui::Warehouseview *ui;
