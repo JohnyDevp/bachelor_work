@@ -8,7 +8,6 @@ WAddress::WAddress(string raw_addr) : raw_sector_addr(raw_addr)
     // G, GP, P, V
     string section = raw_addr.substr(0, 3);
 
-
     // FIXME
     if (section.compare(0, 2, "GP") == 0)
     {
@@ -20,12 +19,13 @@ WAddress::WAddress(string raw_addr) : raw_sector_addr(raw_addr)
     }
     else if (section.compare(0, 1, "V") == 0)
     {
-        this->parsed_sector_addr = ver1::mapping::V_SectorMapping(raw_addr);
+        this->parsed_sector_addr = ver2::mapping::V_SectorMapping(raw_addr);
     }
     else if (section.compare(0, 1, "P") == 0)
     {
         this->parsed_sector_addr = ver1::mapping::P_SectorMapping(raw_addr);
     }
+    this->parsed_sector_addr.section = section;
 }
 
 SECTOR_ADDR_T WAddress::getWarehouseWAddress()

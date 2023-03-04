@@ -6,11 +6,34 @@
 #include <math.h>
 
 #include "waddress.h"
+
+namespace secV
+{
+    // V sector set up
+    // TODO not sure about all these values
+    const float x_offset = 25.0; // 2.5 meters from fictional left axis to the fictional corridor (at left)
+    const float y_offset = 0.0;  // V addresses are at the top of the area - so zero offset set up
+    const float horizontal_corridor_width = 24.0,
+                middle_vertical_cor_width = 37.0, // middle and side-middle vertical corridors are of the same width as in G sector (also in the same place)
+        side_middle_vertical_cor_width = 31.0,
+                side_side_vertical_cor_width = 5.0;
+
+    const float small_cell_depth = 4.0f,
+                big_cell_depth = 6.0f,
+                pallet_cell_depth = 12.0f,
+                big_cell_width = 13.0f,
+                small_cell_width = 1.3f,
+                pallet_cell_width = 10.0f;
+
+    // FIXME 380 is not probably accurate...
+    const vector<string> rows_380_celled = {"BB", "DD"};
+}
+
 namespace secG
 {
     // G sector set up
-    const float x_offset = 40.0;  // 4 meters from fictional left axis to the first vertical corridor
-    const float y_offset = 130.0; /*to the 00 row*/
+    const float x_offset = 40.0;                   // 4 meters from fictional left axis to the first vertical corridor
+    const float y_offset = 130.0 + secV::y_offset; /*to the 00 row*/
     const float horizontal_corridor_width = 16.0,
                 middle_vertical_cor_width = 37.0,
                 side_middle_vertical_cor_width = 31.0,
@@ -27,24 +50,28 @@ namespace secG
         (int)(x_offset + side_side_vertical_cor_width + (7 + 10 + 7) * big_cell_width + side_middle_vertical_cor_width + middle_vertical_cor_width + side_middle_vertical_cor_width * 0.5), // right from middle
         (int)(x_offset + side_side_vertical_cor_width + (7 + 10 + 7) * big_cell_width + side_middle_vertical_cor_width + middle_vertical_cor_width + side_middle_vertical_cor_width + 7.0 * big_cell_width + side_side_vertical_cor_width * 0.5)};
     const vector<int> rows_246_celled = {0, 1, 2, 3, 36, 37, 38, 39, 40};
-}
 
-namespace secV
-{
-    // V sector set up
-    // TODO not sure about all these values
-    const float x_offset = 25.0; // 2.5 meters from fictional left axis to the fictional corridor (at left)
-    const float y_offset = 0.0;  // V addresses are at the top of the area - so zero offset set up
-    const float horizontal_corridor_width = 24.0,
-                middle_vertical_cor_width = 37.0, // middle and side-middle vertical corridors are of the same width as in G sector (also in the same place)
-        side_middle_vertical_cor_width = 31.0,
-                side_side_vertical_cor_width = 5.0;
+    // exits of sector G
 
-    const float small_cell_depth = 4.0f,
-                big_cell_depth = 6.0f, // 6dm
-        pallet_cell_depth = 12.0f,
-                big_cell_width = 13.0f,
-                pallet_cell_width = 10.0f;
+    // these coordinates should fit the exits of G sector towards the V sector
+    const SECTOR_ADDR_T G_North_exits[] = {
+        {"G00", (int)y_offset, 0, vertical_corridors[1]},
+        {"G00", (int)y_offset, 0, vertical_corridors[2]},
+        {"G00", (int)y_offset, 0, vertical_corridors[3]}};
+
+    // these coordinates should fit the horizontal corridors between G and GP sectors
+    // and so they should be usable when measuring distances also between G, GP and P sectors
+    const map<int, int> G_East_exits = {
+        {vertical_corridors[4], y_offset + 448},
+        {vertical_corridors[4], y_offset + 448 + 24},
+        {vertical_corridors[4], y_offset + 448 + 24 + 24},
+        {vertical_corridors[4], y_offset + 448 + 24 + 24 + 24},
+    };
+
+    const map<int, int> G_South_exits = {
+        {vertical_corridors[1], y_offset + 530.0}, // note that 530 is measured vertical length of G sector
+        {vertical_corridors[2], y_offset + 530.0},
+        {vertical_corridors[3], y_offset + 530.0}};
 }
 
 // namespace with functions usable when addresses are not mapped - addresses stay as they are, or at least letting all
@@ -250,7 +277,7 @@ inline namespace ver2
             float x_coord = stof(raw_addr.substr(7, 3));
             if (y_coord == 0)
             {
-                // pallet row
+                // pallet row AAA
                 // all constants used there serve for better coordinates expression according to the pallet row design
                 parsed_addr.x_coord = (x_offset + side_side_vertical_cor_width + big_cell_width * 0.5) + (x_coord - 1) * pallet_cell_width + pallet_cell_width * 0.5;
                 if (x_coord > 36)
@@ -260,9 +287,20 @@ inline namespace ver2
                 else if (x_coord > 12)
                     parsed_addr.x_coord += side_middle_vertical_cor_width * 1.2;
             }
+            else if (y_coord == 1 || y_coord == 3)
+            {
+                // rows BB and DD of 380 cells
+                parsed_addr.x_coord = (x_offset + side_side_vertical_cor_width) + (x_coord - 1) * small_cell_width + small_cell_width * 0.5;
+                if (x_coord > 280)
+                    parsed_addr.x_coord += side_middle_vertical_cor_width * 1.66 /*some edit according to the real map*/ + middle_vertical_cor_width;
+                else if (x_coord > 200)
+                    parsed_addr.x_coord += side_middle_vertical_cor_width + middle_vertical_cor_width;
+                else if (x_coord > 100)
+                    parsed_addr.x_coord += side_middle_vertical_cor_width;
+            }
             else
             {
-                // other rows (of normal cells)
+                // rows CCC and EEE (of normal cells)
                 parsed_addr.x_coord = (x_offset + side_side_vertical_cor_width) + (x_coord - 1) * big_cell_width + big_cell_width * 0.5;
                 if (x_coord > 28)
                     parsed_addr.x_coord += side_middle_vertical_cor_width * 1.66 /*some edit according to the real map*/ + middle_vertical_cor_width;
@@ -278,11 +316,11 @@ inline namespace ver2
 
     inline namespace measuring
     {
-        inline int getDistanceInSectorG(WAddress first_addr, WAddress second_addr)
+        inline int getDistanceInSectorG(SECTOR_ADDR_T first_addr, SECTOR_ADDR_T second_addr)
         {
             using namespace secG;
             // order the two addresses from left to right
-            if (first_addr.getWarehouseWAddress().x_coord > second_addr.getWarehouseWAddress().x_coord)
+            if (first_addr.x_coord > second_addr.x_coord)
                 swap(first_addr, second_addr);
 
             //**************************** do the pattern (possible because of the EUCLIDEAN space) ***********************************************
@@ -290,12 +328,12 @@ inline namespace ver2
             float distance = 0;
 
             // SPECIAL CASE - CHECK FOR THE SAME ROW - return just the difference
-            if (first_addr.getWarehouseWAddress().y_coord - second_addr.getWarehouseWAddress().y_coord == 0)
-                return abs(first_addr.getWarehouseWAddress().x_coord - second_addr.getWarehouseWAddress().x_coord);
+            if (first_addr.y_coord - second_addr.y_coord == 0)
+                return abs(first_addr.x_coord - second_addr.x_coord);
 
             // stored x coord of both addresses for better readability
-            auto first_addr_x = first_addr.getWarehouseWAddress().x_coord;
-            auto second_addr_x = second_addr.getWarehouseWAddress().x_coord;
+            auto first_addr_x = first_addr.x_coord;
+            auto second_addr_x = second_addr.x_coord;
             for (size_t i = 0; i < vertical_corridors.size() - 1; i++)
             {
                 // check the first address of being between current two corridors
@@ -310,14 +348,14 @@ inline namespace ver2
                         {
                             // better is left corridor
                             distance += first_addr_x - vertical_corridors[i];
-                            distance += abs(first_addr.getWarehouseWAddress().y_coord - second_addr.getWarehouseWAddress().y_coord);
+                            distance += abs(first_addr.y_coord - second_addr.y_coord);
                             distance += second_addr_x - vertical_corridors[i];
                         }
                         else
                         {
                             // better is right corridor
                             distance += vertical_corridors[i + 1] - first_addr_x;
-                            distance += abs(first_addr.getWarehouseWAddress().y_coord - second_addr.getWarehouseWAddress().y_coord);
+                            distance += abs(first_addr.y_coord - second_addr.y_coord);
                             distance += vertical_corridors[i + 1] - second_addr_x;
                         }
                     }
@@ -326,7 +364,7 @@ inline namespace ver2
                         // the second address doesnt fit the column as the first address is set to - so count at rest as normall
                         // as we make first address be the left one, count distance to the right corridor
                         distance += vertical_corridors[i + 1] - first_addr_x;
-                        distance += abs(first_addr.getWarehouseWAddress().y_coord - second_addr.getWarehouseWAddress().y_coord);
+                        distance += abs(first_addr.y_coord - second_addr.y_coord);
                         distance += second_addr_x - vertical_corridors[i + 1]; // we know that the second address has to have greater x value, cause its
                     }
                     // nothing more to compute - return the result of distance measurement
@@ -336,7 +374,7 @@ inline namespace ver2
             return distance;
         }
 
-        inline int getDistanceInSectorV(WAddress first_addr, WAddress second_addr)
+        inline int getDistanceInSectorV(SECTOR_ADDR_T first_addr, SECTOR_ADDR_T second_addr)
         {
             using namespace secV;
 
@@ -348,7 +386,7 @@ inline namespace ver2
                 (int)(x_offset + side_side_vertical_cor_width + (10 + 10 + 8 + 10) * big_cell_width + side_middle_vertical_cor_width + middle_vertical_cor_width + side_middle_vertical_cor_width + side_side_vertical_cor_width * 0.5)};
 
             // order the two addresses from left to right
-            if (first_addr.getWarehouseWAddress().x_coord > second_addr.getWarehouseWAddress().x_coord)
+            if (first_addr.x_coord > second_addr.x_coord)
                 swap(first_addr, second_addr);
 
             //**************************** do the pattern (possible because of the EUCLIDEAN space) ***********************************************
@@ -356,12 +394,12 @@ inline namespace ver2
             float distance = 0;
 
             // SPECIAL CASE - CHECK FOR THE SAME ROW - return just the difference
-            if (first_addr.getWarehouseWAddress().y_coord - second_addr.getWarehouseWAddress().y_coord == 0)
-                return abs(first_addr.getWarehouseWAddress().x_coord - second_addr.getWarehouseWAddress().x_coord);
+            if (first_addr.y_coord - second_addr.y_coord == 0)
+                return abs(first_addr.x_coord - second_addr.x_coord);
 
             // stored x coord of both addresses for better readability
-            auto first_addr_x = first_addr.getWarehouseWAddress().x_coord;
-            auto second_addr_x = second_addr.getWarehouseWAddress().x_coord;
+            auto first_addr_x = first_addr.x_coord;
+            auto second_addr_x = second_addr.x_coord;
             for (size_t i = 0; i < vertical_corridors.size() - 1; i++)
             {
                 // check the first address whether it is between current two corridors
@@ -376,14 +414,14 @@ inline namespace ver2
                         {
                             // better is left corridor
                             distance += first_addr_x - vertical_corridors[i];
-                            distance += abs(first_addr.getWarehouseWAddress().y_coord - second_addr.getWarehouseWAddress().y_coord);
+                            distance += abs(first_addr.y_coord - second_addr.y_coord);
                             distance += second_addr_x - vertical_corridors[i];
                         }
                         else
                         {
                             // better is right corridor
                             distance += vertical_corridors[i + 1] - first_addr_x;
-                            distance += abs(first_addr.getWarehouseWAddress().y_coord - second_addr.getWarehouseWAddress().y_coord);
+                            distance += abs(first_addr.y_coord - second_addr.y_coord);
                             distance += vertical_corridors[i + 1] - second_addr_x;
                         }
                     }
@@ -392,7 +430,7 @@ inline namespace ver2
                         // the second address doesnt fit the column as the first address is set to - so count at rest as normall
                         // as we make first address be the left one, count distance to the right corridor
                         distance += vertical_corridors[i + 1] - first_addr_x;
-                        distance += abs(first_addr.getWarehouseWAddress().y_coord - second_addr.getWarehouseWAddress().y_coord);
+                        distance += abs(first_addr.y_coord - second_addr.y_coord);
                         distance += second_addr_x - vertical_corridors[i + 1]; // we know that the second address has to have greater x value, cause its
                     }
                     // nothing more to compute - return the result of distance measurement
