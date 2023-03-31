@@ -14,9 +14,9 @@ class WarehouseFinalController
 {
 private:
     /// @brief vector with all loaded items
-    vector<Cart> cart_vect;
+    vector<Cart_TMP> cart_vect;
 
-    multimap<int, std::pair<OItem *, ItemGui *>> cart_item_gui_map;
+    multimap<int, std::pair<OItem_TMP *, ItemGui *>> cart_item_gui_map;
 
     Warehouseview *wv;
 
@@ -24,7 +24,7 @@ public:
     QColor getNextCartColor();
 
     /// @brief constructor
-    WarehouseFinalController(vector<Cart> _cart_vect);
+    WarehouseFinalController(vector<Cart_TMP> _cart_vect);
     ~WarehouseFinalController();
 
     /// @brief method for show the window with warehouse graphical representation

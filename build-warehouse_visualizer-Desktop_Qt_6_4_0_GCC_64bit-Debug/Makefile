@@ -40,7 +40,7 @@ DISTNAME      = warehouse_visualizer1.0.0
 DISTDIR = /home/johnny/Projects/code_repo/bachelor_work/build-warehouse_visualizer-Desktop_Qt_6_4_0_GCC_64bit-Debug/.tmp/warehouse_visualizer1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-rpath,/home/johnny/Programs/Qt/6.4.0/gcc_64/lib -Wl,-rpath-link,/home/johnny/Programs/Qt/6.4.0/gcc_64/lib
-LIBS          = $(SUBLIBS) /home/johnny/Programs/Qt/6.4.0/gcc_64/lib/libQt6Widgets.so /home/johnny/Programs/Qt/6.4.0/gcc_64/lib/libQt6Gui.so /home/johnny/Programs/Qt/6.4.0/gcc_64/lib/libQt6Core.so -lpthread -lGL   
+LIBS          = $(SUBLIBS) -L src/overtaken -lbase_line -lpython3.11 /home/johnny/Programs/Qt/6.4.0/gcc_64/lib/libQt6Widgets.so /home/johnny/Programs/Qt/6.4.0/gcc_64/lib/libQt6Gui.so /home/johnny/Programs/Qt/6.4.0/gcc_64/lib/libQt6Core.so -lpthread -lGL   
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -52,23 +52,23 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../warehouse_visualizer/src/overtaken/waddress.cpp \
-		../warehouse_visualizer/src/load_json_data.cpp \
+SOURCES       = ../warehouse_visualizer/src/load_json_data.cpp \
 		../warehouse_visualizer/src/itemgui.cpp \
 		../warehouse_visualizer/src/warehouse_original_controller.cpp \
 		../warehouse_visualizer/src/warehouse_final_controller.cpp \
 		../warehouse_visualizer/src/main.cpp \
 		../warehouse_visualizer/src/mainwindow.cpp \
-		../warehouse_visualizer/src/warehouseview.cpp moc_mainwindow.cpp \
+		../warehouse_visualizer/src/warehouseview.cpp moc_warehouse_original_controller.cpp \
+		moc_mainwindow.cpp \
 		moc_warehouseview.cpp
-OBJECTS       = waddress.o \
-		load_json_data.o \
+OBJECTS       = load_json_data.o \
 		itemgui.o \
 		warehouse_original_controller.o \
 		warehouse_final_controller.o \
 		main.o \
 		mainwindow.o \
 		warehouseview.o \
+		moc_warehouse_original_controller.o \
 		moc_mainwindow.o \
 		moc_warehouseview.o
 DIST          = ../../../../Programs/Qt/6.4.0/gcc_64/mkspecs/features/spec_pre.prf \
@@ -215,7 +215,8 @@ DIST          = ../../../../Programs/Qt/6.4.0/gcc_64/mkspecs/features/spec_pre.p
 		../../../../Programs/Qt/6.4.0/gcc_64/mkspecs/features/exceptions.prf \
 		../../../../Programs/Qt/6.4.0/gcc_64/mkspecs/features/yacc.prf \
 		../../../../Programs/Qt/6.4.0/gcc_64/mkspecs/features/lex.prf \
-		../warehouse_visualizer/warehouse_visualizer.pro ../warehouse_visualizer/src/overtaken/waddress.h \
+		../warehouse_visualizer/warehouse_visualizer.pro ../warehouse_visualizer/src/overtaken/WarehousePickingOpt.h \
+		../warehouse_visualizer/src/overtaken/waddress.h \
 		../warehouse_visualizer/src/overtaken/waddress_functions.hpp \
 		../warehouse_visualizer/src/overtaken/objects.h \
 		../warehouse_visualizer/src/itemgui.h \
@@ -224,8 +225,7 @@ DIST          = ../../../../Programs/Qt/6.4.0/gcc_64/mkspecs/features/spec_pre.p
 		../warehouse_visualizer/src/debug.h \
 		../warehouse_visualizer/src/load_json_data.h \
 		../warehouse_visualizer/src/mainwindow.h \
-		../warehouse_visualizer/src/warehouseview.h ../warehouse_visualizer/src/overtaken/waddress.cpp \
-		../warehouse_visualizer/src/load_json_data.cpp \
+		../warehouse_visualizer/src/warehouseview.h ../warehouse_visualizer/src/load_json_data.cpp \
 		../warehouse_visualizer/src/itemgui.cpp \
 		../warehouse_visualizer/src/warehouse_original_controller.cpp \
 		../warehouse_visualizer/src/warehouse_final_controller.cpp \
@@ -555,8 +555,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Programs/Qt/6.4.0/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../warehouse_visualizer/src/overtaken/waddress.h ../warehouse_visualizer/src/overtaken/waddress_functions.hpp ../warehouse_visualizer/src/overtaken/objects.h ../warehouse_visualizer/src/itemgui.h ../warehouse_visualizer/src/warehouse_final_controller.h ../warehouse_visualizer/src/warehouse_original_controller.h ../warehouse_visualizer/src/debug.h ../warehouse_visualizer/src/load_json_data.h ../warehouse_visualizer/src/mainwindow.h ../warehouse_visualizer/src/warehouseview.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../warehouse_visualizer/src/overtaken/waddress.cpp ../warehouse_visualizer/src/load_json_data.cpp ../warehouse_visualizer/src/itemgui.cpp ../warehouse_visualizer/src/warehouse_original_controller.cpp ../warehouse_visualizer/src/warehouse_final_controller.cpp ../warehouse_visualizer/src/main.cpp ../warehouse_visualizer/src/mainwindow.cpp ../warehouse_visualizer/src/warehouseview.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../warehouse_visualizer/src/overtaken/WarehousePickingOpt.h ../warehouse_visualizer/src/overtaken/waddress.h ../warehouse_visualizer/src/overtaken/waddress_functions.hpp ../warehouse_visualizer/src/overtaken/objects.h ../warehouse_visualizer/src/itemgui.h ../warehouse_visualizer/src/warehouse_final_controller.h ../warehouse_visualizer/src/warehouse_original_controller.h ../warehouse_visualizer/src/debug.h ../warehouse_visualizer/src/load_json_data.h ../warehouse_visualizer/src/mainwindow.h ../warehouse_visualizer/src/warehouseview.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../warehouse_visualizer/src/load_json_data.cpp ../warehouse_visualizer/src/itemgui.cpp ../warehouse_visualizer/src/warehouse_original_controller.cpp ../warehouse_visualizer/src/warehouse_final_controller.cpp ../warehouse_visualizer/src/main.cpp ../warehouse_visualizer/src/mainwindow.cpp ../warehouse_visualizer/src/warehouseview.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../warehouse_visualizer/src/mainwindow.ui ../warehouse_visualizer/src/warehouseview.ui $(DISTDIR)/
 
 
@@ -589,9 +589,190 @@ compiler_moc_predefs_clean:
 moc_predefs.h: ../../../../Programs/Qt/6.4.0/gcc_64/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++1z -Wall -Wextra -fPIC -dM -E -o moc_predefs.h ../../../../Programs/Qt/6.4.0/gcc_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_warehouseview.cpp
+compiler_moc_header_make_all: moc_warehouse_original_controller.cpp moc_mainwindow.cpp moc_warehouseview.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_warehouseview.cpp
+	-$(DEL_FILE) moc_warehouse_original_controller.cpp moc_mainwindow.cpp moc_warehouseview.cpp
+moc_warehouse_original_controller.cpp: ../warehouse_visualizer/src/warehouse_original_controller.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QMap \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qmap.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qiterator.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qglobal.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qconfig.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qtcore-config.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qtconfigmacros.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qtcoreexports.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qlogging.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qflags.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qcompare_impl.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qatomic.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qnumeric.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qforeach.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qlist.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qarraydatapointer.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qarraydataops.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qarraydata.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qpair.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qcontainertools_impl.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qnamespace.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qtmetamacros.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstring.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qchar.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qbytearray.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qrefcount.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qbytearrayalgorithms.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qbytearrayview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringfwd.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringliteral.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qanystringview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qutf8stringview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringtokenizer.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringlist.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qshareddata.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qshareddata_impl.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QListWidget \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qlistwidget.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qlistview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtguiglobal.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtgui-config.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtguiexports.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtwidgetsexports.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qframe.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qwidget.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qwindowdefs.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qobject.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qcoreevent.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qmetatype.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qcompare.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qscopeguard.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qdatastream.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qiodevicebase.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qiterable.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qmetacontainer.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qcontainerinfo.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qtaggedpointer.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qmath.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qobject_impl.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qbindingstorage.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qmargins.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qaction.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qkeysequence.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qicon.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qsize.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpixmap.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpaintdevice.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qrect.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qpoint.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qcolor.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qrgb.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qrgba64.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qimage.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpixelformat.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtransform.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpolygon.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qregion.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qline.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qvariant.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qdebug.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qtextstream.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringconverter_base.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qset.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qhash.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpalette.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qbrush.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qfont.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qfontmetrics.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qfontinfo.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qcursor.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qbitmap.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qevent.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qiodevice.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qpointer.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qurl.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qeventpoint.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qvector2d.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qvectornd.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpointingdevice.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qinputdevice.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qscreen.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QList \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QObject \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QRect \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QSize \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QSizeF \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/QTransform \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qnativeinterface.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qlocale.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qvalidator.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qregularexpression.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qslider.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qstyle.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtabbar.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qrubberband.h \
+		../warehouse_visualizer/src/overtaken/objects.h \
+		../warehouse_visualizer/src/overtaken/waddress.h \
+		../warehouse_visualizer/src/warehouseview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QWidget \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QGraphicsScene \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpen.h \
+		../warehouse_visualizer/src/itemgui.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QGraphicsItem \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpainterpath.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/QPainter \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpainter.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextoption.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QDebug \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QTextEdit \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtextedit.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextdocument.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextcursor.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextformat.h \
+		../warehouse_visualizer/src/interfaces/warehouse_controller_interface.h \
+		moc_predefs.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/libexec/moc
+	/home/johnny/Programs/Qt/6.4.0/gcc_64/libexec/moc $(DEFINES) --include /home/johnny/Projects/code_repo/bachelor_work/build-warehouse_visualizer-Desktop_Qt_6_4_0_GCC_64bit-Debug/moc_predefs.h -I/home/johnny/Programs/Qt/6.4.0/gcc_64/mkspecs/linux-g++ -I/home/johnny/Projects/code_repo/bachelor_work/warehouse_visualizer -I/home/johnny/Programs/Qt/6.4.0/gcc_64/include -I/home/johnny/Programs/Qt/6.4.0/gcc_64/include/QtWidgets -I/home/johnny/Programs/Qt/6.4.0/gcc_64/include/QtGui -I/home/johnny/Programs/Qt/6.4.0/gcc_64/include/QtCore -I. -I/usr/include/c++/12 -I/usr/include/c++/12/x86_64-redhat-linux -I/usr/include/c++/12/backward -I/usr/lib/gcc/x86_64-redhat-linux/12/include -I/usr/local/include -I/usr/include ../warehouse_visualizer/src/warehouse_original_controller.h -o moc_warehouse_original_controller.cpp
+
 moc_mainwindow.cpp: ../warehouse_visualizer/src/mainwindow.h \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QMainWindow \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qmainwindow.h \
@@ -730,6 +911,49 @@ moc_mainwindow.cpp: ../warehouse_visualizer/src/mainwindow.h \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/QTransform \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qnativeinterface.h \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtabwidget.h \
+		../warehouse_visualizer/src/warehouse_final_controller.h \
+		../warehouse_visualizer/src/warehouseview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QWidget \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QGraphicsScene \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpen.h \
+		../warehouse_visualizer/src/itemgui.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QGraphicsItem \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpainterpath.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/QPainter \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpainter.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextoption.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QDebug \
+		../warehouse_visualizer/src/overtaken/objects.h \
+		../warehouse_visualizer/src/overtaken/waddress.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QTextEdit \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtextedit.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qframe.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextdocument.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextcursor.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextformat.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qlistwidget.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qlistview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qlocale.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qvalidator.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qregularexpression.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qslider.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qstyle.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtabbar.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qrubberband.h \
+		../warehouse_visualizer/src/interfaces/warehouse_controller_interface.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QListWidget \
+		../warehouse_visualizer/src/warehouse_original_controller.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QMap \
 		moc_predefs.h \
 		../../../../Programs/Qt/6.4.0/gcc_64/libexec/moc
 	/home/johnny/Programs/Qt/6.4.0/gcc_64/libexec/moc $(DEFINES) --include /home/johnny/Projects/code_repo/bachelor_work/build-warehouse_visualizer-Desktop_Qt_6_4_0_GCC_64bit-Debug/moc_predefs.h -I/home/johnny/Programs/Qt/6.4.0/gcc_64/mkspecs/linux-g++ -I/home/johnny/Projects/code_repo/bachelor_work/warehouse_visualizer -I/home/johnny/Programs/Qt/6.4.0/gcc_64/include -I/home/johnny/Programs/Qt/6.4.0/gcc_64/include/QtWidgets -I/home/johnny/Programs/Qt/6.4.0/gcc_64/include/QtGui -I/home/johnny/Programs/Qt/6.4.0/gcc_64/include/QtCore -I. -I/usr/include/c++/12 -I/usr/include/c++/12/x86_64-redhat-linux -I/usr/include/c++/12/backward -I/usr/lib/gcc/x86_64-redhat-linux/12/include -I/usr/local/include -I/usr/include ../warehouse_visualizer/src/mainwindow.h -o moc_mainwindow.cpp
@@ -870,6 +1094,45 @@ moc_warehouseview.cpp: ../warehouse_visualizer/src/warehouseview.h \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QSizeF \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/QTransform \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qnativeinterface.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QGraphicsScene \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpen.h \
+		../warehouse_visualizer/src/itemgui.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QGraphicsItem \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpainterpath.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/QPainter \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpainter.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextoption.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QDebug \
+		../warehouse_visualizer/src/overtaken/objects.h \
+		../warehouse_visualizer/src/overtaken/waddress.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QTextEdit \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtextedit.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qframe.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextdocument.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextcursor.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextformat.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qlistwidget.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qlistview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qlocale.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qvalidator.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qregularexpression.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qslider.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qstyle.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtabbar.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qrubberband.h \
+		../warehouse_visualizer/src/interfaces/warehouse_controller_interface.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QListWidget \
 		moc_predefs.h \
 		../../../../Programs/Qt/6.4.0/gcc_64/libexec/moc
 	/home/johnny/Programs/Qt/6.4.0/gcc_64/libexec/moc $(DEFINES) --include /home/johnny/Projects/code_repo/bachelor_work/build-warehouse_visualizer-Desktop_Qt_6_4_0_GCC_64bit-Debug/moc_predefs.h -I/home/johnny/Programs/Qt/6.4.0/gcc_64/mkspecs/linux-g++ -I/home/johnny/Projects/code_repo/bachelor_work/warehouse_visualizer -I/home/johnny/Programs/Qt/6.4.0/gcc_64/include -I/home/johnny/Programs/Qt/6.4.0/gcc_64/include/QtWidgets -I/home/johnny/Programs/Qt/6.4.0/gcc_64/include/QtGui -I/home/johnny/Programs/Qt/6.4.0/gcc_64/include/QtCore -I. -I/usr/include/c++/12 -I/usr/include/c++/12/x86_64-redhat-linux -I/usr/include/c++/12/backward -I/usr/lib/gcc/x86_64-redhat-linux/12/include -I/usr/local/include -I/usr/include ../warehouse_visualizer/src/warehouseview.h -o moc_warehouseview.cpp
@@ -898,10 +1161,6 @@ compiler_lex_clean:
 compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
-
-waddress.o: ../warehouse_visualizer/src/overtaken/waddress.cpp ../warehouse_visualizer/src/overtaken/waddress.h \
-		../warehouse_visualizer/src/overtaken/waddress_functions.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o waddress.o ../warehouse_visualizer/src/overtaken/waddress.cpp
 
 load_json_data.o: ../warehouse_visualizer/src/load_json_data.cpp ../warehouse_visualizer/src/load_json_data.h \
 		../warehouse_visualizer/src/overtaken/waddress.h \
@@ -988,15 +1247,520 @@ load_json_data.o: ../warehouse_visualizer/src/load_json_data.cpp ../warehouse_vi
 		../warehouse_visualizer/libs/json/include/nlohmann/json.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o load_json_data.o ../warehouse_visualizer/src/load_json_data.cpp
 
-itemgui.o: ../warehouse_visualizer/src/itemgui.cpp 
+itemgui.o: ../warehouse_visualizer/src/itemgui.cpp ../warehouse_visualizer/src/itemgui.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QGraphicsItem \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtguiglobal.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qglobal.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qconfig.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qtcore-config.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qtconfigmacros.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qtcoreexports.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qlogging.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qflags.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qcompare_impl.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qatomic.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qnumeric.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qforeach.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtgui-config.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtguiexports.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtwidgetsexports.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qobject.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qnamespace.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qtmetamacros.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstring.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qchar.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qbytearray.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qrefcount.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qarraydata.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qpair.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qarraydatapointer.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qarraydataops.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qcontainertools_impl.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qbytearrayalgorithms.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qbytearrayview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringfwd.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringliteral.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qanystringview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qutf8stringview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringtokenizer.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qlist.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qiterator.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringlist.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qcoreevent.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qmetatype.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qcompare.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qscopeguard.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qdatastream.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qiodevicebase.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qiterable.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qmetacontainer.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qcontainerinfo.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qtaggedpointer.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qmath.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qobject_impl.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qbindingstorage.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qvariant.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qdebug.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qtextstream.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringconverter_base.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qshareddata.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qmap.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qshareddata_impl.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qset.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qhash.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qrect.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qmargins.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qsize.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qpoint.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpainterpath.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtransform.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpolygon.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qregion.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qwindowdefs.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qline.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpixmap.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpaintdevice.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qcolor.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qrgb.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qrgba64.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qimage.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpixelformat.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QGraphicsScene \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qbrush.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qfont.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpen.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/QPainter \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpainter.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextoption.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qfontinfo.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qfontmetrics.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QDebug \
+		../warehouse_visualizer/src/overtaken/objects.h \
+		../warehouse_visualizer/src/overtaken/waddress.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QTextEdit \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtextedit.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qframe.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qwidget.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qaction.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qkeysequence.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qicon.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpalette.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qcursor.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qbitmap.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qevent.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qiodevice.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qpointer.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qurl.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qeventpoint.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qvector2d.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qvectornd.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpointingdevice.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qinputdevice.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qscreen.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QList \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QObject \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QRect \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QSize \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QSizeF \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/QTransform \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qnativeinterface.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextdocument.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextcursor.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextformat.h \
+		../warehouse_visualizer/src/debug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o itemgui.o ../warehouse_visualizer/src/itemgui.cpp
 
 warehouse_original_controller.o: ../warehouse_visualizer/src/warehouse_original_controller.cpp ../warehouse_visualizer/src/warehouse_original_controller.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QMap \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qmap.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qiterator.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qglobal.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qconfig.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qtcore-config.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qtconfigmacros.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qtcoreexports.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qlogging.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qflags.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qcompare_impl.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qatomic.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qnumeric.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qforeach.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qlist.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qarraydatapointer.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qarraydataops.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qarraydata.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qpair.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qcontainertools_impl.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qnamespace.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qtmetamacros.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstring.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qchar.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qbytearray.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qrefcount.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qbytearrayalgorithms.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qbytearrayview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringfwd.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringliteral.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qanystringview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qutf8stringview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringtokenizer.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringlist.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qshareddata.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qshareddata_impl.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QListWidget \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qlistwidget.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qlistview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtguiglobal.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtgui-config.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtguiexports.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtwidgetsexports.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qframe.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qwidget.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qwindowdefs.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qobject.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qcoreevent.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qmetatype.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qcompare.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qscopeguard.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qdatastream.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qiodevicebase.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qiterable.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qmetacontainer.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qcontainerinfo.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qtaggedpointer.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qmath.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qobject_impl.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qbindingstorage.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qmargins.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qaction.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qkeysequence.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qicon.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qsize.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpixmap.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpaintdevice.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qrect.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qpoint.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qcolor.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qrgb.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qrgba64.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qimage.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpixelformat.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtransform.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpolygon.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qregion.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qline.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qvariant.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qdebug.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qtextstream.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringconverter_base.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qset.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qhash.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpalette.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qbrush.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qfont.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qfontmetrics.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qfontinfo.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qcursor.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qbitmap.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qevent.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qiodevice.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qpointer.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qurl.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qeventpoint.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qvector2d.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qvectornd.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpointingdevice.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qinputdevice.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qscreen.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QList \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QObject \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QRect \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QSize \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QSizeF \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/QTransform \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qnativeinterface.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qlocale.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qvalidator.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qregularexpression.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qslider.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qstyle.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtabbar.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qrubberband.h \
 		../warehouse_visualizer/src/overtaken/objects.h \
-		../warehouse_visualizer/src/overtaken/waddress.h
+		../warehouse_visualizer/src/overtaken/waddress.h \
+		../warehouse_visualizer/src/warehouseview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QWidget \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QGraphicsScene \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpen.h \
+		../warehouse_visualizer/src/itemgui.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QGraphicsItem \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpainterpath.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/QPainter \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpainter.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextoption.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QDebug \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QTextEdit \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtextedit.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextdocument.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextcursor.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextformat.h \
+		../warehouse_visualizer/src/interfaces/warehouse_controller_interface.h \
+		../warehouse_visualizer/src/debug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o warehouse_original_controller.o ../warehouse_visualizer/src/warehouse_original_controller.cpp
 
-warehouse_final_controller.o: ../warehouse_visualizer/src/warehouse_final_controller.cpp 
+warehouse_final_controller.o: ../warehouse_visualizer/src/warehouse_final_controller.cpp ../warehouse_visualizer/src/warehouse_final_controller.h \
+		../warehouse_visualizer/src/warehouseview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QWidget \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qwidget.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtguiglobal.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qglobal.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qconfig.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qtcore-config.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qtconfigmacros.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qtcoreexports.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qlogging.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qflags.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qcompare_impl.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qatomic.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qnumeric.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qforeach.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtgui-config.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtguiexports.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtwidgetsexports.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qwindowdefs.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qnamespace.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qtmetamacros.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qobject.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstring.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qchar.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qbytearray.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qrefcount.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qarraydata.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qpair.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qarraydatapointer.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qarraydataops.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qcontainertools_impl.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qbytearrayalgorithms.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qbytearrayview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringfwd.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringliteral.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qanystringview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qutf8stringview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringtokenizer.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qlist.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qiterator.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringlist.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qcoreevent.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qmetatype.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qcompare.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qscopeguard.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qdatastream.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qiodevicebase.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qiterable.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qmetacontainer.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qcontainerinfo.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qtaggedpointer.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qmath.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qobject_impl.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qbindingstorage.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qmargins.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qaction.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qkeysequence.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qicon.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qsize.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpixmap.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpaintdevice.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qrect.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qpoint.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qcolor.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qrgb.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qrgba64.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qshareddata.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qimage.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpixelformat.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtransform.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpolygon.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qregion.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qline.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qvariant.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qdebug.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qtextstream.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qstringconverter_base.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qmap.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qshareddata_impl.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qset.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qhash.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpalette.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qbrush.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qfont.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qfontmetrics.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qfontinfo.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qcursor.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qbitmap.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qevent.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qiodevice.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qpointer.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qurl.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qeventpoint.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qvector2d.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qvectornd.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpointingdevice.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qinputdevice.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qscreen.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QList \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QObject \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QRect \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QSize \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QSizeF \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/QTransform \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qnativeinterface.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QGraphicsScene \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpen.h \
+		../warehouse_visualizer/src/itemgui.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QGraphicsItem \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpainterpath.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/QPainter \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpainter.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextoption.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QDebug \
+		../warehouse_visualizer/src/overtaken/objects.h \
+		../warehouse_visualizer/src/overtaken/waddress.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QTextEdit \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtextedit.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qframe.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextdocument.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextcursor.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextformat.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qlistwidget.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qlistview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qlocale.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qvalidator.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qregularexpression.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qslider.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qstyle.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtabbar.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qrubberband.h \
+		../warehouse_visualizer/src/interfaces/warehouse_controller_interface.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QListWidget \
+		../warehouse_visualizer/src/debug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o warehouse_final_controller.o ../warehouse_visualizer/src/warehouse_final_controller.cpp
 
 main.o: ../warehouse_visualizer/src/main.cpp ../warehouse_visualizer/src/mainwindow.h \
@@ -1137,6 +1901,49 @@ main.o: ../warehouse_visualizer/src/main.cpp ../warehouse_visualizer/src/mainwin
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/QTransform \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qnativeinterface.h \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtabwidget.h \
+		../warehouse_visualizer/src/warehouse_final_controller.h \
+		../warehouse_visualizer/src/warehouseview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QWidget \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QGraphicsScene \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpen.h \
+		../warehouse_visualizer/src/itemgui.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QGraphicsItem \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpainterpath.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/QPainter \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpainter.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextoption.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QDebug \
+		../warehouse_visualizer/src/overtaken/objects.h \
+		../warehouse_visualizer/src/overtaken/waddress.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QTextEdit \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtextedit.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qframe.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextdocument.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextcursor.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextformat.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qlistwidget.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qlistview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qlocale.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qvalidator.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qregularexpression.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qslider.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qstyle.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtabbar.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qrubberband.h \
+		../warehouse_visualizer/src/interfaces/warehouse_controller_interface.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QListWidget \
+		../warehouse_visualizer/src/warehouse_original_controller.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QMap \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QApplication \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qapplication.h \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qcoreapplication.h \
@@ -1158,11 +1965,7 @@ main.o: ../warehouse_visualizer/src/main.cpp ../warehouse_visualizer/src/mainwin
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qpromise.h \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qguiapplication.h \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qinputmethod.h \
-		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qlocale.h \
-		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qguiapplication_platform.h \
-		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QGraphicsItem \
-		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qgraphicsitem.h \
-		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpainterpath.h
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qguiapplication_platform.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../warehouse_visualizer/src/main.cpp
 
 mainwindow.o: ../warehouse_visualizer/src/mainwindow.cpp ../warehouse_visualizer/src/mainwindow.h \
@@ -1303,6 +2106,49 @@ mainwindow.o: ../warehouse_visualizer/src/mainwindow.cpp ../warehouse_visualizer
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/QTransform \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qnativeinterface.h \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtabwidget.h \
+		../warehouse_visualizer/src/warehouse_final_controller.h \
+		../warehouse_visualizer/src/warehouseview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QWidget \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QGraphicsScene \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpen.h \
+		../warehouse_visualizer/src/itemgui.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QGraphicsItem \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpainterpath.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/QPainter \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpainter.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextoption.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QDebug \
+		../warehouse_visualizer/src/overtaken/objects.h \
+		../warehouse_visualizer/src/overtaken/waddress.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QTextEdit \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtextedit.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qframe.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextdocument.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextcursor.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextformat.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qlistwidget.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qlistview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qlocale.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qvalidator.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qregularexpression.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qslider.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qstyle.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtabbar.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qrubberband.h \
+		../warehouse_visualizer/src/interfaces/warehouse_controller_interface.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QListWidget \
+		../warehouse_visualizer/src/warehouse_original_controller.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QMap \
 		../warehouse_visualizer/ui_mainwindow.h \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QVariant \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QApplication \
@@ -1326,18 +2172,14 @@ mainwindow.o: ../warehouse_visualizer/src/mainwindow.cpp ../warehouse_visualizer
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qpromise.h \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qguiapplication.h \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qinputmethod.h \
-		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qlocale.h \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qguiapplication_platform.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QComboBox \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qcombobox.h \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QPushButton \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractbutton.h \
-		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QWidget \
-		../warehouse_visualizer/src/warehouseview.h \
 		../warehouse_visualizer/src/load_json_data.h \
-		../warehouse_visualizer/src/overtaken/waddress.h \
-		../warehouse_visualizer/src/overtaken/objects.h \
 		../warehouse_visualizer/src/debug.h \
-		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QDebug \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QFileDialog \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qfiledialog.h \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qdir.h \
@@ -1485,6 +2327,47 @@ warehouseview.o: ../warehouse_visualizer/src/warehouseview.cpp ../warehouse_visu
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QSizeF \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/QTransform \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qnativeinterface.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QGraphicsScene \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpen.h \
+		../warehouse_visualizer/src/itemgui.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QGraphicsItem \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpainterpath.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/QPainter \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpainter.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextoption.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QDebug \
+		../warehouse_visualizer/src/overtaken/objects.h \
+		../warehouse_visualizer/src/overtaken/waddress.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QTextEdit \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtextedit.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qframe.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextdocument.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextcursor.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qtextformat.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qlistwidget.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qlistview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qlocale.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qvalidator.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qregularexpression.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qslider.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qstyle.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtabbar.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qrubberband.h \
+		../warehouse_visualizer/src/interfaces/warehouse_controller_interface.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QListWidget \
+		../warehouse_visualizer/src/warehouse_original_controller.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QMap \
 		../warehouse_visualizer/ui_warehouseview.h \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/QVariant \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QApplication \
@@ -1508,9 +2391,29 @@ warehouseview.o: ../warehouse_visualizer/src/warehouseview.cpp ../warehouse_visu
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qpromise.h \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qguiapplication.h \
 		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qinputmethod.h \
-		../../../../Programs/Qt/6.4.0/gcc_64/include/QtCore/qlocale.h \
-		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qguiapplication_platform.h
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qguiapplication_platform.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QCheckBox \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qcheckbox.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QGraphicsView \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qgraphicsview.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qscrollarea.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QGridLayout \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qlayout.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QLabel \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtGui/qpicture.h \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/QPushButton \
+		../../../../Programs/Qt/6.4.0/gcc_64/include/QtWidgets/qpushbutton.h \
+		../warehouse_visualizer/src/overtaken/waddress_functions.hpp \
+		../warehouse_visualizer/src/overtaken/helper.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o warehouseview.o ../warehouse_visualizer/src/warehouseview.cpp
+
+moc_warehouse_original_controller.o: moc_warehouse_original_controller.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_warehouse_original_controller.o moc_warehouse_original_controller.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

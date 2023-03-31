@@ -1,6 +1,6 @@
 #include "warehouse_final_controller.h"
 #include "qlistwidget.h"
-#include "src/debug.h"
+#include "debug.h"
 #include <functional>
 
 QColor WarehouseFinalController::getNextCartColor()
@@ -18,7 +18,7 @@ QColor WarehouseFinalController::getNextCartColor()
     return QColor::fromRgb(r, g, b);
 }
 
-WarehouseFinalController::WarehouseFinalController(vector<Cart> _cart_vect) : cart_vect(_cart_vect)
+WarehouseFinalController::WarehouseFinalController(vector<Cart_TMP> _cart_vect) : cart_vect(_cart_vect)
 {
     // create an instance of the graphical window and store it
     Warehouseview *wv = new Warehouseview();
@@ -90,7 +90,7 @@ void WarehouseFinalController::listWidgetItemClick_handler(QListWidgetItem *qwl_
     // loop through all the items and choose these which fits the customer number, the rest make 50% less visible
     for (auto item : this->cart_item_gui_map)
     {
-        OItem *oit = item.second.first;
+        OItem_TMP *oit = item.second.first;
         ItemGui *igui = item.second.second;
 
         if (item.first == qwl_item->text().toInt())

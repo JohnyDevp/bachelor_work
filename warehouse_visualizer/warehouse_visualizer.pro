@@ -8,8 +8,11 @@ CONFIG += c++17
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+LIBS += \
+    -L ./../bachelor_work_code/src/ -lbase_line \
+    -lpython3.11
+
 SOURCES += \
-    src/overtaken/waddress.cpp \
     src/load_json_data.cpp \
     src/itemgui.cpp \
     src/warehouse_original_controller.cpp \
@@ -19,6 +22,9 @@ SOURCES += \
     src/warehouseview.cpp
 
 HEADERS += \
+    src/overtaken/WarehousePickingOpt.h \
+    src/overtaken/warehouse.h \
+    src/overtaken/setup_configuration.h \
     src/overtaken/waddress.h \
     src/overtaken/waddress_functions.hpp \
     src/overtaken/objects.h \

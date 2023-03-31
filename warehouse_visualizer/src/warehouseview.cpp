@@ -7,7 +7,7 @@ Warehouseview::Warehouseview(QWidget *parent) : QWidget(parent),
                                                 ui(new Ui::Warehouseview)
 {
     ui->setupUi(this);
-    this->setFixedSize(1150, 689);
+    this->setFixedSize(1500, 800);
 
     // set up the scene
     this->scene = new QGraphicsScene(this);

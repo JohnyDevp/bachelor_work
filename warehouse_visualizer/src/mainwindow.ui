@@ -9,9 +9,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>355</width>
-    <height>130</height>
+    <width>527</width>
+    <height>329</height>
    </rect>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>16777213</width>
+    <height>16777215</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -26,20 +32,20 @@
      <height>130</height>
     </size>
    </property>
-   <property name="maximumSize">
-    <size>
-     <width>355</width>
-     <height>130</height>
-    </size>
-   </property>
    <widget class="QPushButton" name="btnLoadOriginalJson">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>161</width>
+      <x>53</x>
+      <y>27</y>
+      <width>135</width>
       <height>26</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
     <property name="text">
      <string>Load original JSON</string>
@@ -48,11 +54,17 @@
    <widget class="QPushButton" name="btnLoadFinalJson">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>10</y>
-      <width>161</width>
+      <x>319</x>
+      <y>27</y>
+      <width>113</width>
       <height>26</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
     <property name="text">
      <string>Load final JSON</string>
@@ -64,11 +76,17 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>40</y>
-      <width>111</width>
+      <x>53</x>
+      <y>77</y>
+      <width>100</width>
       <height>26</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
     <property name="text">
      <string>Show original</string>
@@ -80,28 +98,227 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>40</y>
-      <width>111</width>
+      <x>319</x>
+      <y>77</y>
+      <width>80</width>
       <height>26</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
     <property name="text">
      <string>Show final</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btnCompare">
+   <widget class="QPushButton" name="btnRun">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>90</y>
-      <width>331</width>
+      <x>13</x>
+      <y>277</y>
+      <width>321</width>
       <height>26</height>
      </rect>
     </property>
-    <property name="text">
-     <string>COMPARE</string>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
+    <property name="text">
+     <string>RUN</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="cmbGroupingAlg">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>13</x>
+      <y>177</y>
+      <width>279</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="placeholderText">
+     <string>Choose grouping customer algorithm</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>AVG DISTANCES METHOD</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>LEAST SQUARE METHOD</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>K MEANS CLUSTERING</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>AUTO</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="cmbBPAlgorithm">
+    <property name="geometry">
+     <rect>
+      <x>13</x>
+      <y>127</y>
+      <width>354</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="placeholderText">
+     <string>Choose Bin Packing algorithm</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>1D_FFD_BASE_LINE</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>1D_FFD_ITEMS_SPLITTING</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>1D_FFDS_MULTI_BOXES</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>3D_LIBRARY_ONE_BOX</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>3D_LIBRARY_FFDSEnhancement_MULTI_BOXES</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>3D_LIBRARY_MULTI_BOXES_COUNT_DEFINED</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="cmbTSPAlg">
+    <property name="geometry">
+     <rect>
+      <x>13</x>
+      <y>227</y>
+      <width>178</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="placeholderText">
+     <string>Choose TSP algorithm</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>NEAREST NEIGHBOR</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GREEDY</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>NONE</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="cmbNumKMeansIter">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>180</y>
+      <width>71</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>200</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="whatsThis">
+     <string>Number of K-Means iterations</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>5</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>10</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>15</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>20</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>30</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>40</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>60</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>100</string>
+     </property>
+    </item>
    </widget>
   </widget>
  </widget>

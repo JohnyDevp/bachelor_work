@@ -10,7 +10,7 @@
 using namespace std;
 
 /// function for loading the json
-void load_original_json_data(string file_path, vector<OItem> *item_vect);
-void load_final_json_data(string file_path, vector<Cart> *cart_vect);
+void load_original_json_data(string file_path, vector<OItem_TMP> *item_vect);
+void load_final_json_data(string file_path, vector<Cart_TMP> *cart_vect);
 
 #endif // LOAD_JSON_DATA_H

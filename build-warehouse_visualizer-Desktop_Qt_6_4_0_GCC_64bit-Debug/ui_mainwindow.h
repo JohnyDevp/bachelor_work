@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
@@ -25,34 +26,54 @@ public:
     QPushButton *btnLoadFinalJson;
     QPushButton *btnShowOriginalJson;
     QPushButton *btnShowFinalJson;
-    QPushButton *btnCompare;
+    QPushButton *btnRun;
+    QComboBox *cmbGroupingAlg;
+    QComboBox *cmbBPAlgorithm;
+    QComboBox *cmbTSPAlg;
+    QComboBox *cmbNumKMeansIter;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
         MainWindow->setEnabled(true);
-        MainWindow->resize(355, 130);
+        MainWindow->resize(407, 328);
+        MainWindow->setMaximumSize(QSize(16777213, 16777215));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         centralwidget->setEnabled(true);
         centralwidget->setMinimumSize(QSize(355, 130));
-        centralwidget->setMaximumSize(QSize(355, 130));
         btnLoadOriginalJson = new QPushButton(centralwidget);
         btnLoadOriginalJson->setObjectName("btnLoadOriginalJson");
-        btnLoadOriginalJson->setGeometry(QRect(10, 10, 161, 26));
+        btnLoadOriginalJson->setGeometry(QRect(10, 20, 161, 26));
         btnLoadFinalJson = new QPushButton(centralwidget);
         btnLoadFinalJson->setObjectName("btnLoadFinalJson");
-        btnLoadFinalJson->setGeometry(QRect(180, 10, 161, 26));
+        btnLoadFinalJson->setGeometry(QRect(230, 20, 161, 26));
         btnShowOriginalJson = new QPushButton(centralwidget);
         btnShowOriginalJson->setObjectName("btnShowOriginalJson");
-        btnShowOriginalJson->setGeometry(QRect(10, 40, 111, 26));
+        btnShowOriginalJson->setEnabled(false);
+        btnShowOriginalJson->setGeometry(QRect(10, 70, 111, 26));
         btnShowFinalJson = new QPushButton(centralwidget);
         btnShowFinalJson->setObjectName("btnShowFinalJson");
-        btnShowFinalJson->setGeometry(QRect(180, 40, 111, 26));
-        btnCompare = new QPushButton(centralwidget);
-        btnCompare->setObjectName("btnCompare");
-        btnCompare->setGeometry(QRect(10, 90, 331, 26));
+        btnShowFinalJson->setEnabled(false);
+        btnShowFinalJson->setGeometry(QRect(230, 70, 111, 26));
+        btnRun = new QPushButton(centralwidget);
+        btnRun->setObjectName("btnRun");
+        btnRun->setEnabled(false);
+        btnRun->setGeometry(QRect(20, 270, 331, 26));
+        cmbGroupingAlg = new QComboBox(centralwidget);
+        cmbGroupingAlg->setObjectName("cmbGroupingAlg");
+        cmbGroupingAlg->setEnabled(true);
+        cmbGroupingAlg->setGeometry(QRect(20, 190, 311, 26));
+        cmbBPAlgorithm = new QComboBox(centralwidget);
+        cmbBPAlgorithm->setObjectName("cmbBPAlgorithm");
+        cmbBPAlgorithm->setGeometry(QRect(20, 160, 311, 26));
+        cmbTSPAlg = new QComboBox(centralwidget);
+        cmbTSPAlg->setObjectName("cmbTSPAlg");
+        cmbTSPAlg->setGeometry(QRect(20, 220, 311, 26));
+        cmbNumKMeansIter = new QComboBox(centralwidget);
+        cmbNumKMeansIter->setObjectName("cmbNumKMeansIter");
+        cmbNumKMeansIter->setGeometry(QRect(340, 190, 41, 26));
         MainWindow->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindow);
@@ -67,7 +88,13 @@ public:
         btnLoadFinalJson->setText(QCoreApplication::translate("MainWindow", "Load final JSON", nullptr));
         btnShowOriginalJson->setText(QCoreApplication::translate("MainWindow", "Show original", nullptr));
         btnShowFinalJson->setText(QCoreApplication::translate("MainWindow", "Show final", nullptr));
-        btnCompare->setText(QCoreApplication::translate("MainWindow", "COMPARE", nullptr));
+        btnRun->setText(QCoreApplication::translate("MainWindow", "RUN", nullptr));
+        cmbGroupingAlg->setPlaceholderText(QCoreApplication::translate("MainWindow", "Choose grouping customer algorithm", nullptr));
+        cmbBPAlgorithm->setPlaceholderText(QCoreApplication::translate("MainWindow", "Choose Bin Packing algorithm", nullptr));
+        cmbTSPAlg->setPlaceholderText(QCoreApplication::translate("MainWindow", "Choose TSP algorithm", nullptr));
+#if QT_CONFIG(whatsthis)
+        cmbNumKMeansIter->setWhatsThis(QCoreApplication::translate("MainWindow", "Number of K-Means iterations", nullptr));
+#endif // QT_CONFIG(whatsthis)
     } // retranslateUi
 
 };

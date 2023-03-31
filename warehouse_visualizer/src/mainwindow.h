@@ -28,7 +28,7 @@ private slots:
     void btnLoadFinalJson_click();
     void btnShowOriginalJson_click();
     void btnShowFinalJson_click();
-    void btnCompare_click();
+    void btnRunAlgorithm_click();
 
 private:
     Ui::MainWindow *ui;

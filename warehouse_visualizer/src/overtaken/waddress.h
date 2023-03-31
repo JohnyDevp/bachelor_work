@@ -6,8 +6,6 @@
 #include <map>
 #include <string>
 #include <vector>
-#include <algorithm>
-#include <regex>
 #include <iterator>
 #include <unistd.h>
 
@@ -16,10 +14,13 @@ using namespace std;
 /// @brief this structure stores parsed address in usable form in computation
 typedef struct
 {
-    string section; // G00,V02,GP1,P00,... (may vary depending on usage)
-    int y_coord;    // floor row[Y-axis]
-    int z_coord;    // regal_floor(00-04/15)[Z-axis]
-    int x_coord;    // cell[X-axis]
+    string section{};         // G00,V02,GP1,P00,... (may vary depending on usage)
+    int y_coord = 0;          // floor row[Y-axis]
+    int z_coord = 0;          // regal_floor(00-04/15)[Z-axis]
+    int x_coord = 0;          // cell[X-axis]
+    int x_coord_original = 0; // original x coord right from the address
+    int y_coord_original = 0; // original y coord right from the address
+    int z_coord_original = 0; // original z coord right from the address
 } SECTOR_ADDR_T;
 
 /// @brief class representing the WAddress of product in warehouse

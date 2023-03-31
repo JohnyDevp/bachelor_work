@@ -18,7 +18,7 @@ class WarehouseOriginalController : public QObject
     Q_OBJECT
 public:
     /// @brief constructor
-    WarehouseOriginalController(vector<OItem> _item_vect);
+    WarehouseOriginalController(vector<OItem_TMP> _item_vect);
     ~WarehouseOriginalController();
 
     /// @brief function for showing the graphical window
@@ -26,10 +26,10 @@ public:
 
 private:
     /// @brief vector with all loaded items
-    vector<OItem> item_vect;
+    vector<OItem_TMP> item_vect;
 
     /// @brief set of graphical representations of each item bind to its data representation
-    map<OItem *, ItemGui *> item_gui_map;
+    map<OItem_TMP *, ItemGui *> item_gui_map;
 
     /// @brief instance of view
     Warehouseview *wv;

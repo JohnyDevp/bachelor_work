@@ -18,7 +18,7 @@ QColor WarehouseOriginalController::getNextCustomerColor()
     return QColor::fromRgb(r, g, b);
 }
 
-WarehouseOriginalController::WarehouseOriginalController(vector<OItem> _item_vect) : item_vect(_item_vect)
+WarehouseOriginalController::WarehouseOriginalController(vector<OItem_TMP> _item_vect) : item_vect(_item_vect)
 {
     // create an instance of the graphical window and store it
     Warehouseview *wv = new Warehouseview();

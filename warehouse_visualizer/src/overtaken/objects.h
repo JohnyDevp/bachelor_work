@@ -10,7 +10,7 @@
 using namespace std;
 
 /// @brief class for specification of one item
-class OItem
+class OItem_TMP
 {
 public:
     int Customer;
@@ -22,13 +22,13 @@ public:
 };
 
 /// @brief class for specification of one cart
-class Cart
+class Cart_TMP
 {
 public:
     /// @brief id of this cart
     int id;
     /// @brief vector with all items in the Cart
-    vector<OItem> item_vect;
+    vector<OItem_TMP> item_vect;
 };
 
 #endif
