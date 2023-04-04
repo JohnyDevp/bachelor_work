@@ -23,6 +23,18 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(ui->btnShowFinalJson, &QPushButton::pressed, this, &MainWindow::btnShowFinalJson_click);
     connect(ui->btnRun, &QPushButton::pressed, this, &MainWindow::btnRunAlgorithm_click);
     connect(ui->btnLoadOriginalJson, &QPushButton::pressed, this, &MainWindow::btnLoadOriginalJson_click);
+    connect(ui->btnAddBox, &QPushButton::pressed, this, &MainWindow::btnAddBox_click);
+    connect(ui->btnRemoveBoxes, &QPushButton::pressed, this, &MainWindow::btnRemoveBoxes_click);
+
+    // setup the box default params
+    ui->txtBoxCount->setText("1");
+    ui->txtBoxWidth->setText("28.0");
+    ui->txtBoxHeight->setText("29.0");
+    ui->txtBoxDepth->setText("45.0");
+    ui->txtBoxMaxWeight->setText("4000");
+    ui->txtBoxName->setText("masterBox");
+    ui->labelWrong->setVisible(false);
+
 }
 MainWindow::~MainWindow()
 {
@@ -55,8 +67,11 @@ void MainWindow::btnLoadOriginalJson_click()
         load_original_json_data(qPrintable(file_name.path()), &item_vect);
     } catch (...){
         cerr << "Problem loading original file!" << endl;
+        this->ui->labelWrong->setVisible(true);
+        this->ui->labelWrong->setText("Problem loading original file!");
         return;
     }
+
 
     // pass the loaded data to controller responsible for showing the original json file
     this->woc = new WarehouseOriginalController(item_vect);
@@ -98,6 +113,32 @@ void MainWindow::btnShowFinalJson_click()
     wfc->showGraphics();
 }
 
+// vector with all boxes added through UI
+vector<pair<Box,int>> box_vect;
+void MainWindow::btnAddBox_click(){
+    try{
+        Box b(
+            strtof32(qPrintable(this->ui->txtBoxWidth->toPlainText()), NULL),
+            strtof32(qPrintable(this->ui->txtBoxHeight->toPlainText()), NULL),
+            strtof32(qPrintable(this->ui->txtBoxDepth->toPlainText()), NULL),
+            strtof32(qPrintable(this->ui->txtBoxMaxWeight->toPlainText()), NULL),
+            qPrintable(this->ui->txtBoxName->toPlainText())
+            );
+        int count = strtod(qPrintable(this->ui->txtBoxCount->toPlainText()), NULL);
+        if (count <= 0)
+            count = 1;
+        box_vect.push_back({b, count});
+    } catch (...){
+        Q_DEBUG_PRINTOUT("ADDING BOX FAILURE")
+    }
+    Q_DEBUG_PRINTOUT("box added successfully!")
+}
+
+void MainWindow::btnRemoveBoxes_click(){
+    box_vect.clear();
+    Q_DEBUG_PRINTOUT("all boxes removed!")
+}
+
 void MainWindow::btnRunAlgorithm_click()
 {
     Q_DEBUG_PRINTOUT("btnRunAlgorithm_click")
@@ -106,21 +147,36 @@ void MainWindow::btnRunAlgorithm_click()
     short group_alg_idx = this->ui->cmbGroupingAlg->currentIndex();
     short tsp_alg_idx = this->ui->cmbTSPAlg->currentIndex();
     short k_means_iter = this->ui->cmbNumKMeansIter->currentIndex();
-    if (bp_alg_idx < 0 || group_alg_idx < 0 || tsp_alg_idx < 0 || (k_means_iter < 0 && group_alg_idx == 2)){
+    if (bp_alg_idx < 0 || group_alg_idx < 0 || tsp_alg_idx < 0 || (k_means_iter < 0 && group_alg_idx == 2) || box_vect.empty()){
         cerr << "NOT ALL PARAMETERS ARE SELECTED!!" << endl;
         return;
     }
 
-//    is_debug_on = true;
+
     // create solver configuration
+    switch (group_alg_idx) {
+    case 0: cerr << "avg" << endl;
+        break;
+    case 1: cerr << "least" << endl;
+        break;
+    case 2: cerr << "k means" << endl;
+        break;
+    }
+    switch (tsp_alg_idx) {
+    case 0: case 1: cerr << "nearest n" << endl;
+        break;
+    case 2: case 3: cerr << "greedy" << endl;
+        break;
+    }
     SolverConfiguration sc((BPAlgorithms)bp_alg_idx, (GroupingCustomersAlgorithms)group_alg_idx, (ShortestPathAlgorithms)tsp_alg_idx);
 
     vector<int> k_means_iter_idx_to_value_mapping = {5,10,15,20,30,40,60,100};
     sc.Number_of_K_Means_Iterations = k_means_iter_idx_to_value_mapping[k_means_iter];
 
     BoxConfiguration bc;
-    bc.addBox(Box(28.0, /*19*/ 29.0, 45.0, 4000, "masterBox"), 100); // the original and so far REAL box
-    bc.addBox(Box(14.0, 29.0, 45.0, 4000, "box1"), 100);
+    for (auto box : box_vect)
+        bc.addBox(box.first,box.second);
+
 
     CartConfiguration cc(90, 200, 50, 1, 3);
 
@@ -132,7 +188,6 @@ void MainWindow::btnRunAlgorithm_click()
 
     vector<Cart_TMP> cart_vect;
 
-    cerr << CL.exportCartsToJson(false) << endl;
     load_final_json_data(CL.exportCartsToJson(false), &cart_vect);
 
     // pass the loaded data to controller responsible for showing the original json file

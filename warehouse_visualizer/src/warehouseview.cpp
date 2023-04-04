@@ -34,6 +34,17 @@ void Warehouseview::removeItem(ItemGui *ig)
     this->scene->removeItem(ig);
 }
 
+void Warehouseview::addLine(QGraphicsLineItem *ln)
+{
+    this->scene->addItem(ln);
+    this->scene->update();
+}
+
+void Warehouseview::removeLine(QGraphicsLineItem *ln)
+{
+    this->scene->removeItem(ln);
+}
+
 void Warehouseview::drawWarehouseGSectorLayout()
 {
 }
@@ -51,7 +62,7 @@ QTextEdit *Warehouseview::getDetailTextField()
     return this->ui->textEdit;
 }
 
-bool Warehouseview::getShowOnlySelectedCart_checkbox_value()
+bool Warehouseview::getShowOnlySelectedCartOrCustomer_checkbox_value()
 {
     return this->ui->checkBox_sosc->isChecked();
 }
@@ -59,6 +70,11 @@ bool Warehouseview::getShowOnlySelectedCart_checkbox_value()
 bool Warehouseview::getDifferCartsCustomers_checkbox_value()
 {
     return this->ui->checkBox_dcc->isChecked();
+}
+
+bool Warehouseview::getShowPath_checkbox_value()
+{
+    return this->ui->checkBox_showPath->isChecked();
 }
 
 void Warehouseview::setRestoreHandler(std::function<void()> fun)

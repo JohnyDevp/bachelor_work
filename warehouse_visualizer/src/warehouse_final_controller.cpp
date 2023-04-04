@@ -78,8 +78,15 @@ void WarehouseFinalController::showGraphics()
     this->wv->show();
 }
 
+vector<QGraphicsLineItem*> ln_vect;
 void WarehouseFinalController::listWidgetItemClick_handler(QListWidgetItem *qwl_item)
 {
+    // clear all previous draw path
+    for (int i =0; i<ln_vect.size();i++)
+        this->wv->removeLine(ln_vect[i]);
+    ln_vect.clear();
+
+
     Q_DEBUG_PRINTOUT("Customer of num **" + qwl_item->text() + "** click-handler reaction")
     // remove text from the text_edit
     this->wv->getDetailTextField()->setText("");
@@ -88,13 +95,16 @@ void WarehouseFinalController::listWidgetItemClick_handler(QListWidgetItem *qwl_
     map<int, QColor> customer_color_map;
 
     // loop through all the items and choose these which fits the customer number, the rest make 50% less visible
+    vector<QPoint> point_vect;
     for (auto item : this->cart_item_gui_map)
     {
         OItem_TMP *oit = item.second.first;
         ItemGui *igui = item.second.second;
 
+
         if (item.first == qwl_item->text().toInt())
         {
+            point_vect.push_back(QPoint(igui->boundingRect().x(), igui->boundingRect().y()));
             // if the item has the proper customer number
             Q_DEBUG_PRINTOUT("Item marked!")
             if (this->wv->getDifferCartsCustomers_checkbox_value())
@@ -107,6 +117,8 @@ void WarehouseFinalController::listWidgetItemClick_handler(QListWidgetItem *qwl_
                 }
                 // set different color for this item
                 igui->setColor2(customer_color_map.find(oit->Customer)->second);
+            } else {
+                igui->setColor2(Qt::yellow);
             }
 
             // set the graphical interface for the item
@@ -123,7 +135,7 @@ void WarehouseFinalController::listWidgetItemClick_handler(QListWidgetItem *qwl_
         }
         else
         {
-            if (this->wv->getShowOnlySelectedCart_checkbox_value())
+            if (this->wv->getShowOnlySelectedCartOrCustomer_checkbox_value())
             {
                 // hide all other items
                 igui->hide();
@@ -137,11 +149,29 @@ void WarehouseFinalController::listWidgetItemClick_handler(QListWidgetItem *qwl_
             }
         }
     }
+
+    // show the path if checkbox is selected
+    if (this->wv->getShowPath_checkbox_value()){
+        for (size_t i = 0; i < point_vect.size()-1;i++){
+            QGraphicsLineItem * ln = new QGraphicsLineItem();
+            ln->setPen(QPen(Qt::red, 5, Qt::SolidLine, Qt::RoundCap));
+            ln->setLine(QLine(point_vect[i], point_vect[i+1]));
+            ln->setZValue(40);
+            ln->setPos(0,0);
+            this->wv->addLine(ln);
+            ln_vect.push_back(ln);
+        }
+    }
 }
 
 void WarehouseFinalController::btnRestoreClick_handler()
 {
     Q_DEBUG_PRINTOUT("Restoring")
+    // clear all previous draw path
+    for (size_t i =0; i<ln_vect.size();i++)
+        this->wv->removeLine(ln_vect[i]);
+    ln_vect.clear();
+
     // remove text from the text_edit
     this->wv->getDetailTextField()->setText("");
 
@@ -153,4 +183,5 @@ void WarehouseFinalController::btnRestoreClick_handler()
         igui->setZValue(15);
         igui->unfocus();
     }
+    this->wv->update();
 }

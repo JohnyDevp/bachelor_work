@@ -87,12 +87,26 @@ void WarehouseOriginalController::listWidgetItemClick_handler(QListWidgetItem *q
             // if the item has the proper customer number
             Q_DEBUG_PRINTOUT("Item marked!")
             item.second->setOpacity(1.0);
+            item.second->setZValue(30);
+            item.second->setColor2(Qt::yellow);
             item.second->focus();
+            item.second->show();
+            cerr << item.second->boundingRect().x() << "| " << item.second->boundingRect().y() << endl;
         }
         else
         {
-            item.second->setOpacity(0.5);
-            item.second->unfocus();
+            if (this->wv->getShowOnlySelectedCartOrCustomer_checkbox_value())
+            {
+                // hide all other items
+                item.second->hide();
+            }
+            else
+            {
+                item.second->show();
+                item.second->setOpacity(0.35);
+                item.second->setZValue(15);
+                item.second->unfocus();
+            }
         }
     }
 }

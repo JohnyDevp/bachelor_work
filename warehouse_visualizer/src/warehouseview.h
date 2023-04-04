@@ -27,14 +27,19 @@ public:
     // remove item
     void removeItem(ItemGui *ig);
 
+    void addLine(QGraphicsLineItem *ln);
+    void removeLine(QGraphicsLineItem *ln);
+
     // fill the listwidget with customers
     void loadUpListWidget(QStringList customers, std::function<void(QListWidgetItem *)> fun);
 
     QTextEdit *getDetailTextField();
 
-    bool getShowOnlySelectedCart_checkbox_value();
+    bool getShowOnlySelectedCartOrCustomer_checkbox_value();
 
     bool getDifferCartsCustomers_checkbox_value();
+
+    bool getShowPath_checkbox_value();
 
     void setRestoreHandler(std::function<void()> fun);
 

@@ -23,12 +23,14 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-private slots:
+public slots:
+    void btnRemoveBoxes_click();
     void btnLoadOriginalJson_click();
     void btnLoadFinalJson_click();
     void btnShowOriginalJson_click();
     void btnShowFinalJson_click();
     void btnRunAlgorithm_click();
+    void btnAddBox_click();
 
 private:
     Ui::MainWindow *ui;
