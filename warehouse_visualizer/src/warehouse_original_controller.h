@@ -24,12 +24,13 @@ public:
     /// @brief function for showing the graphical window
     void showGraphics();
 
+    void btnRestoreClick_handler();
 private:
     /// @brief vector with all loaded items
     vector<OItem_TMP> item_vect;
 
     /// @brief set of graphical representations of each item bind to its data representation
-    map<OItem_TMP *, ItemGui *> item_gui_map;
+    map<pair<int, int>, ItemGui *> item_gui_map;
 
     /// @brief instance of view
     Warehouseview *wv;

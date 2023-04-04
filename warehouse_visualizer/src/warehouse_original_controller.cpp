@@ -58,13 +58,32 @@ WarehouseOriginalController::WarehouseOriginalController(vector<OItem_TMP> _item
             customer_to_color_map[item->Customer],
             data_vect);
 
-        // attach the item to the scene and to this object vector
-        this->wv->addItem(ig);
-        this->item_gui_map.insert({item.base(), ig});
+        // if the gui_item for this position didn't exist, create new gui for it
+        auto gui_it = this->item_gui_map.find({
+            item->waddress->getWarehouseWAddress().x_coord,
+            item->waddress->getWarehouseWAddress().y_coord
+        });
+        if (gui_it != end(this->item_gui_map))
+        {
+            // the gui exists already
+            gui_it->second->addData(*item.base());
+        }
+        else{
+            // attach the item to the scene and to this object vector
+            this->wv->addItem(ig);
+            ig->addData(*item.base());
+            this->item_gui_map.insert({{
+                                           item->waddress->getWarehouseWAddress().x_coord,
+                                           item->waddress->getWarehouseWAddress().y_coord
+                                       }, ig});
+        }
     }
 
     // load customers to the listview
     this->wv->loadUpListWidget(customer_list, std::bind(&WarehouseOriginalController::listWidgetItemClick_handler, this, std::placeholders::_1));
+
+    // set handler for btn restore
+    this->wv->setRestoreHandler(std::bind(&WarehouseOriginalController::btnRestoreClick_handler, this));
 }
 
 WarehouseOriginalController::~WarehouseOriginalController()
@@ -78,22 +97,37 @@ void WarehouseOriginalController::showGraphics()
 
 void WarehouseOriginalController::listWidgetItemClick_handler(QListWidgetItem *qwl_item)
 {
+    // remove text from the text_edit
+    this->wv->getDetailTextField()->setText("");
+
     Q_DEBUG_PRINTOUT("Customer of num **" + qwl_item->text() + "** click-handler reaction")
     // loop through all the items and choose these which fits the customer number, the rest make 50% less visible
     for (auto item : this->item_gui_map)
     {
-        if (item.first->Customer == qwl_item->text().toInt())
+        bool item_marked = false;
+        for (auto oit : item.second->getData())
         {
-            // if the item has the proper customer number
-            Q_DEBUG_PRINTOUT("Item marked!")
-            item.second->setOpacity(1.0);
-            item.second->setZValue(30);
-            item.second->setColor2(Qt::yellow);
-            item.second->focus();
-            item.second->show();
-            cerr << item.second->boundingRect().x() << "| " << item.second->boundingRect().y() << endl;
+            if (oit.Customer == qwl_item->text().toInt())
+            {
+                // if the item has the proper customer number
+                Q_DEBUG_PRINTOUT("Item marked!")
+                item.second->setOpacity(1.0);
+                item.second->setZValue(30);
+                item.second->setColor2(Qt::yellow);
+                item.second->focus();
+                item.second->show();
+
+                // attach the data to the text field
+                // add the description of current item to the text_edit
+                this->wv->getDetailTextField()->append(
+                    "Product: " + QString::number(oit.Product) + "\n" +
+                    "Address: " + QString::fromStdString(oit.Address) + "\n" +
+                    "Customer: " + QString::number(oit.Customer) + "\n");
+                item_marked = true;
+            }
         }
-        else
+
+        if (!item_marked)
         {
             if (this->wv->getShowOnlySelectedCartOrCustomer_checkbox_value())
             {
@@ -108,5 +142,49 @@ void WarehouseOriginalController::listWidgetItemClick_handler(QListWidgetItem *q
                 item.second->unfocus();
             }
         }
+//        if (item.first->Customer == qwl_item->text().toInt())
+//        {
+//            // if the item has the proper customer number
+//            Q_DEBUG_PRINTOUT("Item marked!")
+//            item.second->setOpacity(1.0);
+//            item.second->setZValue(30);
+//            item.second->setColor2(Qt::yellow);
+//            item.second->focus();
+//            item.second->show();
+//            cerr << item.second->boundingRect().x() << "| " << item.second->boundingRect().y() << endl;
+//        }
+//        else
+//        {
+//            if (this->wv->getShowOnlySelectedCartOrCustomer_checkbox_value())
+//            {
+//                // hide all other items
+//                item.second->hide();
+//            }
+//            else
+//            {
+//                item.second->show();
+//                item.second->setOpacity(0.35);
+//                item.second->setZValue(15);
+//                item.second->unfocus();
+//            }
+//        }
     }
+}
+
+void WarehouseOriginalController::btnRestoreClick_handler()
+{
+    Q_DEBUG_PRINTOUT("Restoring")
+
+    // remove text from the text_edit
+    this->wv->getDetailTextField()->setText("");
+
+    // loop through all the items and choose these which fits the customer number, the rest make 50% less visible
+    for (auto item : this->item_gui_map)
+    {
+        ItemGui *igui = item.second;
+        igui->setOpacity(1);
+        igui->setZValue(15);
+        igui->unfocus();
+    }
+    this->wv->update();
 }

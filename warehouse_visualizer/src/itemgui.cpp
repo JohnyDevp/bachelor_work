@@ -55,6 +55,15 @@ void ItemGui::unfocus()
     this->sc->update();
 }
 
+void ItemGui::addData(OItem_TMP item)
+{
+    this->data_vect.push_back(item);
+}
+
+vector<OItem_TMP> ItemGui::getData(){
+    return this->data_vect;
+}
+
 void ItemGui::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     Q_DEBUG_PRINTOUT("mousePressEvent")

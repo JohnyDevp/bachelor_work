@@ -35,6 +35,9 @@ public:
     /// @brief unfocus the item, return the items default color
     void unfocus();
 
+    void addData(OItem_TMP item);
+
+    vector<OItem_TMP> getData();
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
 
@@ -54,6 +57,8 @@ private:
 
     // data about the warehouse item to be shown while clicked
     vector<QString> data_to_show;
+
+    vector<OItem_TMP> data_vect;
 
     // whether data are shown already or not
     bool data_displayed = false;
