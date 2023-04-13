@@ -31,7 +31,7 @@ void load_original_json_data(string file_path, vector<OItem_TMP> *item_vect)
                 OItem_TMP new_item;
                 new_item.Customer = item["Customer"];
                 new_item.Product = item["Product"];
-                new_item.Address = item["Address"];
+                new_item.Address = item["AddressCode"];
                 new_item.Qty = item["Qty"];
                 new_item.waddress = new WAddress(new_item.Address);
                 item_vect->push_back(new_item);
@@ -95,3 +95,4 @@ void load_final_json_data(string file_path, vector<Cart_TMP> *cart_vect)
         cerr << e.what() << ", Error while loading final json file" << endl;
     }
 }
+

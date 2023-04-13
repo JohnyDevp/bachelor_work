@@ -9,7 +9,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 LIBS += \
-    -L ./../bachelor_work_code/src/ -lbase_line \
+    -L ./../bachelor_work_code/src/ -lwarehouse_pick_opt \
     -lpython3.11
 
 SOURCES += \
@@ -22,10 +22,7 @@ SOURCES += \
     src/warehouseview.cpp
 
 HEADERS += \
-    src/overtaken/WarehousePickingOpt.h \
-    src/overtaken/warehouse.h \
-    src/overtaken/setup_configuration.h \
-    src/overtaken/waddress.h \
+    ./../bachelor_work_code/src/WarehousePickingOpt.h \
     src/overtaken/waddress_functions.hpp \
     src/overtaken/objects.h \
     src/itemgui.h \
