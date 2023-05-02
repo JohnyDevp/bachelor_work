@@ -1,0 +1,152 @@
+\hypertarget{warehouse__picking__opt__debug_8cpp}{}\doxysection{warehouse\+\_\+picking\+\_\+opt\+\_\+debug.\+cpp File Reference}
+\label{warehouse__picking__opt__debug_8cpp}\index{warehouse\_picking\_opt\_debug.cpp@{warehouse\_picking\_opt\_debug.cpp}}
+
+
+translated with gcc version 12.\+2.\+1  
+
+
+{\ttfamily \#include \char`\"{}warehouse\+\_\+picking\+\_\+opt\+\_\+debug.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{warehouse__picking__opt__debug_8cpp_a21826988ac5e9be190f266199ee0390c}{debug\+Customer\+Multimap}} (multimap$<$ int, \mbox{\hyperlink{classCustomer}{Customer}}, greater$<$ int $>$ $>$ cust\+\_\+mult)
+\begin{DoxyCompactList}\small\item\em show all the customers details \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{warehouse__picking__opt__debug_8cpp_ac9f3d9d8d46a228d8cb5083245bf0e63}{debug\+Customer}} (\mbox{\hyperlink{classCustomer}{Customer}} cust)
+\begin{DoxyCompactList}\small\item\em show one customer detail \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{warehouse__picking__opt__debug_8cpp_a9467b0e9eb1c1e85c0af7b36376a033a}{debug\+Carts\+Customers}} (list$<$ \mbox{\hyperlink{classCart}{Cart}} $>$ cart\+\_\+list)
+\begin{DoxyCompactList}\small\item\em show cart list details \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{warehouse__picking__opt__debug_8cpp_a44bc683e93a5973b221110ffd7dc7ff4}{debug\+Carts\+OItems}} (list$<$ \mbox{\hyperlink{classCart}{Cart}} $>$ cart\+\_\+list, bool additional\+\_\+spec)
+\begin{DoxyCompactList}\small\item\em show all the items loaded for each cart \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{warehouse__picking__opt__debug_8cpp_a56af5cb8f69bdd73843cff9f34e871bd}{debug\+Carts\+Boxes}} (list$<$ \mbox{\hyperlink{classCart}{Cart}} $>$ cart\+\_\+list)
+\begin{DoxyCompactList}\small\item\em show info of boxes loaded for each cart \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{warehouse__picking__opt__debug_8cpp_a9073bb0d404f63fa860283f1932ea93f}{debug\+Customer\+Box\+Items}} (vector$<$ \mbox{\hyperlink{classBoxItem}{Box\+Item}} $>$ boxitem\+\_\+vect)
+\begin{DoxyCompactList}\small\item\em show details of boxitems \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{warehouse__picking__opt__debug_8cpp_ab2ee21d6d7b5f08eda3c8c76a69f2e5b}{debug\+Customer\+Boxes}} (vector$<$ \mbox{\hyperlink{classBox}{Box}} $>$ box\+\_\+vect)
+\begin{DoxyCompactList}\small\item\em show details of customer\textquotesingle{}s boxes \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+translated with gcc version 12.\+2.\+1 
+
+\begin{DoxyAuthor}{Author}
+Jan Holáň, xholan11 (\href{mailto:xholan11@vutbr.cz}{\texttt{ xholan11@vutbr.\+cz}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2023-\/05-\/01
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{warehouse__picking__opt__debug_8cpp_a56af5cb8f69bdd73843cff9f34e871bd}\label{warehouse__picking__opt__debug_8cpp_a56af5cb8f69bdd73843cff9f34e871bd}} 
+\index{warehouse\_picking\_opt\_debug.cpp@{warehouse\_picking\_opt\_debug.cpp}!debugCartsBoxes@{debugCartsBoxes}}
+\index{debugCartsBoxes@{debugCartsBoxes}!warehouse\_picking\_opt\_debug.cpp@{warehouse\_picking\_opt\_debug.cpp}}
+\doxysubsubsection{\texorpdfstring{debugCartsBoxes()}{debugCartsBoxes()}}
+{\footnotesize\ttfamily void debug\+Carts\+Boxes (\begin{DoxyParamCaption}\item[{list$<$ \mbox{\hyperlink{classCart}{Cart}} $>$}]{cart\+\_\+list }\end{DoxyParamCaption})}
+
+
+
+show info of boxes loaded for each cart 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cart\+\_\+list} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{warehouse__picking__opt__debug_8cpp_a9467b0e9eb1c1e85c0af7b36376a033a}\label{warehouse__picking__opt__debug_8cpp_a9467b0e9eb1c1e85c0af7b36376a033a}} 
+\index{warehouse\_picking\_opt\_debug.cpp@{warehouse\_picking\_opt\_debug.cpp}!debugCartsCustomers@{debugCartsCustomers}}
+\index{debugCartsCustomers@{debugCartsCustomers}!warehouse\_picking\_opt\_debug.cpp@{warehouse\_picking\_opt\_debug.cpp}}
+\doxysubsubsection{\texorpdfstring{debugCartsCustomers()}{debugCartsCustomers()}}
+{\footnotesize\ttfamily void debug\+Carts\+Customers (\begin{DoxyParamCaption}\item[{list$<$ \mbox{\hyperlink{classCart}{Cart}} $>$}]{cart\+\_\+list }\end{DoxyParamCaption})}
+
+
+
+show cart list details 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cart\+\_\+list} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{warehouse__picking__opt__debug_8cpp_a44bc683e93a5973b221110ffd7dc7ff4}\label{warehouse__picking__opt__debug_8cpp_a44bc683e93a5973b221110ffd7dc7ff4}} 
+\index{warehouse\_picking\_opt\_debug.cpp@{warehouse\_picking\_opt\_debug.cpp}!debugCartsOItems@{debugCartsOItems}}
+\index{debugCartsOItems@{debugCartsOItems}!warehouse\_picking\_opt\_debug.cpp@{warehouse\_picking\_opt\_debug.cpp}}
+\doxysubsubsection{\texorpdfstring{debugCartsOItems()}{debugCartsOItems()}}
+{\footnotesize\ttfamily void debug\+Carts\+OItems (\begin{DoxyParamCaption}\item[{list$<$ \mbox{\hyperlink{classCart}{Cart}} $>$}]{cart\+\_\+list,  }\item[{bool}]{additional\+\_\+spec = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+show all the items loaded for each cart 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cart\+\_\+list} & \\
+\hline
+{\em additional\+\_\+spec} & show more detailed info \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{warehouse__picking__opt__debug_8cpp_ac9f3d9d8d46a228d8cb5083245bf0e63}\label{warehouse__picking__opt__debug_8cpp_ac9f3d9d8d46a228d8cb5083245bf0e63}} 
+\index{warehouse\_picking\_opt\_debug.cpp@{warehouse\_picking\_opt\_debug.cpp}!debugCustomer@{debugCustomer}}
+\index{debugCustomer@{debugCustomer}!warehouse\_picking\_opt\_debug.cpp@{warehouse\_picking\_opt\_debug.cpp}}
+\doxysubsubsection{\texorpdfstring{debugCustomer()}{debugCustomer()}}
+{\footnotesize\ttfamily void debug\+Customer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCustomer}{Customer}}}]{cust }\end{DoxyParamCaption})}
+
+
+
+show one customer detail 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cust} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{warehouse__picking__opt__debug_8cpp_ab2ee21d6d7b5f08eda3c8c76a69f2e5b}\label{warehouse__picking__opt__debug_8cpp_ab2ee21d6d7b5f08eda3c8c76a69f2e5b}} 
+\index{warehouse\_picking\_opt\_debug.cpp@{warehouse\_picking\_opt\_debug.cpp}!debugCustomerBoxes@{debugCustomerBoxes}}
+\index{debugCustomerBoxes@{debugCustomerBoxes}!warehouse\_picking\_opt\_debug.cpp@{warehouse\_picking\_opt\_debug.cpp}}
+\doxysubsubsection{\texorpdfstring{debugCustomerBoxes()}{debugCustomerBoxes()}}
+{\footnotesize\ttfamily void debug\+Customer\+Boxes (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classBox}{Box}} $>$}]{box\+\_\+vect }\end{DoxyParamCaption})}
+
+
+
+show details of customer\textquotesingle{}s boxes 
+
+
+\begin{DoxyParams}{Parameters}
+{\em box\+\_\+vect} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{warehouse__picking__opt__debug_8cpp_a9073bb0d404f63fa860283f1932ea93f}\label{warehouse__picking__opt__debug_8cpp_a9073bb0d404f63fa860283f1932ea93f}} 
+\index{warehouse\_picking\_opt\_debug.cpp@{warehouse\_picking\_opt\_debug.cpp}!debugCustomerBoxItems@{debugCustomerBoxItems}}
+\index{debugCustomerBoxItems@{debugCustomerBoxItems}!warehouse\_picking\_opt\_debug.cpp@{warehouse\_picking\_opt\_debug.cpp}}
+\doxysubsubsection{\texorpdfstring{debugCustomerBoxItems()}{debugCustomerBoxItems()}}
+{\footnotesize\ttfamily void debug\+Customer\+Box\+Items (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classBoxItem}{Box\+Item}} $>$}]{boxitem\+\_\+vect }\end{DoxyParamCaption})}
+
+
+
+show details of boxitems 
+
+
+\begin{DoxyParams}{Parameters}
+{\em boxitem\+\_\+vect} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{warehouse__picking__opt__debug_8cpp_a21826988ac5e9be190f266199ee0390c}\label{warehouse__picking__opt__debug_8cpp_a21826988ac5e9be190f266199ee0390c}} 
+\index{warehouse\_picking\_opt\_debug.cpp@{warehouse\_picking\_opt\_debug.cpp}!debugCustomerMultimap@{debugCustomerMultimap}}
+\index{debugCustomerMultimap@{debugCustomerMultimap}!warehouse\_picking\_opt\_debug.cpp@{warehouse\_picking\_opt\_debug.cpp}}
+\doxysubsubsection{\texorpdfstring{debugCustomerMultimap()}{debugCustomerMultimap()}}
+{\footnotesize\ttfamily void debug\+Customer\+Multimap (\begin{DoxyParamCaption}\item[{multimap$<$ int, \mbox{\hyperlink{classCustomer}{Customer}}, greater$<$ int $>$ $>$}]{cust\+\_\+mult }\end{DoxyParamCaption})}
+
+
+
+show all the customers details 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cust\+\_\+mult} & \\
+\hline
+\end{DoxyParams}

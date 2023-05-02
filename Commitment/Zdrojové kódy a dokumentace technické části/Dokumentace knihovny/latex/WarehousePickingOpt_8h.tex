@@ -1,0 +1,122 @@
+\hypertarget{WarehousePickingOpt_8h}{}\doxysection{Warehouse\+Picking\+Opt.\+h File Reference}
+\label{WarehousePickingOpt_8h}\index{WarehousePickingOpt.h@{WarehousePickingOpt.h}}
+
+
+translated with gcc version 12.\+2.\+1  
+
+
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$list$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classSolverConfiguration}{Solver\+Configuration}}
+\begin{DoxyCompactList}\small\item\em object representing the setup for problem solving \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classBoxConfiguration}{Box\+Configuration}}
+\begin{DoxyCompactList}\small\item\em the configuration of the boxes, which will be used \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classCartConfiguration}{Cart\+Configuration}}
+\item 
+struct \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}}
+\begin{DoxyCompactList}\small\item\em this structure stores parsed address in usable form in computation \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classWAddress}{WAddress}}
+\begin{DoxyCompactList}\small\item\em class representing the \mbox{\hyperlink{classWAddress}{WAddress}} of product in warehouse \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classWarehouse}{Warehouse}}
+\begin{DoxyCompactList}\small\item\em warehouse representation, distance computation \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classItemSpecification}{Item\+Specification}}
+\item 
+class \mbox{\hyperlink{classOItem}{OItem}}
+\begin{DoxyCompactList}\small\item\em class representing the item in order (with its address, and all description) -\/\texorpdfstring{$>$}{>} Order Item \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classBoxItem}{Box\+Item}}
+\begin{DoxyCompactList}\small\item\em class which serves as representation of item in the box unlike \mbox{\hyperlink{classOItem}{OItem}} it doesn\textquotesingle{}t represent order item of N units -\/ instead of this \mbox{\hyperlink{classBoxItem}{Box\+Item}} represents only one unit of \mbox{\hyperlink{classOItem}{OItem}} or a package of N units of \mbox{\hyperlink{classOItem}{OItem}} \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structitems__into__boxes__decomposition}{items\+\_\+into\+\_\+boxes\+\_\+decomposition}}
+\begin{DoxyCompactList}\small\item\em structure \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classCartShelf}{Cart\+Shelf}}
+\begin{DoxyCompactList}\small\item\em the shelf in cart, which contains boxes \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classCustomer}{Customer}}
+\begin{DoxyCompactList}\small\item\em class representing the customer object (containing its items in warehouse -\/ in order) \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classCartOItem}{Cart\+OItem}}
+\begin{DoxyCompactList}\small\item\em class representing part or whole of order item in cart, differ from \mbox{\hyperlink{classOItem}{OItem}} only by added Real\+Qty integer member, which gives an information of how many pieces of order item is realy in the cart \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classCart}{Cart}}
+\begin{DoxyCompactList}\small\item\em class representing one \mbox{\hyperlink{classCart}{Cart}} loaded with items from customers \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classBox}{Box}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classBox}{Box}} that can be loaded to the cart and which contains picked items in the warehouse. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classCartsLoader}{Carts\+Loader}}
+\begin{DoxyCompactList}\small\item\em main class representing something like an interface for it \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{WarehousePickingOpt_8h_a5fd182d87c19bfe24acb987d20f93c92}\label{WarehousePickingOpt_8h_a5fd182d87c19bfe24acb987d20f93c92}} 
+typedef struct \mbox{\hyperlink{structitems__into__boxes__decomposition}{items\+\_\+into\+\_\+boxes\+\_\+decomposition}} {\bfseries ITEMS\+\_\+\+IN\+\_\+\+BOXES\+\_\+\+DECOMP\+\_\+T}
+\begin{DoxyCompactList}\small\item\em structure \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{WarehousePickingOpt_8h_a33ad8f16a260782dc68d1d46b6fff5cc}\label{WarehousePickingOpt_8h_a33ad8f16a260782dc68d1d46b6fff5cc}} 
+enum \mbox{\hyperlink{WarehousePickingOpt_8h_a33ad8f16a260782dc68d1d46b6fff5cc}{BPAlgorithms}} \{ \newline
+{\bfseries FFD\+\_\+1\+D\+\_\+\+ORDER\+\_\+\+ITEMS\+\_\+\+NO\+\_\+\+SPLIT}
+, {\bfseries FFD\+\_\+1\+D\+\_\+\+ORDER\+\_\+\+ITEMS\+\_\+\+SPLIT\+\_\+\+ONE\+\_\+\+BOX\+\_\+\+TYPE}
+, {\bfseries FFDS\+\_\+1\+D\+\_\+\+ORDER\+\_\+\+ITEMS\+\_\+\+SPLIT\+\_\+\+MULTI\+\_\+\+BOX\+\_\+\+TYPE}
+, {\bfseries PYLIB\+\_\+3\+D\+\_\+\+ORDER\+\_\+\+ITEMS\+\_\+\+SPLIT\+\_\+\+ONE\+\_\+\+BOX\+\_\+\+TYPE}
+, \newline
+{\bfseries PYLIB\+\_\+3\+D\+\_\+\+FFDSEnhance\+\_\+\+ORDER\+\_\+\+ITEMS\+\_\+\+SPLIT\+\_\+\+MULTI\+\_\+\+BOX\+\_\+\+TYPE}
+, {\bfseries PYLIB\+\_\+3\+D\+\_\+\+ORDER\+\_\+\+ITEMS\+\_\+\+SPLIT\+\_\+\+MULTI\+\_\+\+BOX\+\_\+\+TYPE\+\_\+\+COUNT\+\_\+\+DEFINED}
+, {\bfseries FFD\+\_\+1\+D\+\_\+\+ORDER\+\_\+\+ITEMS\+\_\+\+NO\+\_\+\+SPLIT}
+, {\bfseries FFD\+\_\+1\+D\+\_\+\+ORDER\+\_\+\+ITEMS\+\_\+\+SPLIT\+\_\+\+ONE\+\_\+\+BOX\+\_\+\+TYPE}
+, \newline
+{\bfseries FFDS\+\_\+1\+D\+\_\+\+ORDER\+\_\+\+ITEMS\+\_\+\+SPLIT\+\_\+\+MULTI\+\_\+\+BOX\+\_\+\+TYPE}
+, {\bfseries PYLIB\+\_\+3\+D\+\_\+\+ORDER\+\_\+\+ITEMS\+\_\+\+SPLIT\+\_\+\+ONE\+\_\+\+BOX\+\_\+\+TYPE}
+, {\bfseries PYLIB\+\_\+3\+D\+\_\+\+FFDSEnhance\+\_\+\+ORDER\+\_\+\+ITEMS\+\_\+\+SPLIT\+\_\+\+MULTI\+\_\+\+BOX\+\_\+\+TYPE}
+, {\bfseries PYLIB\+\_\+3\+D\+\_\+\+ORDER\+\_\+\+ITEMS\+\_\+\+SPLIT\+\_\+\+MULTI\+\_\+\+BOX\+\_\+\+TYPE\+\_\+\+COUNT\+\_\+\+DEFINED}
+ \}
+\begin{DoxyCompactList}\small\item\em type for specifing algorithm for solving BPP \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{WarehousePickingOpt_8h_a33b053a87619d16127e9aa8e58a834fa}\label{WarehousePickingOpt_8h_a33b053a87619d16127e9aa8e58a834fa}} 
+enum \mbox{\hyperlink{WarehousePickingOpt_8h_a33b053a87619d16127e9aa8e58a834fa}{Grouping\+Customers\+Algorithms}} \{ \newline
+{\bfseries AVG\+\_\+\+DISTANCES}
+, {\bfseries LEAST\+\_\+\+SQUARE\+\_\+\+APPROXIMATION}
+, {\bfseries K\+\_\+\+MEANS\+\_\+\+CLUSTERING}
+, {\bfseries AUTO}
+, \newline
+{\bfseries AVG\+\_\+\+DISTANCES}
+, {\bfseries LEAST\+\_\+\+SQUARE\+\_\+\+APPROXIMATION}
+, {\bfseries K\+\_\+\+MEANS\+\_\+\+CLUSTERING}
+, {\bfseries AUTO}
+ \}
+\begin{DoxyCompactList}\small\item\em type for specifing algorithm for solving grouping of customers items to carts \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{WarehousePickingOpt_8h_a7a2400205289c04418b6d47027ad3186}\label{WarehousePickingOpt_8h_a7a2400205289c04418b6d47027ad3186}} 
+enum \mbox{\hyperlink{WarehousePickingOpt_8h_a7a2400205289c04418b6d47027ad3186}{Shortest\+Path\+Algorithms}} \{ \newline
+{\bfseries NEAREST\+\_\+\+NEIGHBOUR}
+, {\bfseries NEAREST\+\_\+\+NEIGHBOUR\+\_\+\+BRUTE\+\_\+\+FORCE\+\_\+\+OPTIMIZATION}
+, {\bfseries GREEDY}
+, {\bfseries GREEDY\+\_\+\+BRUTE\+\_\+\+FORCE\+\_\+\+OPTIMIZATION}
+, \newline
+{\bfseries JUST\+\_\+\+MEASURE\+\_\+\+DISTANCE}
+, {\bfseries NONE}
+, {\bfseries NEAREST\+\_\+\+NEIGHBOUR}
+, {\bfseries NEAREST\+\_\+\+NEIGHBOUR\+\_\+\+BRUTE\+\_\+\+FORCE\+\_\+\+OPTIMIZATION}
+, \newline
+{\bfseries GREEDY}
+, {\bfseries GREEDY\+\_\+\+BRUTE\+\_\+\+FORCE\+\_\+\+OPTIMIZATION}
+, {\bfseries JUST\+\_\+\+MEASURE\+\_\+\+DISTANCE}
+, {\bfseries NONE}
+ \}
+\begin{DoxyCompactList}\small\item\em type for specifing algorithm for solving shortest path problem while sorting items in cart \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+translated with gcc version 12.\+2.\+1 
+
+\begin{DoxyAuthor}{Author}
+Jan Holáň, xholan11 (\href{mailto:xholan11@vutbr.cz}{\texttt{ xholan11@vutbr.\+cz}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2023-\/05-\/01
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}

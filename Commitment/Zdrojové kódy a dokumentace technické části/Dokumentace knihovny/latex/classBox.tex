@@ -1,0 +1,150 @@
+\hypertarget{classBox}{}\doxysection{Box Class Reference}
+\label{classBox}\index{Box@{Box}}
+
+
+\mbox{\hyperlink{classBox}{Box}} that can be loaded to the cart and which contains picked items in the warehouse.  
+
+
+
+
+{\ttfamily \#include $<$Warehouse\+Picking\+Opt.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBox_a59fae2836a166d340ff348ea8cf073f8}{Box}} (float \mbox{\hyperlink{classBox_acf420bff7a1eeb5d88d74104551da0dd}{width}}, float height, float depth, float max\+\_\+weight, string name, float \+\_\+usable\+\_\+capacity\+\_\+percentage=1)
+\begin{DoxyCompactList}\small\item\em constructor, parameters are considered looking from the front side of the box \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classBox_a54b6313810081e47787d673457c865d2}{get\+Capacity}} ()
+\item 
+float \mbox{\hyperlink{classBox_aa22aa58c264a22caf57c118fa65a6e3f}{get\+Free\+Capacity}} ()
+\item 
+float \mbox{\hyperlink{classBox_aa9e412bd8fcfb8e1e0ba3c2cdc26b2a9}{get\+Used\+Capacity}} ()
+\item 
+map$<$ int, \mbox{\hyperlink{classBoxItem}{Box\+Item}} $>$ \mbox{\hyperlink{classBox_a44c7bf3438edcf8d187068783ab7139f}{get\+Items\+In\+The\+Box}} ()
+\item 
+bool \mbox{\hyperlink{classBox_a04e6055652ebc93f5ed56b81c710594c}{add\+Item}} (\mbox{\hyperlink{classBoxItem}{Box\+Item}} \&box\+Item)
+\begin{DoxyCompactList}\small\item\em function for adding item to box \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classBox_a596b5ebc94068b1a9b1c514a824a8b31}{is\+Empty}} ()
+\begin{DoxyCompactList}\small\item\em function returning the empty state of the box \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBox_acf420bff7a1eeb5d88d74104551da0dd}\label{classBox_acf420bff7a1eeb5d88d74104551da0dd}} 
+float {\bfseries width}
+\begin{DoxyCompactList}\small\item\em usable capacity in percentage \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBox_a69574d8f3630458b87b297c77f922638}\label{classBox_a69574d8f3630458b87b297c77f922638}} 
+float {\bfseries height}
+\item 
+\mbox{\Hypertarget{classBox_a74f12ba80b9ce513779fe5a63fbc5981}\label{classBox_a74f12ba80b9ce513779fe5a63fbc5981}} 
+float {\bfseries depth}
+\item 
+\mbox{\Hypertarget{classBox_aef482a9cab19c0f3babd2fee8a2f917c}\label{classBox_aef482a9cab19c0f3babd2fee8a2f917c}} 
+float {\bfseries max\+\_\+weight}
+\item 
+\mbox{\Hypertarget{classBox_a21a320226747fe2ccebf09ec8a8e040f}\label{classBox_a21a320226747fe2ccebf09ec8a8e040f}} 
+string {\bfseries name}
+\item 
+\mbox{\Hypertarget{classBox_a8a20b51ef059ebfaa91ff6c0a14c0b47}\label{classBox_a8a20b51ef059ebfaa91ff6c0a14c0b47}} 
+float {\bfseries usable\+\_\+capacity\+\_\+percentage} = 1
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classBox}{Box}} that can be loaded to the cart and which contains picked items in the warehouse. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBox_a59fae2836a166d340ff348ea8cf073f8}\label{classBox_a59fae2836a166d340ff348ea8cf073f8}} 
+\index{Box@{Box}!Box@{Box}}
+\index{Box@{Box}!Box@{Box}}
+\doxysubsubsection{\texorpdfstring{Box()}{Box()}}
+{\footnotesize\ttfamily Box\+::\+Box (\begin{DoxyParamCaption}\item[{float}]{width,  }\item[{float}]{height,  }\item[{float}]{depth,  }\item[{float}]{max\+\_\+weight,  }\item[{string}]{name,  }\item[{float}]{\+\_\+usable\+\_\+capacity\+\_\+percentage = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+
+
+constructor, parameters are considered looking from the front side of the box 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & width of the box (from the front side) \\
+\hline
+{\em height} & height of the box (from the front side) \\
+\hline
+{\em depth} & depth of the box (from the front side -\/ the length from the front side to the back-\/side) ~\newline
+\\
+\hline
+{\em max\+\_\+weight} & maximal weight which can be loaded to the box \\
+\hline
+{\em name} & optional name of the box \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBox_a04e6055652ebc93f5ed56b81c710594c}\label{classBox_a04e6055652ebc93f5ed56b81c710594c}} 
+\index{Box@{Box}!addItem@{addItem}}
+\index{addItem@{addItem}!Box@{Box}}
+\doxysubsubsection{\texorpdfstring{addItem()}{addItem()}}
+{\footnotesize\ttfamily bool Box\+::add\+Item (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBoxItem}{Box\+Item}} \&}]{box\+Item }\end{DoxyParamCaption})}
+
+
+
+function for adding item to box 
+
+\begin{DoxyWarning}{Warning}
+it is without any check 
+\end{DoxyWarning}
+\mbox{\Hypertarget{classBox_a54b6313810081e47787d673457c865d2}\label{classBox_a54b6313810081e47787d673457c865d2}} 
+\index{Box@{Box}!getCapacity@{getCapacity}}
+\index{getCapacity@{getCapacity}!Box@{Box}}
+\doxysubsubsection{\texorpdfstring{getCapacity()}{getCapacity()}}
+{\footnotesize\ttfamily float Box\+::get\+Capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+capacity of box 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBox_aa22aa58c264a22caf57c118fa65a6e3f}\label{classBox_aa22aa58c264a22caf57c118fa65a6e3f}} 
+\index{Box@{Box}!getFreeCapacity@{getFreeCapacity}}
+\index{getFreeCapacity@{getFreeCapacity}!Box@{Box}}
+\doxysubsubsection{\texorpdfstring{getFreeCapacity()}{getFreeCapacity()}}
+{\footnotesize\ttfamily float Box\+::get\+Free\+Capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+free capacity of the box (this capacity is not necessarily usable in reality (e.\+g. some tight free space along item,...)) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBox_a44c7bf3438edcf8d187068783ab7139f}\label{classBox_a44c7bf3438edcf8d187068783ab7139f}} 
+\index{Box@{Box}!getItemsInTheBox@{getItemsInTheBox}}
+\index{getItemsInTheBox@{getItemsInTheBox}!Box@{Box}}
+\doxysubsubsection{\texorpdfstring{getItemsInTheBox()}{getItemsInTheBox()}}
+{\footnotesize\ttfamily map$<$ int, \mbox{\hyperlink{classBoxItem}{Box\+Item}} $>$ Box\+::get\+Items\+In\+The\+Box (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+map of \texorpdfstring{$<$}{<}Product,Box\+Items\texorpdfstring{$>$}{>} that represents Product\textquotesingle{}s units in the box 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBox_aa9e412bd8fcfb8e1e0ba3c2cdc26b2a9}\label{classBox_aa9e412bd8fcfb8e1e0ba3c2cdc26b2a9}} 
+\index{Box@{Box}!getUsedCapacity@{getUsedCapacity}}
+\index{getUsedCapacity@{getUsedCapacity}!Box@{Box}}
+\doxysubsubsection{\texorpdfstring{getUsedCapacity()}{getUsedCapacity()}}
+{\footnotesize\ttfamily float Box\+::get\+Used\+Capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+capacity used by the items already in the box 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBox_a596b5ebc94068b1a9b1c514a824a8b31}\label{classBox_a596b5ebc94068b1a9b1c514a824a8b31}} 
+\index{Box@{Box}!isEmpty@{isEmpty}}
+\index{isEmpty@{isEmpty}!Box@{Box}}
+\doxysubsubsection{\texorpdfstring{isEmpty()}{isEmpty()}}
+{\footnotesize\ttfamily bool Box\+::is\+Empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+function returning the empty state of the box 
+
+\begin{DoxyReturn}{Returns}
+true when empty or false when not-\/empty 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{WarehousePickingOpt_8h}{Warehouse\+Picking\+Opt.\+h}}\item 
+\mbox{\hyperlink{box_8cpp}{box.\+cpp}}\end{DoxyCompactItemize}

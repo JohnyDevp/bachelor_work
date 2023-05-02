@@ -1,0 +1,23 @@
+\hypertarget{grouping__customers_8h_source}{}\doxysection{grouping\+\_\+customers.\+h}
+\mbox{\hyperlink{grouping__customers_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#ifndef \_GROUPING\_CUSTOMERS\_H\_}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#define \_GROUPING\_CUSTOMERS\_H\_}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <list>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{WarehousePickingOpt_8h}{WarehousePickingOpt.h}}"{}}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{keyword}{namespace }grouping\_customers}
+\DoxyCodeLine{20 \{}
+\DoxyCodeLine{25     list<Cart> \mbox{\hyperlink{grouping__customers_8h_a2b655c50c9113df670aa340437b68005}{algorithm\_AVGDistances}}(\mbox{\hyperlink{classSolverConfiguration}{SolverConfiguration}} \&sc, \mbox{\hyperlink{classCartConfiguration}{CartConfiguration}} \&cart\_conf, multimap<\textcolor{keywordtype}{int}, \mbox{\hyperlink{classCustomer}{Customer}}, greater<int>> \&volume\_customer\_map, \mbox{\hyperlink{classWarehouse}{Warehouse}} \&warehouse);}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{33     list<Cart> \mbox{\hyperlink{grouping__customers_8h_a1582ce882f313cbf777b2dc3891da6fb}{leastSquareMethod}}(\mbox{\hyperlink{classSolverConfiguration}{SolverConfiguration}} \&sc, \mbox{\hyperlink{classCartConfiguration}{CartConfiguration}} \&cart\_conf, multimap<\textcolor{keywordtype}{int}, \mbox{\hyperlink{classCustomer}{Customer}}, greater<int>> \&volume\_customer\_map);}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{40     list<Cart> \mbox{\hyperlink{grouping__customers_8h_a0a38c271fac212bef010670aad538c29}{kMeansClustering}}(\mbox{\hyperlink{classSolverConfiguration}{SolverConfiguration}} \&sc, \mbox{\hyperlink{classCartConfiguration}{CartConfiguration}} \&cart\_conf, multimap<\textcolor{keywordtype}{int}, \mbox{\hyperlink{classCustomer}{Customer}}, greater<int>> \&volume\_customer\_map);}
+\DoxyCodeLine{41 \}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

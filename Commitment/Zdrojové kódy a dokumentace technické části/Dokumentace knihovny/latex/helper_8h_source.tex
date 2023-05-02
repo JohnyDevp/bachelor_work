@@ -1,0 +1,36 @@
+\hypertarget{helper_8h_source}{}\doxysection{helper.\+h}
+\mbox{\hyperlink{helper_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#ifndef \_HELPER\_H\_}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#define \_HELPER\_H\_}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <nlohmann/json.hpp>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{WarehousePickingOpt_8h}{WarehousePickingOpt.h}}"{}}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{22 \textcolor{keyword}{using }json = nlohmann::json;}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{27 json \mbox{\hyperlink{helper_8h_a0e1ee0b56b654141152da64b48662d66}{readJsonFromFile}}(\textcolor{keywordtype}{string} path);}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{keyword}{class }\mbox{\hyperlink{classOItem}{OItem}};}
+\DoxyCodeLine{31 \textcolor{keywordtype}{void} \mbox{\hyperlink{helper_8h_a5475e748964f3779cbe93e1dbadc4cc1}{to\_json}}(json \&j, \textcolor{keyword}{const} \mbox{\hyperlink{classOItem}{OItem}} \&it);}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{keyword}{class }\mbox{\hyperlink{classCartOItem}{CartOItem}};}
+\DoxyCodeLine{37 \textcolor{keywordtype}{void} \mbox{\hyperlink{helper_8h_a5475e748964f3779cbe93e1dbadc4cc1}{to\_json}}(json \&j, \textcolor{keyword}{const} \mbox{\hyperlink{classCartOItem}{CartOItem}} \&coi);}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 \textcolor{keyword}{class }\mbox{\hyperlink{classBoxItem}{BoxItem}};}
+\DoxyCodeLine{43 \textcolor{keywordtype}{void} \mbox{\hyperlink{helper_8h_a5475e748964f3779cbe93e1dbadc4cc1}{to\_json}}(json \&j, \textcolor{keyword}{const} \mbox{\hyperlink{classBoxItem}{BoxItem}} \&bi);}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{49 \textcolor{keywordtype}{float} \mbox{\hyperlink{helper_8h_a7f296f0aa915f56092f5f9a7118b92b7}{pythagoras}}(\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\_ADDR\_T}} first\_addr, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\_ADDR\_T}} second\_addr);}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{55 \textcolor{keywordtype}{float} \mbox{\hyperlink{helper_8h_aefbaf81b063ae393bd4f5c92d05cb58a}{euclidean\_distance}}(\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\_ADDR\_T}} first\_addr, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\_ADDR\_T}} second\_addr);}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{60 \textcolor{keywordtype}{int} \mbox{\hyperlink{helper_8h_a7ca0205c081d7fe4c5b2d7637e556e2b}{factorial}}(\textcolor{keywordtype}{int} num);}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

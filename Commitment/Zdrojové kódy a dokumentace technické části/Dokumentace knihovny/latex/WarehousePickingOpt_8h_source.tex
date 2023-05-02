@@ -1,0 +1,455 @@
+\hypertarget{WarehousePickingOpt_8h_source}{}\doxysection{Warehouse\+Picking\+Opt.\+h}
+\mbox{\hyperlink{WarehousePickingOpt_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#ifndef \_WAREHOUSE\_PICKING\_OPTIMIZATION\_H\_}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#define \_WAREHOUSE\_PICKING\_OPTIMIZATION\_H\_}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <list>}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include <math.h>}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{comment}{// incomplete declarations ===============}}
+\DoxyCodeLine{24 \textcolor{keyword}{class }\mbox{\hyperlink{classBox}{Box}};}
+\DoxyCodeLine{25 \textcolor{keyword}{class }\mbox{\hyperlink{classCart}{Cart}};}
+\DoxyCodeLine{26 \textcolor{keyword}{class }\mbox{\hyperlink{classCartShelf}{CartShelf}};}
+\DoxyCodeLine{27 \textcolor{keyword}{class }\mbox{\hyperlink{classOItem}{OItem}};}
+\DoxyCodeLine{28 \textcolor{keyword}{class }\mbox{\hyperlink{classBoxItem}{BoxItem}};}
+\DoxyCodeLine{29 \textcolor{keyword}{class }\mbox{\hyperlink{classCustomer}{Customer}};}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{comment}{// class SolverConfiguration;}}
+\DoxyCodeLine{32 \textcolor{comment}{// class CartConfiguration;}}
+\DoxyCodeLine{33 \textcolor{comment}{// class BoxConfiguration;}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{comment}{//================================NOT SURE / setup\_configuration.h ====================================================}}
+\DoxyCodeLine{37 \textcolor{comment}{}\textcolor{keyword}{enum} BPAlgorithms}
+\DoxyCodeLine{38 \{}
+\DoxyCodeLine{39     FFD\_1D\_ORDER\_ITEMS\_NO\_SPLIT,}
+\DoxyCodeLine{40     FFD\_1D\_ORDER\_ITEMS\_SPLIT\_ONE\_BOX\_TYPE,}
+\DoxyCodeLine{41     FFDS\_1D\_ORDER\_ITEMS\_SPLIT\_MULTI\_BOX\_TYPE,}
+\DoxyCodeLine{42     PYLIB\_3D\_ORDER\_ITEMS\_SPLIT\_ONE\_BOX\_TYPE,}
+\DoxyCodeLine{43     PYLIB\_3D\_FFDSEnhance\_ORDER\_ITEMS\_SPLIT\_MULTI\_BOX\_TYPE,}
+\DoxyCodeLine{44     PYLIB\_3D\_ORDER\_ITEMS\_SPLIT\_MULTI\_BOX\_TYPE\_COUNT\_DEFINED}
+\DoxyCodeLine{45 \};}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{48 \textcolor{keyword}{enum} GroupingCustomersAlgorithms}
+\DoxyCodeLine{49 \{}
+\DoxyCodeLine{50     AVG\_DISTANCES,}
+\DoxyCodeLine{51     LEAST\_SQUARE\_APPROXIMATION,}
+\DoxyCodeLine{52     K\_MEANS\_CLUSTERING,}
+\DoxyCodeLine{53     AUTO}
+\DoxyCodeLine{54 \};}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{57 \textcolor{keyword}{enum} ShortestPathAlgorithms}
+\DoxyCodeLine{58 \{}
+\DoxyCodeLine{59     NEAREST\_NEIGHBOUR,}
+\DoxyCodeLine{60     NEAREST\_NEIGHBOUR\_BRUTE\_FORCE\_OPTIMIZATION,}
+\DoxyCodeLine{61     GREEDY,}
+\DoxyCodeLine{62     GREEDY\_BRUTE\_FORCE\_OPTIMIZATION,}
+\DoxyCodeLine{63     JUST\_MEASURE\_DISTANCE,}
+\DoxyCodeLine{64     NONE}
+\DoxyCodeLine{65 \};}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{68 \textcolor{keyword}{class }\mbox{\hyperlink{classSolverConfiguration}{SolverConfiguration}}}
+\DoxyCodeLine{69 \{}
+\DoxyCodeLine{70 \textcolor{keyword}{public}:}
+\DoxyCodeLine{75     \mbox{\hyperlink{classSolverConfiguration_a4e9ad04a7e653bdaa747cb8ab657db4f}{SolverConfiguration}}(}
+\DoxyCodeLine{76         \mbox{\hyperlink{WarehousePickingOpt_8h_a33ad8f16a260782dc68d1d46b6fff5cc}{BPAlgorithms}} \_bp\_alg = BPAlgorithms::FFD\_1D\_ORDER\_ITEMS\_NO\_SPLIT,}
+\DoxyCodeLine{77         \mbox{\hyperlink{WarehousePickingOpt_8h_a33b053a87619d16127e9aa8e58a834fa}{GroupingCustomersAlgorithms}} \_grouping\_customers\_alg = GroupingCustomersAlgorithms::AVG\_DISTANCES,}
+\DoxyCodeLine{78         \mbox{\hyperlink{WarehousePickingOpt_8h_a7a2400205289c04418b6d47027ad3186}{ShortestPathAlgorithms}} \_shortest\_path\_alg = ShortestPathAlgorithms::NEAREST\_NEIGHBOUR);}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{81     \textcolor{keywordtype}{int} \mbox{\hyperlink{classSolverConfiguration_a9e9bb518a8c5faf476ddef398953f000}{Number\_of\_K\_Means\_Iterations}} = 40;}
+\DoxyCodeLine{83     \textcolor{keywordtype}{float} \mbox{\hyperlink{classSolverConfiguration_abe89d5d684475a9cac159143251aed81}{percentage\_kmeans}} = 0.91;}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85     \mbox{\hyperlink{WarehousePickingOpt_8h_a33ad8f16a260782dc68d1d46b6fff5cc}{BPAlgorithms}} getBPAlgorithm();}
+\DoxyCodeLine{86     \mbox{\hyperlink{WarehousePickingOpt_8h_a33b053a87619d16127e9aa8e58a834fa}{GroupingCustomersAlgorithms}} getGroupingCustomerAlgorithm();}
+\DoxyCodeLine{87     \mbox{\hyperlink{WarehousePickingOpt_8h_a7a2400205289c04418b6d47027ad3186}{ShortestPathAlgorithms}} getShortestPathAlgorithm();}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89 \textcolor{keyword}{private}:}
+\DoxyCodeLine{90     \mbox{\hyperlink{WarehousePickingOpt_8h_a33ad8f16a260782dc68d1d46b6fff5cc}{BPAlgorithms}} bp\_algorithm;}
+\DoxyCodeLine{91     \mbox{\hyperlink{WarehousePickingOpt_8h_a33b053a87619d16127e9aa8e58a834fa}{GroupingCustomersAlgorithms}} grouping\_customers\_algorithm;}
+\DoxyCodeLine{92     \mbox{\hyperlink{WarehousePickingOpt_8h_a7a2400205289c04418b6d47027ad3186}{ShortestPathAlgorithms}} shortest\_path\_algorithm;}
+\DoxyCodeLine{93 \};}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{96 \textcolor{keyword}{class }\mbox{\hyperlink{classBoxConfiguration}{BoxConfiguration}}}
+\DoxyCodeLine{97 \{}
+\DoxyCodeLine{98 \textcolor{keyword}{private}:}
+\DoxyCodeLine{100     vector<pair<Box, int>> box\_types\_count\_vect;}
+\DoxyCodeLine{101     vector<Box> box\_types\_vect;}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{103 \textcolor{keyword}{public}:}
+\DoxyCodeLine{108     \textcolor{keywordtype}{void} \mbox{\hyperlink{classBoxConfiguration_a485fde52d2bdbc3962433e2bff1c80d3}{addBox}}(\mbox{\hyperlink{classBox}{Box}} b, \textcolor{keywordtype}{long} count = -\/1);}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110     vector<pair<Box, int>> getBoxesWCountVector();}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112     vector<Box> getBoxesVector();}
+\DoxyCodeLine{115     \mbox{\hyperlink{classBox}{Box}} \mbox{\hyperlink{classBoxConfiguration_ab3b17c7636b7fc935b07b093791b42d8}{getFirstBox}}();}
+\DoxyCodeLine{116 \};}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118 \textcolor{keyword}{class }\mbox{\hyperlink{classCartConfiguration}{CartConfiguration}}}
+\DoxyCodeLine{119 \{}
+\DoxyCodeLine{120 \textcolor{keyword}{private}:}
+\DoxyCodeLine{122     vector<Cart> cart\_pattern;}
+\DoxyCodeLine{123 }
+\DoxyCodeLine{125     vector<CartShelf> cart\_shelf\_vect;}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{127     \textcolor{keywordtype}{float} cart\_width = 0;}
+\DoxyCodeLine{128     \textcolor{keywordtype}{float} cart\_height = 0;}
+\DoxyCodeLine{129     \textcolor{keywordtype}{float} cart\_depth = 0;}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{131     \textcolor{comment}{// TODO not used...}}
+\DoxyCodeLine{132     \textcolor{keywordtype}{float} usable\_capacity = 0;}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134     \textcolor{keywordtype}{int} number\_of\_shelves = 0;}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{136 \textcolor{keyword}{public}:}
+\DoxyCodeLine{146     \mbox{\hyperlink{classCartConfiguration_af94c2be101195183aa7a811db42f1240}{CartConfiguration}}(\textcolor{keywordtype}{float} \_cart\_width, \textcolor{keywordtype}{float} \_cart\_height, \textcolor{keywordtype}{float} \_cart\_depth, \textcolor{keywordtype}{float} \_usable\_capacity, \textcolor{keywordtype}{int} \_number\_of\_shelves);}
+\DoxyCodeLine{147 }
+\DoxyCodeLine{150     \mbox{\hyperlink{classCart}{Cart}} \mbox{\hyperlink{classCartConfiguration_a87ca14dd5a2697dff532dbf2d1c70c34}{getCartPattern}}();}
+\DoxyCodeLine{151 }
+\DoxyCodeLine{154     \textcolor{keywordtype}{void} \mbox{\hyperlink{classCartConfiguration_ada84a9ad4f9d0fac87104f35830521a6}{removeCartShelves}}();}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{158     \textcolor{keywordtype}{void} \mbox{\hyperlink{classCartConfiguration_af9540ba30054021cde8efd69525c0580}{addCartShelf}}(\textcolor{keywordtype}{float} \_shelf\_width, \textcolor{keywordtype}{float} \_shelf\_height, \textcolor{keywordtype}{float} \_shelf\_depth, \textcolor{keywordtype}{float} \_usable\_capacity);}
+\DoxyCodeLine{159 \};}
+\DoxyCodeLine{160 }
+\DoxyCodeLine{161 \textcolor{comment}{//================================NOT SURE / waddress.h ====================================================}}
+\DoxyCodeLine{163 \textcolor{comment}{}\textcolor{keyword}{struct }\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\_ADDR\_T}}}
+\DoxyCodeLine{164 \{}
+\DoxyCodeLine{165     \textcolor{keywordtype}{string} section\{\};         \textcolor{comment}{// G00,V02,GP1,P00,... (may vary depending on usage)}}
+\DoxyCodeLine{166     \textcolor{keywordtype}{int} y\_coord = 0;          \textcolor{comment}{// floor row[Y-\/axis]}}
+\DoxyCodeLine{167     \textcolor{keywordtype}{int} z\_coord = 0;          \textcolor{comment}{// regal\_floor(00-\/04/15)[Z-\/axis]}}
+\DoxyCodeLine{168     \textcolor{keywordtype}{int} x\_coord = 0;          \textcolor{comment}{// cell[X-\/axis]}}
+\DoxyCodeLine{169     \textcolor{keywordtype}{int} x\_coord\_original = 0; \textcolor{comment}{// original x coord right from the address}}
+\DoxyCodeLine{170     \textcolor{keywordtype}{int} y\_coord\_original = 0; \textcolor{comment}{// original y coord right from the address}}
+\DoxyCodeLine{171     \textcolor{keywordtype}{int} z\_coord\_original = 0; \textcolor{comment}{// original z coord right from the address}}
+\DoxyCodeLine{172 }
+\DoxyCodeLine{173     \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} operator==(\textcolor{keyword}{const} \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\_ADDR\_T}} \&lhs)}
+\DoxyCodeLine{174     \{}
+\DoxyCodeLine{175         \textcolor{keywordflow}{return} (lhs.x\_coord == x\_coord \&\& lhs.y\_coord == y\_coord);}
+\DoxyCodeLine{176     \}}
+\DoxyCodeLine{177 \};}
+\DoxyCodeLine{178 }
+\DoxyCodeLine{180 \textcolor{keyword}{class }\mbox{\hyperlink{classWAddress}{WAddress}}}
+\DoxyCodeLine{181 \{}
+\DoxyCodeLine{182 \textcolor{keyword}{public}:}
+\DoxyCodeLine{185     \mbox{\hyperlink{classWAddress}{WAddress}}(\textcolor{keywordtype}{string} raw\_sector\_addr);}
+\DoxyCodeLine{186 }
+\DoxyCodeLine{188     \mbox{\hyperlink{classWAddress_afc60e3f2c53ad7a37ed7bf5d8be9432c}{\string~WAddress}}();}
+\DoxyCodeLine{189 }
+\DoxyCodeLine{192     \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\_ADDR\_T}} \mbox{\hyperlink{classWAddress_a97374468d1664da4ccf06c48b8ab9d79}{getWarehouseWAddress}}();}
+\DoxyCodeLine{193 }
+\DoxyCodeLine{196     \textcolor{keywordtype}{string} \mbox{\hyperlink{classWAddress_a1bbd8390eb44f9131a1047ab6a3238b3}{getRawSectorAddress}}();}
+\DoxyCodeLine{197 }
+\DoxyCodeLine{198 \textcolor{keyword}{private}:}
+\DoxyCodeLine{200     \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\_ADDR\_T}} parsed\_sector\_addr;}
+\DoxyCodeLine{201 }
+\DoxyCodeLine{203     \textcolor{keywordtype}{string} raw\_sector\_addr;}
+\DoxyCodeLine{204 \};}
+\DoxyCodeLine{205 }
+\DoxyCodeLine{206 \textcolor{comment}{//================================NOT SURE / warehouse.h ===================================================}}
+\DoxyCodeLine{208 \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{classWarehouse}{Warehouse}}}
+\DoxyCodeLine{209 \{}
+\DoxyCodeLine{210 \textcolor{keyword}{private}:}
+\DoxyCodeLine{212     \textcolor{keywordtype}{int} width\_x;}
+\DoxyCodeLine{213 }
+\DoxyCodeLine{215     \textcolor{keywordtype}{int} height\_y;}
+\DoxyCodeLine{216 }
+\DoxyCodeLine{217 \textcolor{keyword}{public}:}
+\DoxyCodeLine{219     \mbox{\hyperlink{classWarehouse_af8d6c7e60cb3be65b35702b400e8fad7}{Warehouse}}();}
+\DoxyCodeLine{220     \mbox{\hyperlink{classWarehouse}{\string~Warehouse}}();}
+\DoxyCodeLine{221 }
+\DoxyCodeLine{224     \textcolor{keywordtype}{int} \mbox{\hyperlink{classWarehouse_a2ceba8ebd5b8a571f827d9f7a6924ecc}{getDistanceBetweenAddresses}}(\mbox{\hyperlink{classWAddress}{WAddress}} first\_addr, \mbox{\hyperlink{classWAddress}{WAddress}} second\_addr);}
+\DoxyCodeLine{225 }
+\DoxyCodeLine{231     \textcolor{keywordtype}{int} \mbox{\hyperlink{classWarehouse_a2ceba8ebd5b8a571f827d9f7a6924ecc}{getDistanceBetweenAddresses}}(\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\_ADDR\_T}} first\_addr, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\_ADDR\_T}} second\_addr);}
+\DoxyCodeLine{232 \};}
+\DoxyCodeLine{233 }
+\DoxyCodeLine{234 \textcolor{comment}{//============================== NOT SURE / general\_declarations.h==========================================}}
+\DoxyCodeLine{236 \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{classItemSpecification}{ItemSpecification}}}
+\DoxyCodeLine{237 \{}
+\DoxyCodeLine{238 \textcolor{keyword}{public}:}
+\DoxyCodeLine{240     \textcolor{keyword}{enum class} \mbox{\hyperlink{classItemSpecification_aedd19f5203635ecca7622e962998b53c}{Type}}}
+\DoxyCodeLine{241     \{}
+\DoxyCodeLine{242         Unit,}
+\DoxyCodeLine{243         Carton,}
+\DoxyCodeLine{244         Pallet}
+\DoxyCodeLine{245     \};}
+\DoxyCodeLine{246 }
+\DoxyCodeLine{256     \mbox{\hyperlink{classItemSpecification}{ItemSpecification}}(\textcolor{keywordtype}{int} \_Product, \mbox{\hyperlink{classItemSpecification_aedd19f5203635ecca7622e962998b53c}{ItemSpecification::Type}} \_Unit, \textcolor{keywordtype}{int} \_PackageType, \textcolor{keywordtype}{int} \_ContentQty, \textcolor{keywordtype}{float} \_X, \textcolor{keywordtype}{float} \_Y, \textcolor{keywordtype}{float} \_Z, \textcolor{keywordtype}{float} \_Weight);}
+\DoxyCodeLine{257     \mbox{\hyperlink{classItemSpecification}{ItemSpecification}}()\{\};}
+\DoxyCodeLine{258     \mbox{\hyperlink{classItemSpecification}{\string~ItemSpecification}}();}
+\DoxyCodeLine{259 }
+\DoxyCodeLine{260     \textcolor{keywordtype}{int} Product;}
+\DoxyCodeLine{261     \mbox{\hyperlink{classItemSpecification_aedd19f5203635ecca7622e962998b53c}{ItemSpecification::Type}} Unit;}
+\DoxyCodeLine{262     \textcolor{keywordtype}{int} PackageType;}
+\DoxyCodeLine{263     \textcolor{keywordtype}{int} ContentQty;}
+\DoxyCodeLine{264     \textcolor{keywordtype}{float} X;}
+\DoxyCodeLine{265     \textcolor{keywordtype}{float} Y;}
+\DoxyCodeLine{266     \textcolor{keywordtype}{float} Z;}
+\DoxyCodeLine{267     \textcolor{keywordtype}{float} Weight;}
+\DoxyCodeLine{268     \textcolor{keywordtype}{float} Volume;}
+\DoxyCodeLine{269 \};}
+\DoxyCodeLine{270 }
+\DoxyCodeLine{272 \textcolor{keyword}{class }\mbox{\hyperlink{classOItem}{OItem}}}
+\DoxyCodeLine{273 \{}
+\DoxyCodeLine{274 \textcolor{keyword}{private}:}
+\DoxyCodeLine{276     \textcolor{keywordtype}{float} weight;}
+\DoxyCodeLine{278     \textcolor{keywordtype}{float} volume;}
+\DoxyCodeLine{279 }
+\DoxyCodeLine{280 \textcolor{keyword}{public}:}
+\DoxyCodeLine{281     \textcolor{keywordtype}{int} \mbox{\hyperlink{classCustomer}{Customer}};}
+\DoxyCodeLine{282     \textcolor{keywordtype}{int} Product;}
+\DoxyCodeLine{283     \textcolor{keywordtype}{string} Address; \textcolor{comment}{// the address as used in real warehouse}}
+\DoxyCodeLine{284     \textcolor{keywordtype}{int} Qty;}
+\DoxyCodeLine{286     \mbox{\hyperlink{classWAddress}{WAddress}} *\mbox{\hyperlink{classOItem_a5077ea50008ecca2ef45acd5ecc8af76}{waddress}};}
+\DoxyCodeLine{287 }
+\DoxyCodeLine{289     map<ItemSpecification::Type, ItemSpecification> \mbox{\hyperlink{classOItem_affc6812e935df6cec4988d8616a82781}{item\_spec}};}
+\DoxyCodeLine{290 }
+\DoxyCodeLine{296     \mbox{\hyperlink{classOItem}{OItem}}(\textcolor{keywordtype}{int} \mbox{\hyperlink{classCustomer}{Customer}}, \textcolor{keywordtype}{int} Product, \textcolor{keywordtype}{string} AddressCode, \textcolor{keywordtype}{int} Qty);}
+\DoxyCodeLine{297     \mbox{\hyperlink{classOItem}{OItem}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{298     \mbox{\hyperlink{classOItem}{\string~OItem}}();}
+\DoxyCodeLine{299 }
+\DoxyCodeLine{301     \textcolor{keywordtype}{void} \mbox{\hyperlink{classOItem_a87ad2ee503cb23d47b36abd9bb66dd93}{addItemSpecification}}(\mbox{\hyperlink{classItemSpecification}{ItemSpecification}} itspec) \{ this-\/>item\_spec.insert(\{itspec.Unit, itspec\}); \}}
+\DoxyCodeLine{302 }
+\DoxyCodeLine{305     \textcolor{keywordtype}{float} \mbox{\hyperlink{classOItem_a0e1073225322f3b17a055a6a94a0b111}{getWeight}}();}
+\DoxyCodeLine{308     \textcolor{keywordtype}{float} \mbox{\hyperlink{classOItem_a7f6cd135892c1f9afca560e7c2c01ffb}{getVolume}}();}
+\DoxyCodeLine{309 }
+\DoxyCodeLine{311     \textcolor{keywordtype}{void} \mbox{\hyperlink{classOItem_a33cd3ed9b3a34032c4b5bd88c603a38c}{countWeightAndVolume}}();}
+\DoxyCodeLine{312 \};}
+\DoxyCodeLine{313 }
+\DoxyCodeLine{317 \textcolor{keyword}{class }\mbox{\hyperlink{classBoxItem}{BoxItem}}}
+\DoxyCodeLine{318 \{}
+\DoxyCodeLine{319 \textcolor{keyword}{private}:}
+\DoxyCodeLine{320 \textcolor{keyword}{public}:}
+\DoxyCodeLine{323     \textcolor{keywordtype}{int} \mbox{\hyperlink{classBoxItem_aba8549788af0f88c5e35f4b1b899b2e8}{count\_of\_units}} = 0;}
+\DoxyCodeLine{324     \mbox{\hyperlink{classItemSpecification}{ItemSpecification}} item\_specification;}
+\DoxyCodeLine{325     \mbox{\hyperlink{classOItem}{OItem}} order\_item;}
+\DoxyCodeLine{326 }
+\DoxyCodeLine{327     \mbox{\hyperlink{classBoxItem}{BoxItem}}(\mbox{\hyperlink{classItemSpecification}{ItemSpecification}} \_item\_specification, \mbox{\hyperlink{classOItem}{OItem}} \_order\_item);}
+\DoxyCodeLine{328     \mbox{\hyperlink{classBoxItem}{BoxItem}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{329 }
+\DoxyCodeLine{331     \textcolor{keywordtype}{void} \mbox{\hyperlink{classBoxItem_aea4b1ee17fdce134a87a4ab66a2afd70}{countUnitsUp}}(\textcolor{keywordtype}{int} num);}
+\DoxyCodeLine{332     \textcolor{keywordtype}{void} setNumOfUnits(\textcolor{keywordtype}{int} num);}
+\DoxyCodeLine{333     \textcolor{keywordtype}{int} getCountOfUnits();}
+\DoxyCodeLine{334 }
+\DoxyCodeLine{335     \textcolor{keywordtype}{int} getVolume();}
+\DoxyCodeLine{336 \};}
+\DoxyCodeLine{337 }
+\DoxyCodeLine{339 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structitems__into__boxes__decomposition}{items\_into\_boxes\_decomposition}}}
+\DoxyCodeLine{340 \{}
+\DoxyCodeLine{341     vector<Box> full\_box\_vect;}
+\DoxyCodeLine{342     vector<Box> one\_item\_box\_vect;}
+\DoxyCodeLine{343 \} \mbox{\hyperlink{WarehousePickingOpt_8h_a5fd182d87c19bfe24acb987d20f93c92}{ITEMS\_IN\_BOXES\_DECOMP\_T}};}
+\DoxyCodeLine{344 }
+\DoxyCodeLine{346 \textcolor{keyword}{class }\mbox{\hyperlink{classCartShelf}{CartShelf}}}
+\DoxyCodeLine{347 \{}
+\DoxyCodeLine{348 \textcolor{keyword}{private}:}
+\DoxyCodeLine{349     \textcolor{keywordtype}{float} used\_width = 0;}
+\DoxyCodeLine{350 }
+\DoxyCodeLine{351     \mbox{\hyperlink{structitems__into__boxes__decomposition}{ITEMS\_IN\_BOXES\_DECOMP\_T}} boxes;}
+\DoxyCodeLine{352 }
+\DoxyCodeLine{353     \textcolor{keywordtype}{float} width;}
+\DoxyCodeLine{354     \textcolor{keywordtype}{float} height;}
+\DoxyCodeLine{355     \textcolor{keywordtype}{float} depth;}
+\DoxyCodeLine{356 }
+\DoxyCodeLine{357 \textcolor{keyword}{public}:}
+\DoxyCodeLine{358     \mbox{\hyperlink{classCartShelf}{CartShelf}}(\textcolor{keywordtype}{float} width, \textcolor{keywordtype}{float} height = MAXFLOAT, \textcolor{keywordtype}{float} depth = MAXFLOAT);}
+\DoxyCodeLine{359 }
+\DoxyCodeLine{360     \textcolor{keywordtype}{void} addBox\_oneItemized(\mbox{\hyperlink{classBox}{Box}} box);}
+\DoxyCodeLine{361 }
+\DoxyCodeLine{362     \textcolor{keywordtype}{void} addBox\_fullItemized(\mbox{\hyperlink{classBox}{Box}} box);}
+\DoxyCodeLine{363 }
+\DoxyCodeLine{364     \mbox{\hyperlink{structitems__into__boxes__decomposition}{ITEMS\_IN\_BOXES\_DECOMP\_T}} *getBoxes();}
+\DoxyCodeLine{365 }
+\DoxyCodeLine{366     \textcolor{keywordtype}{float} getWidth();}
+\DoxyCodeLine{367     \textcolor{keywordtype}{float} getHeight();}
+\DoxyCodeLine{368     \textcolor{keywordtype}{float} getDepth();}
+\DoxyCodeLine{369     \textcolor{keywordtype}{float} getFreeWidth();}
+\DoxyCodeLine{370 \};}
+\DoxyCodeLine{371 }
+\DoxyCodeLine{373 \textcolor{keyword}{class }\mbox{\hyperlink{classCustomer}{Customer}}}
+\DoxyCodeLine{374 \{}
+\DoxyCodeLine{375 \textcolor{keyword}{private}:}
+\DoxyCodeLine{376     \textcolor{keywordtype}{float} total\_weight = 0.0f;}
+\DoxyCodeLine{377     \textcolor{keywordtype}{float} total\_volume = 0.0f;}
+\DoxyCodeLine{378 }
+\DoxyCodeLine{381     \textcolor{keywordtype}{int} customer\_id = -\/1;}
+\DoxyCodeLine{382 }
+\DoxyCodeLine{384     vector<Box> box\_vect;}
+\DoxyCodeLine{385 }
+\DoxyCodeLine{386 \textcolor{keyword}{public}:}
+\DoxyCodeLine{388     vector<OItem> \mbox{\hyperlink{classCustomer_a2b7abfec12cafb4c0e8b3ef0b23807b5}{item\_vect}};}
+\DoxyCodeLine{389 }
+\DoxyCodeLine{390     \mbox{\hyperlink{classCustomer}{\string~Customer}}();}
+\DoxyCodeLine{391 }
+\DoxyCodeLine{392     \mbox{\hyperlink{classCustomer}{Customer}}(\textcolor{keywordtype}{int} cust\_id) : customer\_id(cust\_id)\{\};}
+\DoxyCodeLine{393 }
+\DoxyCodeLine{395     \textcolor{keywordtype}{void} \mbox{\hyperlink{classCustomer_aa22c519db07b78e481ded74b479da8ce}{addOItem}}(\mbox{\hyperlink{classOItem}{OItem}} o\_item);}
+\DoxyCodeLine{396 }
+\DoxyCodeLine{398     \textcolor{keywordtype}{void} \mbox{\hyperlink{classCustomer_aaaae95279cae38168dcad0a9174fbdf9}{countTotalWeightAndVolume}}();}
+\DoxyCodeLine{399 }
+\DoxyCodeLine{400     \textcolor{keywordtype}{void} decompIntoBoxes(\mbox{\hyperlink{classBoxConfiguration}{BoxConfiguration}} \&bc, \mbox{\hyperlink{classSolverConfiguration}{SolverConfiguration}} \&sc);}
+\DoxyCodeLine{401 }
+\DoxyCodeLine{402     vector<Box> getBoxesDecomp();}
+\DoxyCodeLine{403 }
+\DoxyCodeLine{404     \textcolor{keywordtype}{void} setBoxesDecomp(vector<Box> \_box\_vect);}
+\DoxyCodeLine{405 }
+\DoxyCodeLine{406     \textcolor{keywordtype}{float} getTotalWeight();}
+\DoxyCodeLine{407     \textcolor{keywordtype}{float} getTotalVolume();}
+\DoxyCodeLine{408     \textcolor{keywordtype}{int} getCustomerID();}
+\DoxyCodeLine{409 \};}
+\DoxyCodeLine{410 }
+\DoxyCodeLine{413 \textcolor{keyword}{class }\mbox{\hyperlink{classCartOItem}{CartOItem}}}
+\DoxyCodeLine{414 \{}
+\DoxyCodeLine{415 \textcolor{keyword}{private}:}
+\DoxyCodeLine{417     \mbox{\hyperlink{classOItem}{OItem}} oitem\_ref;}
+\DoxyCodeLine{418 }
+\DoxyCodeLine{419 \textcolor{keyword}{public}:}
+\DoxyCodeLine{420     \textcolor{keywordtype}{int} RealQty = 0;}
+\DoxyCodeLine{421     \mbox{\hyperlink{classCartOItem}{CartOItem}}(\mbox{\hyperlink{classOItem}{OItem}} \&\_oitem\_ref);}
+\DoxyCodeLine{422     \textcolor{keywordtype}{void} addToRealQty(\textcolor{keywordtype}{int} qty\_to\_add);}
+\DoxyCodeLine{423     \textcolor{keywordtype}{int} getRealQty();}
+\DoxyCodeLine{424 }
+\DoxyCodeLine{425     \mbox{\hyperlink{classOItem}{OItem}} getOItem() \textcolor{keyword}{const};}
+\DoxyCodeLine{426 \};}
+\DoxyCodeLine{427 }
+\DoxyCodeLine{429 \textcolor{keyword}{class }\mbox{\hyperlink{classCart}{Cart}}}
+\DoxyCodeLine{430 \{}
+\DoxyCodeLine{431 \textcolor{keyword}{private}:}
+\DoxyCodeLine{433     vector<Customer> customer\_vect;}
+\DoxyCodeLine{434 }
+\DoxyCodeLine{436     vector<OItem> item\_vect; \textcolor{comment}{// TODO remove}}
+\DoxyCodeLine{437     vector<CartOItem> cartoitem\_vect;}
+\DoxyCodeLine{438     \textcolor{keywordtype}{void} addOItemWithQty(\mbox{\hyperlink{classOItem}{OItem}} oitem, \textcolor{keywordtype}{int} qty);}
+\DoxyCodeLine{439 }
+\DoxyCodeLine{441     vector<CartShelf> cart\_shelves\_vect;}
+\DoxyCodeLine{442 }
+\DoxyCodeLine{444     \textcolor{keywordtype}{float} cart\_free\_space;}
+\DoxyCodeLine{446     \textcolor{keywordtype}{int} free\_boxes = 9;}
+\DoxyCodeLine{447 }
+\DoxyCodeLine{449     \textcolor{keywordtype}{int} estimated\_walked\_distance = 0;}
+\DoxyCodeLine{450 }
+\DoxyCodeLine{451     \textcolor{keywordtype}{bool} loadingCustomer\_old(\mbox{\hyperlink{classCustomer}{Customer}} \&customer);}
+\DoxyCodeLine{452     \textcolor{keywordtype}{bool} loadingCustomer\_new(\mbox{\hyperlink{classSolverConfiguration}{SolverConfiguration}} \&sc, \mbox{\hyperlink{classCustomer}{Customer}} \&customer, \textcolor{keywordtype}{bool} can\_be\_partly\_loaded = \textcolor{keyword}{false}, vector<Box> *non\_loaded\_boxes = NULL);}
+\DoxyCodeLine{453 }
+\DoxyCodeLine{454 \textcolor{keyword}{public}:}
+\DoxyCodeLine{455     \mbox{\hyperlink{classCart}{Cart}}();}
+\DoxyCodeLine{458     \mbox{\hyperlink{classCart}{Cart}}(vector<CartShelf> cart\_shelf\_vect);}
+\DoxyCodeLine{459 }
+\DoxyCodeLine{460     \mbox{\hyperlink{classCart}{\string~Cart}}();}
+\DoxyCodeLine{461 }
+\DoxyCodeLine{465     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classCart_a1615f55a5b43f9d8abf3a82cec9e5859}{loadCustomer}}(\mbox{\hyperlink{classSolverConfiguration}{SolverConfiguration}} \&sc, \mbox{\hyperlink{classCustomer}{Customer}} \&customer, \textcolor{keywordtype}{bool} can\_be\_partly\_loaded = \textcolor{keyword}{false}, vector<Box> *non\_loaded\_boxes = NULL);}
+\DoxyCodeLine{466 }
+\DoxyCodeLine{469     \textcolor{keywordtype}{float} \mbox{\hyperlink{classCart_a9d3550249c9e89c8d44f7d2817bcc5af}{getCartFreeSpace}}();}
+\DoxyCodeLine{470 }
+\DoxyCodeLine{473     vector<Customer> \mbox{\hyperlink{classCart_ab910d70953027ac1225567fe528d1c33}{getCustomerVector}}();}
+\DoxyCodeLine{474 }
+\DoxyCodeLine{477     vector<OItem> \mbox{\hyperlink{classCart_a3d451240355ec6b2ec19b69aa46da65b}{getItemVector}}();}
+\DoxyCodeLine{478     vector<CartOItem> getCartOItemVector();}
+\DoxyCodeLine{479 }
+\DoxyCodeLine{480     vector<CartShelf> getCartShelvesVector();}
+\DoxyCodeLine{482     \textcolor{keywordtype}{void} \mbox{\hyperlink{classCart_a530892b6bda3f9815c95992cdde25a1c}{setCartOItemVector}}(vector<CartOItem> \_cartoitem\_vect);}
+\DoxyCodeLine{483 }
+\DoxyCodeLine{486     \textcolor{keywordtype}{void} \mbox{\hyperlink{classCart_ab0dbb9608f9406efdc5796d29c9688bd}{addToEstimatedWalkedDistance}}(\textcolor{keywordtype}{int} dist);}
+\DoxyCodeLine{487 }
+\DoxyCodeLine{488     \textcolor{keywordtype}{int} getEstimatedWalkedDistance();}
+\DoxyCodeLine{489 \};}
+\DoxyCodeLine{490 }
+\DoxyCodeLine{491 \textcolor{comment}{//===================== SHOULD BE PUBLIC ======================================================}}
+\DoxyCodeLine{493 \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{classBox}{Box}}}
+\DoxyCodeLine{494 \{}
+\DoxyCodeLine{495 \textcolor{keyword}{private}:}
+\DoxyCodeLine{498     \textcolor{keywordtype}{float} capacity = 0;}
+\DoxyCodeLine{499 }
+\DoxyCodeLine{501     \textcolor{keywordtype}{float} free\_capacity = 0;}
+\DoxyCodeLine{502 }
+\DoxyCodeLine{504     \textcolor{keywordtype}{float} used\_capacity = 0;}
+\DoxyCodeLine{505 }
+\DoxyCodeLine{507     map<int, BoxItem> product\_boxitem\_map;}
+\DoxyCodeLine{508 }
+\DoxyCodeLine{509 \textcolor{keyword}{public}:}
+\DoxyCodeLine{511     \textcolor{keywordtype}{float} \mbox{\hyperlink{classBox_acf420bff7a1eeb5d88d74104551da0dd}{width}}, height, depth, max\_weight;}
+\DoxyCodeLine{512     \textcolor{keywordtype}{string} name;}
+\DoxyCodeLine{513     \textcolor{keywordtype}{float} usable\_capacity\_percentage = 1;}
+\DoxyCodeLine{514 }
+\DoxyCodeLine{521     \mbox{\hyperlink{classBox}{Box}}(\textcolor{keywordtype}{float} \mbox{\hyperlink{classBox_acf420bff7a1eeb5d88d74104551da0dd}{width}}, \textcolor{keywordtype}{float} height, \textcolor{keywordtype}{float} depth, \textcolor{keywordtype}{float} max\_weight, \textcolor{keywordtype}{string} name, \textcolor{keywordtype}{float} \_usable\_capacity\_percentage = 1);}
+\DoxyCodeLine{522     \mbox{\hyperlink{classBox}{Box}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{523     \mbox{\hyperlink{classBox}{\string~Box}}();}
+\DoxyCodeLine{524 }
+\DoxyCodeLine{526     \textcolor{keywordtype}{float} \mbox{\hyperlink{classBox_a54b6313810081e47787d673457c865d2}{getCapacity}}();}
+\DoxyCodeLine{527 }
+\DoxyCodeLine{529     \textcolor{keywordtype}{float} \mbox{\hyperlink{classBox_aa22aa58c264a22caf57c118fa65a6e3f}{getFreeCapacity}}();}
+\DoxyCodeLine{530 }
+\DoxyCodeLine{532     \textcolor{keywordtype}{float} \mbox{\hyperlink{classBox_aa9e412bd8fcfb8e1e0ba3c2cdc26b2a9}{getUsedCapacity}}();}
+\DoxyCodeLine{533 }
+\DoxyCodeLine{535     map<int, BoxItem> \mbox{\hyperlink{classBox_a44c7bf3438edcf8d187068783ab7139f}{getItemsInTheBox}}();}
+\DoxyCodeLine{536 }
+\DoxyCodeLine{539     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classBox_a04e6055652ebc93f5ed56b81c710594c}{addItem}}(\mbox{\hyperlink{classBoxItem}{BoxItem}} \&boxItem);}
+\DoxyCodeLine{540 }
+\DoxyCodeLine{543     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classBox_a596b5ebc94068b1a9b1c514a824a8b31}{isEmpty}}();}
+\DoxyCodeLine{544 \};}
+\DoxyCodeLine{545 }
+\DoxyCodeLine{547 \textcolor{keyword}{class }\mbox{\hyperlink{classCartsLoader}{CartsLoader}}}
+\DoxyCodeLine{548 \{}
+\DoxyCodeLine{549 \textcolor{keyword}{private}:}
+\DoxyCodeLine{551     \mbox{\hyperlink{classWarehouse}{Warehouse}} warehouse;}
+\DoxyCodeLine{552 }
+\DoxyCodeLine{554     vector<OItem> item\_vect;}
+\DoxyCodeLine{555 }
+\DoxyCodeLine{557     map<int, Customer> id\_customer\_map;}
+\DoxyCodeLine{558 }
+\DoxyCodeLine{560     list<Cart> loaded\_cart\_list;}
+\DoxyCodeLine{561 }
+\DoxyCodeLine{567     \textcolor{keywordtype}{short} chooseBestAlgorithm(}
+\DoxyCodeLine{568         \mbox{\hyperlink{classSolverConfiguration}{SolverConfiguration}} \&solver\_conf,}
+\DoxyCodeLine{569         \mbox{\hyperlink{classCartConfiguration}{CartConfiguration}} \&cart\_conf,}
+\DoxyCodeLine{570         multimap<\textcolor{keywordtype}{int}, \mbox{\hyperlink{classCustomer}{Customer}}, greater<int>> volume\_customer\_map);}
+\DoxyCodeLine{571 }
+\DoxyCodeLine{572 \textcolor{keyword}{public}:}
+\DoxyCodeLine{573     \mbox{\hyperlink{classCartsLoader}{CartsLoader}}(\mbox{\hyperlink{classWarehouse}{Warehouse}} \&warehouse);}
+\DoxyCodeLine{574     \mbox{\hyperlink{classCartsLoader}{\string~CartsLoader}}();}
+\DoxyCodeLine{575 }
+\DoxyCodeLine{577     \textcolor{keywordtype}{void} \mbox{\hyperlink{classCartsLoader_afb60ba0fdbcf74735c9cd739a7562068}{loadItemsAndSpec}}(\textcolor{keywordtype}{string} path\_or\_text);}
+\DoxyCodeLine{578 }
+\DoxyCodeLine{580     \textcolor{keywordtype}{void} \mbox{\hyperlink{classCartsLoader_a61ed4f034238372474fa8e3d71717ffc}{loadingCartsRun}}(\mbox{\hyperlink{classSolverConfiguration}{SolverConfiguration}} \&solver\_conf, \mbox{\hyperlink{classCartConfiguration}{CartConfiguration}} \&cart\_conf, \mbox{\hyperlink{classBoxConfiguration}{BoxConfiguration}} \&box\_conf);}
+\DoxyCodeLine{581 }
+\DoxyCodeLine{583     \textcolor{keywordtype}{string} \mbox{\hyperlink{classCartsLoader_ab105a99aeb15995045a038238f8d6dac}{exportCartsToJson}}(\textcolor{keywordtype}{bool} export\_shelves\_boxes = \textcolor{keyword}{true}, \textcolor{keywordtype}{bool} export\_sorted\_items = \textcolor{keyword}{true});}
+\DoxyCodeLine{584     \textcolor{keywordtype}{void} \mbox{\hyperlink{classCartsLoader_a84e1205b89bc7be0f848f424945fc79a}{testUsedData}}(\textcolor{keywordtype}{string} path);}
+\DoxyCodeLine{585     \textcolor{keywordtype}{string} getStats();}
+\DoxyCodeLine{586     list<Cart> getLoadedCartsList();}
+\DoxyCodeLine{587 }
+\DoxyCodeLine{588     \textcolor{comment}{// FIXME for testing}}
+\DoxyCodeLine{589     \textcolor{keywordtype}{int} getWholeDistance()}
+\DoxyCodeLine{590     \{}
+\DoxyCodeLine{591         \textcolor{keywordtype}{int} dst = 0;}
+\DoxyCodeLine{592         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} cart : this-\/>loaded\_cart\_list)}
+\DoxyCodeLine{593             dst += cart.getEstimatedWalkedDistance();}
+\DoxyCodeLine{594         \textcolor{keywordflow}{return} dst;}
+\DoxyCodeLine{595     \};}
+\DoxyCodeLine{596     \textcolor{keywordtype}{int} getAvgOfOnePiecedCustomersToCart()}
+\DoxyCodeLine{597     \{}
+\DoxyCodeLine{598         \textcolor{keywordtype}{int} num = 0;}
+\DoxyCodeLine{599         \textcolor{keywordtype}{int} max = 0;}
+\DoxyCodeLine{600         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} cart : this-\/>loaded\_cart\_list)}
+\DoxyCodeLine{601             \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} shelf : cart.getCartShelvesVector())}
+\DoxyCodeLine{602             \{}
+\DoxyCodeLine{603                 \textcolor{keywordtype}{int} tmp = 0;}
+\DoxyCodeLine{604                 \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} box : shelf.getBoxes()-\/>one\_item\_box\_vect)}
+\DoxyCodeLine{605                 \{}
+\DoxyCodeLine{606                     num += box.getItemsInTheBox().size();}
+\DoxyCodeLine{607                     tmp += box.getItemsInTheBox().size();}
+\DoxyCodeLine{608                 \}}
+\DoxyCodeLine{609                 \textcolor{keywordflow}{if} (tmp > max)}
+\DoxyCodeLine{610                     max = tmp;}
+\DoxyCodeLine{611             \}}
+\DoxyCodeLine{612         \textcolor{keywordflow}{return} (\textcolor{keywordtype}{int})(num / this-\/>loaded\_cart\_list.size());}
+\DoxyCodeLine{613     \}}
+\DoxyCodeLine{614 \};}
+\DoxyCodeLine{615 }
+\DoxyCodeLine{616 \textcolor{comment}{//===============================================================================================}}
+\DoxyCodeLine{617 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

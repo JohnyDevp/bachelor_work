@@ -1,0 +1,88 @@
+\hypertarget{grouping__customers_8h}{}\doxysection{grouping\+\_\+customers.\+h File Reference}
+\label{grouping__customers_8h}\index{grouping\_customers.h@{grouping\_customers.h}}
+
+
+translated with gcc version 12.\+2.\+1  
+
+
+{\ttfamily \#include $<$list$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include \char`\"{}Warehouse\+Picking\+Opt.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+list$<$ \mbox{\hyperlink{classCart}{Cart}} $>$ \mbox{\hyperlink{grouping__customers_8h_a2b655c50c9113df670aa340437b68005}{grouping\+\_\+customers\+::algorithm\+\_\+\+AVGDistances}} (\mbox{\hyperlink{classSolverConfiguration}{Solver\+Configuration}} \&sc, \mbox{\hyperlink{classCartConfiguration}{Cart\+Configuration}} \&cart\+\_\+conf, multimap$<$ int, \mbox{\hyperlink{classCustomer}{Customer}}, greater$<$ int $>$ $>$ \&volume\+\_\+customer\+\_\+map, \mbox{\hyperlink{classWarehouse}{Warehouse}} \&warehouse)
+\begin{DoxyCompactList}\small\item\em this function is starting the whole algorithm, visible from outside \end{DoxyCompactList}\item 
+list$<$ \mbox{\hyperlink{classCart}{Cart}} $>$ \mbox{\hyperlink{grouping__customers_8h_a1582ce882f313cbf777b2dc3891da6fb}{grouping\+\_\+customers\+::least\+Square\+Method}} (\mbox{\hyperlink{classSolverConfiguration}{Solver\+Configuration}} \&sc, \mbox{\hyperlink{classCartConfiguration}{Cart\+Configuration}} \&cart\+\_\+conf, multimap$<$ int, \mbox{\hyperlink{classCustomer}{Customer}}, greater$<$ int $>$ $>$ \&volume\+\_\+customer\+\_\+map)
+\begin{DoxyCompactList}\small\item\em this method use a line interpolation through the points defining orders in warehouse of each customer, then the values a,b of line pattern y=ax+b are adjusted by multiplication by values given in parameters cor\+\_\+a, cor\+\_\+b \end{DoxyCompactList}\item 
+list$<$ \mbox{\hyperlink{classCart}{Cart}} $>$ \mbox{\hyperlink{grouping__customers_8h_a0a38c271fac212bef010670aad538c29}{grouping\+\_\+customers\+::k\+Means\+Clustering}} (\mbox{\hyperlink{classSolverConfiguration}{Solver\+Configuration}} \&sc, \mbox{\hyperlink{classCartConfiguration}{Cart\+Configuration}} \&cart\+\_\+conf, multimap$<$ int, \mbox{\hyperlink{classCustomer}{Customer}}, greater$<$ int $>$ $>$ \&volume\+\_\+customer\+\_\+map)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+translated with gcc version 12.\+2.\+1 
+
+\begin{DoxyAuthor}{Author}
+Jan Holáň, xholan11 (\href{mailto:xholan11@vutbr.cz}{\texttt{ xholan11@vutbr.\+cz}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2023-\/05-\/01
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{grouping__customers_8h_a2b655c50c9113df670aa340437b68005}\label{grouping__customers_8h_a2b655c50c9113df670aa340437b68005}} 
+\index{grouping\_customers.h@{grouping\_customers.h}!algorithm\_AVGDistances@{algorithm\_AVGDistances}}
+\index{algorithm\_AVGDistances@{algorithm\_AVGDistances}!grouping\_customers.h@{grouping\_customers.h}}
+\doxysubsubsection{\texorpdfstring{algorithm\_AVGDistances()}{algorithm\_AVGDistances()}}
+{\footnotesize\ttfamily list$<$ \mbox{\hyperlink{classCart}{Cart}} $>$ grouping\+\_\+customers\+::algorithm\+\_\+\+AVGDistances (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSolverConfiguration}{Solver\+Configuration}} \&}]{sc,  }\item[{\mbox{\hyperlink{classCartConfiguration}{Cart\+Configuration}} \&}]{cart\+\_\+conf,  }\item[{multimap$<$ int, \mbox{\hyperlink{classCustomer}{Customer}}, greater$<$ int $>$ $>$ \&}]{volume\+\_\+customer\+\_\+map,  }\item[{\mbox{\hyperlink{classWarehouse}{Warehouse}} \&}]{warehouse }\end{DoxyParamCaption})}
+
+
+
+this function is starting the whole algorithm, visible from outside 
+
+
+\begin{DoxyParams}{Parameters}
+{\em volume\+\_\+customer\+\_\+map} & \\
+\hline
+{\em warehouse} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{grouping__customers_8h_a0a38c271fac212bef010670aad538c29}\label{grouping__customers_8h_a0a38c271fac212bef010670aad538c29}} 
+\index{grouping\_customers.h@{grouping\_customers.h}!kMeansClustering@{kMeansClustering}}
+\index{kMeansClustering@{kMeansClustering}!grouping\_customers.h@{grouping\_customers.h}}
+\doxysubsubsection{\texorpdfstring{kMeansClustering()}{kMeansClustering()}}
+{\footnotesize\ttfamily list$<$ \mbox{\hyperlink{classCart}{Cart}} $>$ grouping\+\_\+customers\+::k\+Means\+Clustering (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSolverConfiguration}{Solver\+Configuration}} \&}]{sc,  }\item[{\mbox{\hyperlink{classCartConfiguration}{Cart\+Configuration}} \&}]{cart\+\_\+conf,  }\item[{multimap$<$ int, \mbox{\hyperlink{classCustomer}{Customer}}, greater$<$ int $>$ $>$ \&}]{volume\+\_\+customer\+\_\+map }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em sc} & \\
+\hline
+{\em cart\+\_\+conf} & \\
+\hline
+{\em volume\+\_\+customer\+\_\+map} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{grouping__customers_8h_a1582ce882f313cbf777b2dc3891da6fb}\label{grouping__customers_8h_a1582ce882f313cbf777b2dc3891da6fb}} 
+\index{grouping\_customers.h@{grouping\_customers.h}!leastSquareMethod@{leastSquareMethod}}
+\index{leastSquareMethod@{leastSquareMethod}!grouping\_customers.h@{grouping\_customers.h}}
+\doxysubsubsection{\texorpdfstring{leastSquareMethod()}{leastSquareMethod()}}
+{\footnotesize\ttfamily list$<$ \mbox{\hyperlink{classCart}{Cart}} $>$ grouping\+\_\+customers\+::least\+Square\+Method (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSolverConfiguration}{Solver\+Configuration}} \&}]{sc,  }\item[{\mbox{\hyperlink{classCartConfiguration}{Cart\+Configuration}} \&}]{cart\+\_\+conf,  }\item[{multimap$<$ int, \mbox{\hyperlink{classCustomer}{Customer}}, greater$<$ int $>$ $>$ \&}]{volume\+\_\+customer\+\_\+map }\end{DoxyParamCaption})}
+
+
+
+this method use a line interpolation through the points defining orders in warehouse of each customer, then the values a,b of line pattern y=ax+b are adjusted by multiplication by values given in parameters cor\+\_\+a, cor\+\_\+b 
+
+least square method code inspired by Sushan Gautam, \mbox{\hyperlink{}{sc solver configuration  cart\+\_\+conf cart configuration  volume\+\_\+customer\+\_\+map customer map sort in descending order by volume  created list of carts }}

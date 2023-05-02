@@ -1,0 +1,58 @@
+\hypertarget{classCartsLoader}{}\doxysection{Carts\+Loader Class Reference}
+\label{classCartsLoader}\index{CartsLoader@{CartsLoader}}
+
+
+main class representing something like an interface for it  
+
+
+
+
+{\ttfamily \#include $<$Warehouse\+Picking\+Opt.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCartsLoader_a0ee71048e5c754922e36eb2d64cf0cb3}\label{classCartsLoader_a0ee71048e5c754922e36eb2d64cf0cb3}} 
+{\bfseries Carts\+Loader} (\mbox{\hyperlink{classWarehouse}{Warehouse}} \&warehouse)
+\item 
+\mbox{\Hypertarget{classCartsLoader_afb60ba0fdbcf74735c9cd739a7562068}\label{classCartsLoader_afb60ba0fdbcf74735c9cd739a7562068}} 
+void {\bfseries load\+Items\+And\+Spec} (string path\+\_\+or\+\_\+text)
+\begin{DoxyCompactList}\small\item\em function for loading up all items given in order with their specification \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCartsLoader_a61ed4f034238372474fa8e3d71717ffc}\label{classCartsLoader_a61ed4f034238372474fa8e3d71717ffc}} 
+void {\bfseries loading\+Carts\+Run} (\mbox{\hyperlink{classSolverConfiguration}{Solver\+Configuration}} \&solver\+\_\+conf, \mbox{\hyperlink{classCartConfiguration}{Cart\+Configuration}} \&cart\+\_\+conf, \mbox{\hyperlink{classBoxConfiguration}{Box\+Configuration}} \&box\+\_\+conf)
+\begin{DoxyCompactList}\small\item\em start algorithm \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCartsLoader_ab105a99aeb15995045a038238f8d6dac}\label{classCartsLoader_ab105a99aeb15995045a038238f8d6dac}} 
+string {\bfseries export\+Carts\+To\+Json} (bool export\+\_\+shelves\+\_\+boxes=true, bool export\+\_\+sorted\+\_\+items=true)
+\begin{DoxyCompactList}\small\item\em export created carts to json file, which is created in the given or root directory \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCartsLoader_a84e1205b89bc7be0f848f424945fc79a}{test\+Used\+Data}} (string path)
+\item 
+\mbox{\Hypertarget{classCartsLoader_a36521a305d77ee32d1feacf7ea03c5db}\label{classCartsLoader_a36521a305d77ee32d1feacf7ea03c5db}} 
+string {\bfseries get\+Stats} ()
+\item 
+\mbox{\Hypertarget{classCartsLoader_aa73fa4d0ce8286edafabe45b89559f71}\label{classCartsLoader_aa73fa4d0ce8286edafabe45b89559f71}} 
+list$<$ \mbox{\hyperlink{classCart}{Cart}} $>$ {\bfseries get\+Loaded\+Carts\+List} ()
+\item 
+\mbox{\Hypertarget{classCartsLoader_ad7d3b83be988aa409d704a6606dd101a}\label{classCartsLoader_ad7d3b83be988aa409d704a6606dd101a}} 
+int {\bfseries get\+Whole\+Distance} ()
+\item 
+\mbox{\Hypertarget{classCartsLoader_a7653b383047ab222c590183f769c3d8d}\label{classCartsLoader_a7653b383047ab222c590183f769c3d8d}} 
+int {\bfseries get\+Avg\+Of\+One\+Pieced\+Customers\+To\+Cart} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+main class representing something like an interface for it 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCartsLoader_a84e1205b89bc7be0f848f424945fc79a}\label{classCartsLoader_a84e1205b89bc7be0f848f424945fc79a}} 
+\index{CartsLoader@{CartsLoader}!testUsedData@{testUsedData}}
+\index{testUsedData@{testUsedData}!CartsLoader@{CartsLoader}}
+\doxysubsubsection{\texorpdfstring{testUsedData()}{testUsedData()}}
+{\footnotesize\ttfamily void Carts\+Loader\+::test\+Used\+Data (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})}
+
+Qty will hold the address rank
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{WarehousePickingOpt_8h}{Warehouse\+Picking\+Opt.\+h}}\item 
+\mbox{\hyperlink{carts__loader_8cpp}{carts\+\_\+loader.\+cpp}}\end{DoxyCompactItemize}

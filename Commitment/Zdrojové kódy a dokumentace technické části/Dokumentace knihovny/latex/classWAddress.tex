@@ -1,0 +1,79 @@
+\hypertarget{classWAddress}{}\doxysection{WAddress Class Reference}
+\label{classWAddress}\index{WAddress@{WAddress}}
+
+
+class representing the \mbox{\hyperlink{classWAddress}{WAddress}} of product in warehouse  
+
+
+
+
+{\ttfamily \#include $<$Warehouse\+Picking\+Opt.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAddress_a09e11ec77cb390cd0612582184694690}{WAddress}} (string raw\+\_\+sector\+\_\+addr)
+\begin{DoxyCompactList}\small\item\em constructor with param of raw address which is immediately parsed to proper form \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWAddress_afc60e3f2c53ad7a37ed7bf5d8be9432c}\label{classWAddress_afc60e3f2c53ad7a37ed7bf5d8be9432c}} 
+{\bfseries $\sim$\+WAddress} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{classWAddress}{WAddress}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} \mbox{\hyperlink{classWAddress_a97374468d1664da4ccf06c48b8ab9d79}{get\+Warehouse\+WAddress}} ()
+\begin{DoxyCompactList}\small\item\em Get the real \mbox{\hyperlink{classWarehouse}{Warehouse}} \mbox{\hyperlink{classWAddress}{WAddress}}. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classWAddress_a1bbd8390eb44f9131a1047ab6a3238b3}{get\+Raw\+Sector\+Address}} ()
+\begin{DoxyCompactList}\small\item\em getter \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+class representing the \mbox{\hyperlink{classWAddress}{WAddress}} of product in warehouse 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classWAddress_a09e11ec77cb390cd0612582184694690}\label{classWAddress_a09e11ec77cb390cd0612582184694690}} 
+\index{WAddress@{WAddress}!WAddress@{WAddress}}
+\index{WAddress@{WAddress}!WAddress@{WAddress}}
+\doxysubsubsection{\texorpdfstring{WAddress()}{WAddress()}}
+{\footnotesize\ttfamily WAddress\+::\+WAddress (\begin{DoxyParamCaption}\item[{string}]{raw\+\_\+sector\+\_\+addr }\end{DoxyParamCaption})}
+
+
+
+constructor with param of raw address which is immediately parsed to proper form 
+
+
+\begin{DoxyParams}{Parameters}
+{\em raw\+\_\+sector\+\_\+addr} & the address of item in sector in string format \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classWAddress_a1bbd8390eb44f9131a1047ab6a3238b3}\label{classWAddress_a1bbd8390eb44f9131a1047ab6a3238b3}} 
+\index{WAddress@{WAddress}!getRawSectorAddress@{getRawSectorAddress}}
+\index{getRawSectorAddress@{getRawSectorAddress}!WAddress@{WAddress}}
+\doxysubsubsection{\texorpdfstring{getRawSectorAddress()}{getRawSectorAddress()}}
+{\footnotesize\ttfamily string WAddress\+::get\+Raw\+Sector\+Address (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter 
+
+\begin{DoxyReturn}{Returns}
+raw address in sector in string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWAddress_a97374468d1664da4ccf06c48b8ab9d79}\label{classWAddress_a97374468d1664da4ccf06c48b8ab9d79}} 
+\index{WAddress@{WAddress}!getWarehouseWAddress@{getWarehouseWAddress}}
+\index{getWarehouseWAddress@{getWarehouseWAddress}!WAddress@{WAddress}}
+\doxysubsubsection{\texorpdfstring{getWarehouseWAddress()}{getWarehouseWAddress()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} WAddress\+::get\+Warehouse\+WAddress (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the real \mbox{\hyperlink{classWarehouse}{Warehouse}} \mbox{\hyperlink{classWAddress}{WAddress}}. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} the real \mbox{\hyperlink{classWAddress}{WAddress}} in warehouse 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{WarehousePickingOpt_8h}{Warehouse\+Picking\+Opt.\+h}}\item 
+\mbox{\hyperlink{waddress_8cpp}{waddress.\+cpp}}\end{DoxyCompactItemize}

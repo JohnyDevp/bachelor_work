@@ -1,0 +1,38 @@
+\hypertarget{bin__packing__solver_8h_source}{}\doxysection{bin\+\_\+packing\+\_\+solver.\+h}
+\mbox{\hyperlink{bin__packing__solver_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#ifndef \_BIN\_PACKING\_SOLVER\_H\_}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#define \_BIN\_PACKING\_SOLVER\_H\_}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <algorithm>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <list>}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include <math.h>}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{WarehousePickingOpt_8h}{WarehousePickingOpt.h}}"{}}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{21 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacebp__solver}{bp\_solver}}}
+\DoxyCodeLine{22 \{}
+\DoxyCodeLine{27     \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacebp__solver_ac8a5b4224b9b0cba310ec2010cffdb37}{baseLineFFD}}(vector<OItem> item\_vect, vector<Box> *box\_vect, \mbox{\hyperlink{classBox}{Box}} box\_type);}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{33     \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacebp__solver_ac0d6aa7aca6b09f5806b8f96a0d81cf2}{mainSolution1DFFD\_oneBoxType}}(vector<OItem> item\_vect, vector<Box> *box\_vect, \mbox{\hyperlink{classBox}{Box}} box\_type);}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{39     \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacebp__solver_a1726c8bea9fcbab6e744ed7ae00c764f}{mainSolution1DFFDS\_multipleBoxTypes}}(vector<OItem> item\_vect, vector<Box> *box\_vect, vector<Box> box\_types);}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{45     \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacebp__solver_af57175d98dda9b72c94ed86b34366aec}{mainSolution3DBP\_oneBox\_pythonScript}}(vector<OItem> item\_vect, vector<Box> *box\_vect, \mbox{\hyperlink{classBox}{Box}} box\_type);}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{51     \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacebp__solver_a0d7ee34d91ac66d9acf5b079922c7095}{mainSolution3DBP\_FFDS\_multiBoxTypes\_pythonScript}}(vector<OItem> item\_vect, vector<Box> *box\_vect, vector<Box> box\_types);}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{57     \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacebp__solver_a776a3bbf5d33ee3291be51f63549bc43}{mainSolution3DBP\_multipleBoxTypes\_countDefined\_pythonScript}}(vector<OItem> item\_vect, vector<Box> *box\_vect, vector<pair<Box, int>> box\_types\_count);}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{63     \textcolor{keywordtype}{bool} \mbox{\hyperlink{namespacebp__solver_a3a432fd877f82ac047044d8b20265e71}{bpSolver\_1D\_fitBoxesToShelvesInCart}}(vector<Box> box\_vect, vector<CartShelf> *out\_shelf\_vect, \textcolor{keywordtype}{bool} is\_one\_piced);}
+\DoxyCodeLine{69     \textcolor{keywordtype}{bool} \mbox{\hyperlink{namespacebp__solver_aed1f44488afe0e500a7236d347e6b8a2}{bpSolver\_1D\_partlyLoadBoxesToShelvesInCart}}(vector<Box> box\_vect, vector<CartShelf> *out\_shelf\_vect, vector<Box> *non\_loaded\_box\_vect, vector<Box> *loaded\_box\_ptr\_vect);}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71     \textcolor{keywordtype}{bool} addBoxItemToExisting\_oneItemized\_Box\_1D(\mbox{\hyperlink{classBox}{Box}} box, \mbox{\hyperlink{classBoxItem}{BoxItem}} box\_item);}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73     \textcolor{keywordtype}{bool} \mbox{\hyperlink{namespacebp__solver_a7f95ed9b92f1629263e83b95ed0248c1}{addBoxItemToExisting\_oneItemized\_Box\_3D}}(\mbox{\hyperlink{classBox}{Box}} box, \mbox{\hyperlink{classBoxItem}{BoxItem}} box\_item);}
+\DoxyCodeLine{74 \};}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

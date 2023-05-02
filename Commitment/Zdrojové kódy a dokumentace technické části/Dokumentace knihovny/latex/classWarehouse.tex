@@ -1,0 +1,69 @@
+\hypertarget{classWarehouse}{}\doxysection{Warehouse Class Reference}
+\label{classWarehouse}\index{Warehouse@{Warehouse}}
+
+
+warehouse representation, distance computation  
+
+
+
+
+{\ttfamily \#include $<$Warehouse\+Picking\+Opt.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classWarehouse_af8d6c7e60cb3be65b35702b400e8fad7}\label{classWarehouse_af8d6c7e60cb3be65b35702b400e8fad7}} 
+{\bfseries Warehouse} ()
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classWarehouse_a2ceba8ebd5b8a571f827d9f7a6924ecc}{get\+Distance\+Between\+Addresses}} (\mbox{\hyperlink{classWAddress}{WAddress}} first\+\_\+addr, \mbox{\hyperlink{classWAddress}{WAddress}} second\+\_\+addr)
+\begin{DoxyCompactList}\small\item\em function counting distance between two given addresses \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classWarehouse_a5178f313b473dc04ee7c3ff73c08b11f}{get\+Distance\+Between\+Addresses}} (\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} first\+\_\+addr, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} second\+\_\+addr)
+\begin{DoxyCompactList}\small\item\em function counting distance between two given addresses \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+warehouse representation, distance computation 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classWarehouse_a5178f313b473dc04ee7c3ff73c08b11f}\label{classWarehouse_a5178f313b473dc04ee7c3ff73c08b11f}} 
+\index{Warehouse@{Warehouse}!getDistanceBetweenAddresses@{getDistanceBetweenAddresses}}
+\index{getDistanceBetweenAddresses@{getDistanceBetweenAddresses}!Warehouse@{Warehouse}}
+\doxysubsubsection{\texorpdfstring{getDistanceBetweenAddresses()}{getDistanceBetweenAddresses()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int Warehouse\+::get\+Distance\+Between\+Addresses (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}}}]{first\+\_\+addr,  }\item[{\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}}}]{second\+\_\+addr }\end{DoxyParamCaption})}
+
+
+
+function counting distance between two given addresses 
+
+\begin{DoxyWarning}{Warning}
+both addresses have to have set up all values in struct, otherwise the result may be inappropriate 
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Parameters}
+{\em first\+\_\+addr} & \\
+\hline
+{\em second\+\_\+addr} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+distance between two addresses according to the warehouse layout 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWarehouse_a2ceba8ebd5b8a571f827d9f7a6924ecc}\label{classWarehouse_a2ceba8ebd5b8a571f827d9f7a6924ecc}} 
+\index{Warehouse@{Warehouse}!getDistanceBetweenAddresses@{getDistanceBetweenAddresses}}
+\index{getDistanceBetweenAddresses@{getDistanceBetweenAddresses}!Warehouse@{Warehouse}}
+\doxysubsubsection{\texorpdfstring{getDistanceBetweenAddresses()}{getDistanceBetweenAddresses()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int Warehouse\+::get\+Distance\+Between\+Addresses (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAddress}{WAddress}}}]{first\+\_\+addr,  }\item[{\mbox{\hyperlink{classWAddress}{WAddress}}}]{second\+\_\+addr }\end{DoxyParamCaption})}
+
+
+
+function counting distance between two given addresses 
+
+\begin{DoxyReturn}{Returns}
+distance between two addresses 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{WarehousePickingOpt_8h}{Warehouse\+Picking\+Opt.\+h}}\item 
+\mbox{\hyperlink{warehouse_8cpp}{warehouse.\+cpp}}\end{DoxyCompactItemize}

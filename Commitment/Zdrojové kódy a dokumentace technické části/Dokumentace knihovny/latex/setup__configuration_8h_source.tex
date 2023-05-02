@@ -1,0 +1,110 @@
+\hypertarget{setup__configuration_8h_source}{}\doxysection{setup\+\_\+configuration.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#ifndef \_SOLVER\_SETUP\_H\_}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#define \_SOLVER\_SETUP\_H\_}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{WarehousePickingOpt_8h}{WarehousePickingOpt.h}}"{}}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{keyword}{class }\mbox{\hyperlink{classBox}{Box}};}
+\DoxyCodeLine{22 \textcolor{keyword}{class }\mbox{\hyperlink{classCart}{Cart}};}
+\DoxyCodeLine{23 \textcolor{keyword}{class }\mbox{\hyperlink{classCartShelf}{CartShelf}};}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{26 \textcolor{keyword}{enum} BPAlgorithms}
+\DoxyCodeLine{27 \{}
+\DoxyCodeLine{28     FFD\_1D\_ORDER\_ITEMS\_NO\_SPLIT,}
+\DoxyCodeLine{29     FFD\_1D\_ORDER\_ITEMS\_SPLIT\_ONE\_BOX\_TYPE,}
+\DoxyCodeLine{30     FFDS\_1D\_ORDER\_ITEMS\_SPLIT\_MULTI\_BOX\_TYPE,}
+\DoxyCodeLine{31     PYLIB\_3D\_ORDER\_ITEMS\_SPLIT\_ONE\_BOX\_TYPE,}
+\DoxyCodeLine{32     PYLIB\_3D\_FFDSEnhance\_ORDER\_ITEMS\_SPLIT\_MULTI\_BOX\_TYPE,}
+\DoxyCodeLine{33     PYLIB\_3D\_ORDER\_ITEMS\_SPLIT\_MULTI\_BOX\_TYPE\_COUNT\_DEFINED}
+\DoxyCodeLine{34 \};}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{37 \textcolor{keyword}{enum} GroupingCustomersAlgorithms}
+\DoxyCodeLine{38 \{}
+\DoxyCodeLine{39     AVG\_DISTANCES,}
+\DoxyCodeLine{40     LEAST\_SQUARE\_APPROXIMATION,}
+\DoxyCodeLine{41     K\_MEANS\_CLUSTERING,}
+\DoxyCodeLine{42     AUTO}
+\DoxyCodeLine{43 \};}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{keyword}{enum} ShortestPathAlgorithms}
+\DoxyCodeLine{46 \{}
+\DoxyCodeLine{47     NEAREST\_NEIGHBOUR,}
+\DoxyCodeLine{48     NEAREST\_NEIGHBOUR\_BRUTE\_FORCE\_OPTIMIZATION,}
+\DoxyCodeLine{49     GREEDY,}
+\DoxyCodeLine{50     GREEDY\_BRUTE\_FORCE\_OPTIMIZATION,}
+\DoxyCodeLine{51     JUST\_MEASURE\_DISTANCE,}
+\DoxyCodeLine{52     NONE}
+\DoxyCodeLine{53 \};}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{56 \textcolor{keyword}{class }\mbox{\hyperlink{classSolverConfiguration}{SolverConfiguration}}}
+\DoxyCodeLine{57 \{}
+\DoxyCodeLine{58 \textcolor{keyword}{public}:}
+\DoxyCodeLine{63     \mbox{\hyperlink{classSolverConfiguration}{SolverConfiguration}}(}
+\DoxyCodeLine{64         \mbox{\hyperlink{WarehousePickingOpt_8h_a33ad8f16a260782dc68d1d46b6fff5cc}{BPAlgorithms}} \_bp\_alg = BPAlgorithms::FFD\_1D\_ORDER\_ITEMS\_NO\_SPLIT,}
+\DoxyCodeLine{65         \mbox{\hyperlink{WarehousePickingOpt_8h_a33b053a87619d16127e9aa8e58a834fa}{GroupingCustomersAlgorithms}} \_grouping\_customers\_alg = GroupingCustomersAlgorithms::AVG\_DISTANCES,}
+\DoxyCodeLine{66         \mbox{\hyperlink{WarehousePickingOpt_8h_a7a2400205289c04418b6d47027ad3186}{ShortestPathAlgorithms}} \_shortest\_path\_alg = ShortestPathAlgorithms::NEAREST\_NEIGHBOUR);}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68     \textcolor{comment}{// when selected K-\/means clustering, this is maximal number of iterations}}
+\DoxyCodeLine{69     \textcolor{keywordtype}{int} \mbox{\hyperlink{classSolverConfiguration_a9e9bb518a8c5faf476ddef398953f000}{Number\_of\_K\_Means\_Iterations}} = 10;}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71     \mbox{\hyperlink{WarehousePickingOpt_8h_a33ad8f16a260782dc68d1d46b6fff5cc}{BPAlgorithms}} getBPAlgorithm();}
+\DoxyCodeLine{72     \mbox{\hyperlink{WarehousePickingOpt_8h_a33b053a87619d16127e9aa8e58a834fa}{GroupingCustomersAlgorithms}} getGroupingCustomerAlgorithm();}
+\DoxyCodeLine{73     \mbox{\hyperlink{WarehousePickingOpt_8h_a7a2400205289c04418b6d47027ad3186}{ShortestPathAlgorithms}} getShortestPathAlgorithm();}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75 \textcolor{keyword}{private}:}
+\DoxyCodeLine{76     \mbox{\hyperlink{WarehousePickingOpt_8h_a33ad8f16a260782dc68d1d46b6fff5cc}{BPAlgorithms}} bp\_algorithm;}
+\DoxyCodeLine{77     \mbox{\hyperlink{WarehousePickingOpt_8h_a33b053a87619d16127e9aa8e58a834fa}{GroupingCustomersAlgorithms}} grouping\_customers\_algorithm;}
+\DoxyCodeLine{78     \mbox{\hyperlink{WarehousePickingOpt_8h_a7a2400205289c04418b6d47027ad3186}{ShortestPathAlgorithms}} shortest\_path\_algorithm;}
+\DoxyCodeLine{79 \};}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{82 \textcolor{keyword}{class }\mbox{\hyperlink{classBoxConfiguration}{BoxConfiguration}}}
+\DoxyCodeLine{83 \{}
+\DoxyCodeLine{84 \textcolor{keyword}{private}:}
+\DoxyCodeLine{86     vector<pair<Box, int>> box\_types\_count\_vect;}
+\DoxyCodeLine{87     vector<Box> box\_types\_vect;}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89 \textcolor{keyword}{public}:}
+\DoxyCodeLine{94     \textcolor{keywordtype}{void} \mbox{\hyperlink{classBoxConfiguration_a485fde52d2bdbc3962433e2bff1c80d3}{addBox}}(\mbox{\hyperlink{classBox}{Box}} b, \textcolor{keywordtype}{long} count = -\/1);}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96     vector<pair<Box, int>> getBoxesWCountVector();}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98     vector<Box> getBoxesVector();}
+\DoxyCodeLine{101     \mbox{\hyperlink{classBox}{Box}} \mbox{\hyperlink{classBoxConfiguration_ab3b17c7636b7fc935b07b093791b42d8}{getFirstBox}}();}
+\DoxyCodeLine{102 \};}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{104 \textcolor{keyword}{class }\mbox{\hyperlink{classCartConfiguration}{CartConfiguration}}}
+\DoxyCodeLine{105 \{}
+\DoxyCodeLine{106 \textcolor{keyword}{private}:}
+\DoxyCodeLine{108     vector<Cart> cart\_pattern;}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{111     vector<CartShelf> cart\_shelf\_vect;}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{113     \textcolor{keywordtype}{float} cart\_width = 0;}
+\DoxyCodeLine{114     \textcolor{keywordtype}{float} cart\_height = 0;}
+\DoxyCodeLine{115     \textcolor{keywordtype}{float} cart\_depth = 0;}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{117     \textcolor{comment}{// TODO not used...}}
+\DoxyCodeLine{118     \textcolor{keywordtype}{float} usable\_capacity = 0;}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{120     \textcolor{keywordtype}{int} number\_of\_shelves = 0;}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{122 \textcolor{keyword}{public}:}
+\DoxyCodeLine{132     \mbox{\hyperlink{classCartConfiguration}{CartConfiguration}}(\textcolor{keywordtype}{float} \_cart\_width, \textcolor{keywordtype}{float} \_cart\_height, \textcolor{keywordtype}{float} \_cart\_depth, \textcolor{keywordtype}{float} \_usable\_capacity, \textcolor{keywordtype}{int} \_number\_of\_shelves);}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{136     \mbox{\hyperlink{classCart}{Cart}} \mbox{\hyperlink{classCartConfiguration_a87ca14dd5a2697dff532dbf2d1c70c34}{getCartPattern}}();}
+\DoxyCodeLine{137 }
+\DoxyCodeLine{140     \textcolor{keywordtype}{void} \mbox{\hyperlink{classCartConfiguration_ada84a9ad4f9d0fac87104f35830521a6}{removeCartShelves}}();}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{144     \textcolor{keywordtype}{void} \mbox{\hyperlink{classCartConfiguration_af9540ba30054021cde8efd69525c0580}{addCartShelf}}(\textcolor{keywordtype}{float} \_shelf\_width, \textcolor{keywordtype}{float} \_shelf\_height, \textcolor{keywordtype}{float} \_shelf\_depth, \textcolor{keywordtype}{float} \_usable\_capacity);}
+\DoxyCodeLine{145 \};}
+\DoxyCodeLine{146 }
+\DoxyCodeLine{147 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

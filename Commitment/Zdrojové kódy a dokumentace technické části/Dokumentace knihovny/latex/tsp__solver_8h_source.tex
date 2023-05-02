@@ -1,0 +1,24 @@
+\hypertarget{tsp__solver_8h_source}{}\doxysection{tsp\+\_\+solver.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#ifndef \_TSP\_SOLVER\_H\_}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#define \_TSP\_SOLVER\_H\_}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{WarehousePickingOpt_8h}{WarehousePickingOpt.h}}"{}}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{18 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacetsp__solver}{tsp\_solver}}}
+\DoxyCodeLine{19 \{}
+\DoxyCodeLine{25     \textcolor{keywordtype}{int} \mbox{\hyperlink{namespacetsp__solver_a7fa85dcd89b5787f62a572520ba25412}{nearestNeighbour}}(vector<CartOItem> item\_vect, \mbox{\hyperlink{classWarehouse}{Warehouse}} \&warehouse, vector<CartOItem> *res\_vect, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\_ADDR\_T}} starting\_point, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\_ADDR\_T}} end\_point);}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{32     \textcolor{keywordtype}{int} \mbox{\hyperlink{namespacetsp__solver_a2d06319a9fc36ea9e7983c913606fb4a}{bruteForce}}(vector<CartOItem> item\_vect, \mbox{\hyperlink{classWarehouse}{Warehouse}} \&warehouse, vector<CartOItem> *res\_vect, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\_ADDR\_T}} starting\_point, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\_ADDR\_T}} end\_point);}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{38     \textcolor{keywordtype}{int} \mbox{\hyperlink{namespacetsp__solver_ab52909440524f4d8035414e0333732b4}{justMeasureDistance}}(vector<CartOItem> item\_vect, \mbox{\hyperlink{classWarehouse}{Warehouse}} \&warehouse, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\_ADDR\_T}} starting\_point, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\_ADDR\_T}} end\_point);}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{45     \textcolor{keywordtype}{int} \mbox{\hyperlink{namespacetsp__solver_ada16321b5d79b6dd0c7261188329ae94}{greedyAlgorithm}}(vector<CartOItem> item\_vect, \mbox{\hyperlink{classWarehouse}{Warehouse}} \&warehouse, vector<CartOItem> *res\_vect, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\_ADDR\_T}} starting\_point, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\_ADDR\_T}} end\_point);}
+\DoxyCodeLine{46     \textcolor{keywordtype}{int} greedyAlgorithmTmp(vector<CartOItem> item\_vect, \mbox{\hyperlink{classWarehouse}{Warehouse}} \&warehouse, vector<CartOItem> *res\_vect, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\_ADDR\_T}} starting\_point, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\_ADDR\_T}} end\_point);}
+\DoxyCodeLine{47 \};}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,113 @@
+\hypertarget{namespacetsp__solver}{}\doxysection{tsp\+\_\+solver Namespace Reference}
+\label{namespacetsp__solver}\index{tsp\_solver@{tsp\_solver}}
+
+
+namespace covering all functions for solving tsp problem (sorting items in cart)  
+
+
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespacetsp__solver_a7fa85dcd89b5787f62a572520ba25412}{nearest\+Neighbour}} (vector$<$ \mbox{\hyperlink{classCartOItem}{Cart\+OItem}} $>$ item\+\_\+vect, \mbox{\hyperlink{classWarehouse}{Warehouse}} \&warehouse, vector$<$ \mbox{\hyperlink{classCartOItem}{Cart\+OItem}} $>$ $\ast$res\+\_\+vect, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} starting\+\_\+point, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} end\+\_\+point)
+\begin{DoxyCompactList}\small\item\em sort item in cart -\/ TSP problem -\/ to create the shortest path through all of them using nearest neighbour heuristics \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{namespacetsp__solver_a2d06319a9fc36ea9e7983c913606fb4a}{brute\+Force}} (vector$<$ \mbox{\hyperlink{classCartOItem}{Cart\+OItem}} $>$ item\+\_\+vect, \mbox{\hyperlink{classWarehouse}{Warehouse}} \&warehouse, vector$<$ \mbox{\hyperlink{classCartOItem}{Cart\+OItem}} $>$ $\ast$res\+\_\+vect, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} starting\+\_\+point, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} end\+\_\+point)
+\begin{DoxyCompactList}\small\item\em brute force implementation for solver of TSP problem \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{namespacetsp__solver_ab52909440524f4d8035414e0333732b4}{just\+Measure\+Distance}} (vector$<$ \mbox{\hyperlink{classCartOItem}{Cart\+OItem}} $>$ item\+\_\+vect, \mbox{\hyperlink{classWarehouse}{Warehouse}} \&warehouse, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} starting\+\_\+point, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} end\+\_\+point)
+\begin{DoxyCompactList}\small\item\em just measuring distance between given points \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{namespacetsp__solver_ada16321b5d79b6dd0c7261188329ae94}{greedy\+Algorithm}} (vector$<$ \mbox{\hyperlink{classCartOItem}{Cart\+OItem}} $>$ item\+\_\+vect, \mbox{\hyperlink{classWarehouse}{Warehouse}} \&warehouse, vector$<$ \mbox{\hyperlink{classCartOItem}{Cart\+OItem}} $>$ $\ast$res\+\_\+vect, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} starting\+\_\+point, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} end\+\_\+point)
+\begin{DoxyCompactList}\small\item\em greedy algorithm implementation for TSP solving \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacetsp__solver_aa6102b1ff5d1128edca4273de9152c0c}\label{namespacetsp__solver_aa6102b1ff5d1128edca4273de9152c0c}} 
+int {\bfseries greedy\+Algorithm\+Tmp} (vector$<$ \mbox{\hyperlink{classCartOItem}{Cart\+OItem}} $>$ item\+\_\+vect, \mbox{\hyperlink{classWarehouse}{Warehouse}} \&warehouse, vector$<$ \mbox{\hyperlink{classCartOItem}{Cart\+OItem}} $>$ $\ast$res\+\_\+vect, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} starting\+\_\+point, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} end\+\_\+point)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+namespace covering all functions for solving tsp problem (sorting items in cart) 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacetsp__solver_a2d06319a9fc36ea9e7983c913606fb4a}\label{namespacetsp__solver_a2d06319a9fc36ea9e7983c913606fb4a}} 
+\index{tsp\_solver@{tsp\_solver}!bruteForce@{bruteForce}}
+\index{bruteForce@{bruteForce}!tsp\_solver@{tsp\_solver}}
+\doxysubsubsection{\texorpdfstring{bruteForce()}{bruteForce()}}
+{\footnotesize\ttfamily int tsp\+\_\+solver\+::brute\+Force (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classCartOItem}{Cart\+OItem}} $>$}]{item\+\_\+vect,  }\item[{\mbox{\hyperlink{classWarehouse}{Warehouse}} \&}]{warehouse,  }\item[{vector$<$ \mbox{\hyperlink{classCartOItem}{Cart\+OItem}} $>$ $\ast$}]{res\+\_\+vect,  }\item[{\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}}}]{starting\+\_\+point,  }\item[{\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}}}]{end\+\_\+point }\end{DoxyParamCaption})}
+
+
+
+brute force implementation for solver of TSP problem 
+
+
+\begin{DoxyParams}{Parameters}
+{\em item\+\_\+vect} & cart which items should be sorted \\
+\hline
+{\em warehouse} & warehouse instance \\
+\hline
+{\em res\+\_\+vect} & out-\/vector with result -\/ sorted items to the nearest path \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+estimated walked distance from the beginning to the beginning 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacetsp__solver_ada16321b5d79b6dd0c7261188329ae94}\label{namespacetsp__solver_ada16321b5d79b6dd0c7261188329ae94}} 
+\index{tsp\_solver@{tsp\_solver}!greedyAlgorithm@{greedyAlgorithm}}
+\index{greedyAlgorithm@{greedyAlgorithm}!tsp\_solver@{tsp\_solver}}
+\doxysubsubsection{\texorpdfstring{greedyAlgorithm()}{greedyAlgorithm()}}
+{\footnotesize\ttfamily int tsp\+\_\+solver\+::greedy\+Algorithm (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classCartOItem}{Cart\+OItem}} $>$}]{item\+\_\+vect,  }\item[{\mbox{\hyperlink{classWarehouse}{Warehouse}} \&}]{warehouse,  }\item[{vector$<$ \mbox{\hyperlink{classCartOItem}{Cart\+OItem}} $>$ $\ast$}]{res\+\_\+vect,  }\item[{\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}}}]{starting\+\_\+point,  }\item[{\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}}}]{end\+\_\+point }\end{DoxyParamCaption})}
+
+
+
+greedy algorithm implementation for TSP solving 
+
+
+\begin{DoxyParams}{Parameters}
+{\em item\+\_\+vect} & cart which items should be sorted \\
+\hline
+{\em warehouse} & warehouse instance \\
+\hline
+{\em res\+\_\+vect} & out-\/vector with result -\/ sorted items to the nearest path \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+estimated walked distance from the beginning to the beginning 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacetsp__solver_ab52909440524f4d8035414e0333732b4}\label{namespacetsp__solver_ab52909440524f4d8035414e0333732b4}} 
+\index{tsp\_solver@{tsp\_solver}!justMeasureDistance@{justMeasureDistance}}
+\index{justMeasureDistance@{justMeasureDistance}!tsp\_solver@{tsp\_solver}}
+\doxysubsubsection{\texorpdfstring{justMeasureDistance()}{justMeasureDistance()}}
+{\footnotesize\ttfamily int tsp\+\_\+solver\+::just\+Measure\+Distance (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classCartOItem}{Cart\+OItem}} $>$}]{item\+\_\+vect,  }\item[{\mbox{\hyperlink{classWarehouse}{Warehouse}} \&}]{warehouse,  }\item[{\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}}}]{starting\+\_\+point,  }\item[{\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}}}]{end\+\_\+point }\end{DoxyParamCaption})}
+
+
+
+just measuring distance between given points 
+
+
+\begin{DoxyParams}{Parameters}
+{\em item\+\_\+vect} & given points \\
+\hline
+{\em warehouse} & warehouse instance with measuring implementation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+distance from first item to the last 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacetsp__solver_a7fa85dcd89b5787f62a572520ba25412}\label{namespacetsp__solver_a7fa85dcd89b5787f62a572520ba25412}} 
+\index{tsp\_solver@{tsp\_solver}!nearestNeighbour@{nearestNeighbour}}
+\index{nearestNeighbour@{nearestNeighbour}!tsp\_solver@{tsp\_solver}}
+\doxysubsubsection{\texorpdfstring{nearestNeighbour()}{nearestNeighbour()}}
+{\footnotesize\ttfamily int tsp\+\_\+solver\+::nearest\+Neighbour (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classCartOItem}{Cart\+OItem}} $>$}]{item\+\_\+vect,  }\item[{\mbox{\hyperlink{classWarehouse}{Warehouse}} \&}]{warehouse,  }\item[{vector$<$ \mbox{\hyperlink{classCartOItem}{Cart\+OItem}} $>$ $\ast$}]{res\+\_\+vect,  }\item[{\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}}}]{starting\+\_\+point,  }\item[{\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}}}]{end\+\_\+point }\end{DoxyParamCaption})}
+
+
+
+sort item in cart -\/ TSP problem -\/ to create the shortest path through all of them using nearest neighbour heuristics 
+
+
+\begin{DoxyParams}{Parameters}
+{\em item\+\_\+vect} & cart which items should be sorted \\
+\hline
+{\em warehouse} & warehouse instance \\
+\hline
+{\em res\+\_\+vect} & out-\/vector with result -\/ sorted items to the nearest path \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+estimated walked distance from the beginning to the beginning 
+\end{DoxyReturn}

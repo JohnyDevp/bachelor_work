@@ -1,0 +1,56 @@
+\hypertarget{classCustomer}{}\doxysection{Customer Class Reference}
+\label{classCustomer}\index{Customer@{Customer}}
+
+
+class representing the customer object (containing its items in warehouse -\/ in order)  
+
+
+
+
+{\ttfamily \#include $<$Warehouse\+Picking\+Opt.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCustomer_a3d214c29bc574b93a539b2f439d92676}\label{classCustomer_a3d214c29bc574b93a539b2f439d92676}} 
+{\bfseries Customer} (int cust\+\_\+id)
+\item 
+\mbox{\Hypertarget{classCustomer_aa22c519db07b78e481ded74b479da8ce}\label{classCustomer_aa22c519db07b78e481ded74b479da8ce}} 
+void {\bfseries add\+OItem} (\mbox{\hyperlink{classOItem}{OItem}} o\+\_\+item)
+\begin{DoxyCompactList}\small\item\em add item to this customer \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCustomer_aaaae95279cae38168dcad0a9174fbdf9}\label{classCustomer_aaaae95279cae38168dcad0a9174fbdf9}} 
+void {\bfseries count\+Total\+Weight\+And\+Volume} ()
+\begin{DoxyCompactList}\small\item\em function which counts volume and weight of all items \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCustomer_a48e68e73579e49b88657027b005daae4}\label{classCustomer_a48e68e73579e49b88657027b005daae4}} 
+void {\bfseries decomp\+Into\+Boxes} (\mbox{\hyperlink{classBoxConfiguration}{Box\+Configuration}} \&bc, \mbox{\hyperlink{classSolverConfiguration}{Solver\+Configuration}} \&sc)
+\item 
+\mbox{\Hypertarget{classCustomer_a52cf1747821b514b3469a7e50591bde1}\label{classCustomer_a52cf1747821b514b3469a7e50591bde1}} 
+vector$<$ \mbox{\hyperlink{classBox}{Box}} $>$ {\bfseries get\+Boxes\+Decomp} ()
+\item 
+\mbox{\Hypertarget{classCustomer_ab6de6a9c805fd5041c2c2fac4e82d947}\label{classCustomer_ab6de6a9c805fd5041c2c2fac4e82d947}} 
+void {\bfseries set\+Boxes\+Decomp} (vector$<$ \mbox{\hyperlink{classBox}{Box}} $>$ \+\_\+box\+\_\+vect)
+\item 
+\mbox{\Hypertarget{classCustomer_a1f28ad71765b622d49e784ebf8e5e618}\label{classCustomer_a1f28ad71765b622d49e784ebf8e5e618}} 
+float {\bfseries get\+Total\+Weight} ()
+\item 
+\mbox{\Hypertarget{classCustomer_a8015ee18f9e7c0d5856471c10e8f2346}\label{classCustomer_a8015ee18f9e7c0d5856471c10e8f2346}} 
+float {\bfseries get\+Total\+Volume} ()
+\item 
+\mbox{\Hypertarget{classCustomer_a236d5d040cafabeb6f84296d3e101ff1}\label{classCustomer_a236d5d040cafabeb6f84296d3e101ff1}} 
+int {\bfseries get\+Customer\+ID} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCustomer_a2b7abfec12cafb4c0e8b3ef0b23807b5}\label{classCustomer_a2b7abfec12cafb4c0e8b3ef0b23807b5}} 
+vector$<$ \mbox{\hyperlink{classOItem}{OItem}} $>$ {\bfseries item\+\_\+vect}
+\begin{DoxyCompactList}\small\item\em all items that belongs to the customer \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+class representing the customer object (containing its items in warehouse -\/ in order) 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{WarehousePickingOpt_8h}{Warehouse\+Picking\+Opt.\+h}}\item 
+\mbox{\hyperlink{customer_8cpp}{customer.\+cpp}}\end{DoxyCompactItemize}

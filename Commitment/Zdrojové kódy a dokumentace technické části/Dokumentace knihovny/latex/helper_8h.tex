@@ -1,0 +1,168 @@
+\hypertarget{helper_8h}{}\doxysection{helper.\+h File Reference}
+\label{helper_8h}\index{helper.h@{helper.h}}
+
+
+translated with gcc version 12.\+2.\+1  
+
+
+{\ttfamily \#include $<$nlohmann/json.\+hpp$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include \char`\"{}Warehouse\+Picking\+Opt.\+h\char`\"{}}\newline
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{helper_8h_ab701e3ac61a85b337ec5c1abaad6742d}\label{helper_8h_ab701e3ac61a85b337ec5c1abaad6742d}} 
+using {\bfseries json} = nlohmann\+::json
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+json \mbox{\hyperlink{helper_8h_a0e1ee0b56b654141152da64b48662d66}{read\+Json\+From\+File}} (string path)
+\begin{DoxyCompactList}\small\item\em function for creating json object from file given as path \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{helper_8h_a5475e748964f3779cbe93e1dbadc4cc1}\label{helper_8h_a5475e748964f3779cbe93e1dbadc4cc1}} 
+void {\bfseries to\+\_\+json} (json \&j, const \mbox{\hyperlink{classOItem}{OItem}} \&it)
+\begin{DoxyCompactList}\small\item\em function for converting \mbox{\hyperlink{classOItem}{OItem}} to json \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{helper_8h_ac517761276d3eb700db848161be42a9f}{to\+\_\+json}} (json \&j, const \mbox{\hyperlink{classCartOItem}{Cart\+OItem}} \&coi)
+\begin{DoxyCompactList}\small\item\em function for converting \mbox{\hyperlink{classCartOItem}{Cart\+OItem}} to json \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{helper_8h_ae86807471a0e97d8a0dd1e0118998b7e}{to\+\_\+json}} (json \&j, const \mbox{\hyperlink{classBoxItem}{Box\+Item}} \&bi)
+\begin{DoxyCompactList}\small\item\em function for converting \mbox{\hyperlink{classBoxItem}{Box\+Item}} to json \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{helper_8h_a7f296f0aa915f56092f5f9a7118b92b7}{pythagoras}} (\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} first\+\_\+addr, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} second\+\_\+addr)
+\begin{DoxyCompactList}\small\item\em computation of the shortest (air) path between two points in warehouse \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{helper_8h_aefbaf81b063ae393bd4f5c92d05cb58a}{euclidean\+\_\+distance}} (\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} first\+\_\+addr, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} second\+\_\+addr)
+\begin{DoxyCompactList}\small\item\em computation of the distance between two points in euclidean space, meaning right-\/angle space \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{helper_8h_a7ca0205c081d7fe4c5b2d7637e556e2b}{factorial}} (int num)
+\begin{DoxyCompactList}\small\item\em factorial computation with memory of previously computed factorials \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+translated with gcc version 12.\+2.\+1 
+
+\begin{DoxyAuthor}{Author}
+Jan Holáň, xholan11 (\href{mailto:xholan11@vutbr.cz}{\texttt{ xholan11@vutbr.\+cz}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2023-\/05-\/01
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{helper_8h_aefbaf81b063ae393bd4f5c92d05cb58a}\label{helper_8h_aefbaf81b063ae393bd4f5c92d05cb58a}} 
+\index{helper.h@{helper.h}!euclidean\_distance@{euclidean\_distance}}
+\index{euclidean\_distance@{euclidean\_distance}!helper.h@{helper.h}}
+\doxysubsubsection{\texorpdfstring{euclidean\_distance()}{euclidean\_distance()}}
+{\footnotesize\ttfamily float euclidean\+\_\+distance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}}}]{first\+\_\+addr,  }\item[{\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}}}]{second\+\_\+addr }\end{DoxyParamCaption})}
+
+
+
+computation of the distance between two points in euclidean space, meaning right-\/angle space 
+
+
+\begin{DoxyParams}{Parameters}
+{\em first\+\_\+addr} & first address as first point of triangle \\
+\hline
+{\em second\+\_\+addr} & second address as second point of triangle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+floating number as the lenght of the right-\/angle distance 
+\end{DoxyReturn}
+\mbox{\Hypertarget{helper_8h_a7ca0205c081d7fe4c5b2d7637e556e2b}\label{helper_8h_a7ca0205c081d7fe4c5b2d7637e556e2b}} 
+\index{helper.h@{helper.h}!factorial@{factorial}}
+\index{factorial@{factorial}!helper.h@{helper.h}}
+\doxysubsubsection{\texorpdfstring{factorial()}{factorial()}}
+{\footnotesize\ttfamily int factorial (\begin{DoxyParamCaption}\item[{int}]{num }\end{DoxyParamCaption})}
+
+
+
+factorial computation with memory of previously computed factorials 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & number to be processed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+factorial 
+\end{DoxyReturn}
+\mbox{\Hypertarget{helper_8h_a7f296f0aa915f56092f5f9a7118b92b7}\label{helper_8h_a7f296f0aa915f56092f5f9a7118b92b7}} 
+\index{helper.h@{helper.h}!pythagoras@{pythagoras}}
+\index{pythagoras@{pythagoras}!helper.h@{helper.h}}
+\doxysubsubsection{\texorpdfstring{pythagoras()}{pythagoras()}}
+{\footnotesize\ttfamily float pythagoras (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}}}]{first\+\_\+addr,  }\item[{\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}}}]{second\+\_\+addr }\end{DoxyParamCaption})}
+
+
+
+computation of the shortest (air) path between two points in warehouse 
+
+
+\begin{DoxyParams}{Parameters}
+{\em first\+\_\+addr} & first address as first point of triangle \\
+\hline
+{\em second\+\_\+addr} & second address as second point of triangle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+floating number as the lenght of the hypothenuse 
+\end{DoxyReturn}
+\mbox{\Hypertarget{helper_8h_a0e1ee0b56b654141152da64b48662d66}\label{helper_8h_a0e1ee0b56b654141152da64b48662d66}} 
+\index{helper.h@{helper.h}!readJsonFromFile@{readJsonFromFile}}
+\index{readJsonFromFile@{readJsonFromFile}!helper.h@{helper.h}}
+\doxysubsubsection{\texorpdfstring{readJsonFromFile()}{readJsonFromFile()}}
+{\footnotesize\ttfamily json read\+Json\+From\+File (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})}
+
+
+
+function for creating json object from file given as path 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & to file .json \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+json object 
+\end{DoxyReturn}
+\mbox{\Hypertarget{helper_8h_ae86807471a0e97d8a0dd1e0118998b7e}\label{helper_8h_ae86807471a0e97d8a0dd1e0118998b7e}} 
+\index{helper.h@{helper.h}!to\_json@{to\_json}}
+\index{to\_json@{to\_json}!helper.h@{helper.h}}
+\doxysubsubsection{\texorpdfstring{to\_json()}{to\_json()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void to\+\_\+json (\begin{DoxyParamCaption}\item[{json \&}]{j,  }\item[{const \mbox{\hyperlink{classBoxItem}{Box\+Item}} \&}]{bi }\end{DoxyParamCaption})}
+
+
+
+function for converting \mbox{\hyperlink{classBoxItem}{Box\+Item}} to json 
+
+
+\begin{DoxyParams}{Parameters}
+{\em j} & \\
+\hline
+{\em bi} & ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{helper_8h_ac517761276d3eb700db848161be42a9f}\label{helper_8h_ac517761276d3eb700db848161be42a9f}} 
+\index{helper.h@{helper.h}!to\_json@{to\_json}}
+\index{to\_json@{to\_json}!helper.h@{helper.h}}
+\doxysubsubsection{\texorpdfstring{to\_json()}{to\_json()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void to\+\_\+json (\begin{DoxyParamCaption}\item[{json \&}]{j,  }\item[{const \mbox{\hyperlink{classCartOItem}{Cart\+OItem}} \&}]{coi }\end{DoxyParamCaption})}
+
+
+
+function for converting \mbox{\hyperlink{classCartOItem}{Cart\+OItem}} to json 
+
+
+\begin{DoxyParams}{Parameters}
+{\em j} & \\
+\hline
+{\em coi} & ~\newline
+ \\
+\hline
+\end{DoxyParams}

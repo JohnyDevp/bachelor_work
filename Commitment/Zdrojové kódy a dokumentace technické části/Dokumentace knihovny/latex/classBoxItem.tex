@@ -1,0 +1,50 @@
+\hypertarget{classBoxItem}{}\doxysection{Box\+Item Class Reference}
+\label{classBoxItem}\index{BoxItem@{BoxItem}}
+
+
+class which serves as representation of item in the box unlike \mbox{\hyperlink{classOItem}{OItem}} it doesn\textquotesingle{}t represent order item of N units -\/ instead of this \mbox{\hyperlink{classBoxItem}{Box\+Item}} represents only one unit of \mbox{\hyperlink{classOItem}{OItem}} or a package of N units of \mbox{\hyperlink{classOItem}{OItem}}  
+
+
+
+
+{\ttfamily \#include $<$Warehouse\+Picking\+Opt.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBoxItem_a51c5cb32f32466b53a7165e4800089d5}\label{classBoxItem_a51c5cb32f32466b53a7165e4800089d5}} 
+{\bfseries Box\+Item} (\mbox{\hyperlink{classItemSpecification}{Item\+Specification}} \+\_\+item\+\_\+specification, \mbox{\hyperlink{classOItem}{OItem}} \+\_\+order\+\_\+item)
+\item 
+\mbox{\Hypertarget{classBoxItem_aea4b1ee17fdce134a87a4ab66a2afd70}\label{classBoxItem_aea4b1ee17fdce134a87a4ab66a2afd70}} 
+void {\bfseries count\+Units\+Up} (int num)
+\begin{DoxyCompactList}\small\item\em increase the number stored in count variable \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBoxItem_a408ac4ff667475ddd6b965c3386648bb}\label{classBoxItem_a408ac4ff667475ddd6b965c3386648bb}} 
+void {\bfseries set\+Num\+Of\+Units} (int num)
+\item 
+\mbox{\Hypertarget{classBoxItem_a40defe1b1da198ab764b3750ca16c6a9}\label{classBoxItem_a40defe1b1da198ab764b3750ca16c6a9}} 
+int {\bfseries get\+Count\+Of\+Units} ()
+\item 
+\mbox{\Hypertarget{classBoxItem_a0f4ea3cc9a35a12120b1ce2249cbf4b2}\label{classBoxItem_a0f4ea3cc9a35a12120b1ce2249cbf4b2}} 
+int {\bfseries get\+Volume} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBoxItem_aba8549788af0f88c5e35f4b1b899b2e8}\label{classBoxItem_aba8549788af0f88c5e35f4b1b899b2e8}} 
+int {\bfseries count\+\_\+of\+\_\+units} = 0
+\begin{DoxyCompactList}\small\item\em the count of UNITS of this item in the box (even if this item represents package, this variable stores the count OF UNITS!!!!) e.\+g. 6 phones will be stored as one \mbox{\hyperlink{classBoxItem}{Box\+Item}} of count=6 or 2 packs of phones will be stored as one \mbox{\hyperlink{classBoxItem}{Box\+Item}} of count=2 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBoxItem_a014fc8d1fbb65018aff831e801c76d8d}\label{classBoxItem_a014fc8d1fbb65018aff831e801c76d8d}} 
+\mbox{\hyperlink{classItemSpecification}{Item\+Specification}} {\bfseries item\+\_\+specification}
+\item 
+\mbox{\Hypertarget{classBoxItem_a29d0b08cdbb72451d10470a4228d9b04}\label{classBoxItem_a29d0b08cdbb72451d10470a4228d9b04}} 
+\mbox{\hyperlink{classOItem}{OItem}} {\bfseries order\+\_\+item}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+class which serves as representation of item in the box unlike \mbox{\hyperlink{classOItem}{OItem}} it doesn\textquotesingle{}t represent order item of N units -\/ instead of this \mbox{\hyperlink{classBoxItem}{Box\+Item}} represents only one unit of \mbox{\hyperlink{classOItem}{OItem}} or a package of N units of \mbox{\hyperlink{classOItem}{OItem}} 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{WarehousePickingOpt_8h}{Warehouse\+Picking\+Opt.\+h}}\item 
+\mbox{\hyperlink{box__item_8cpp}{box\+\_\+item.\+cpp}}\end{DoxyCompactItemize}

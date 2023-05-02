@@ -1,0 +1,400 @@
+\hypertarget{waddress__functions_8hpp}{}\doxysection{waddress\+\_\+functions.\+hpp File Reference}
+\label{waddress__functions_8hpp}\index{waddress\_functions.hpp@{waddress\_functions.hpp}}
+
+
+translated with gcc version 12.\+2.\+1  
+
+
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Warehouse\+Picking\+Opt.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}helper.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structGRAPH__POINT__T}{GRAPH\+\_\+\+POINT\+\_\+T}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacever1}{ver1}}
+\begin{DoxyCompactList}\small\item\em namespace with functions usable when addresses are not mapped -\/ addresses stay as they are, or at least letting all \end{DoxyCompactList}\item 
+namespace \mbox{\hyperlink{namespacever2}{ver2}}
+\begin{DoxyCompactList}\small\item\em namespace with functions usable when addresses are mapped to some global format \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespacever1_a7aa59676fa781e29c665e23bbdad359f}\label{namespacever1_a7aa59676fa781e29c665e23bbdad359f}} 
+\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} {\bfseries ver1\+::\+G\+\_\+\+Sector\+Mapping} (string raw\+\_\+addr)
+\item 
+\mbox{\Hypertarget{namespacever1_a18e1c2d5faf778b1c69d8bdf69139494}\label{namespacever1_a18e1c2d5faf778b1c69d8bdf69139494}} 
+\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} {\bfseries ver1\+::\+GP\+\_\+\+Sector\+Mapping} (string raw\+\_\+addr)
+\item 
+\mbox{\Hypertarget{namespacever1_a1fd711977e9ba64b09af8d1f53c74a7c}\label{namespacever1_a1fd711977e9ba64b09af8d1f53c74a7c}} 
+\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} {\bfseries ver1\+::\+P\+\_\+\+Sector\+Mapping} (string raw\+\_\+addr)
+\item 
+\mbox{\Hypertarget{namespacever1_a8b2fdd8674ac769addee8b0759591a4a}\label{namespacever1_a8b2fdd8674ac769addee8b0759591a4a}} 
+\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} {\bfseries ver1\+::\+V\+\_\+\+Sector\+Mapping} (string raw\+\_\+addr)
+\item 
+int \mbox{\hyperlink{namespacever1_a44d9fe10b533d741260808ce1e14893f}{ver1\+::get\+Distance\+In\+SectorG}} (\mbox{\hyperlink{classWAddress}{WAddress}} first\+\_\+addr, \mbox{\hyperlink{classWAddress}{WAddress}} second\+\_\+addr)
+\item 
+\mbox{\Hypertarget{namespacever2_a752ee92f5a2fc94cbdf8f45f0ebf9904}\label{namespacever2_a752ee92f5a2fc94cbdf8f45f0ebf9904}} 
+\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} {\bfseries ver2\+::\+GP\+\_\+\+Sector\+Mapping} (string raw\+\_\+addr)
+\item 
+\mbox{\Hypertarget{namespacever2_ad49ffb15bf305fc7ed57932c0c18ca1a}\label{namespacever2_ad49ffb15bf305fc7ed57932c0c18ca1a}} 
+\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} {\bfseries ver2\+::\+G\+\_\+\+Sector\+Mapping} (string raw\+\_\+addr)
+\item 
+\mbox{\Hypertarget{namespacever2_ac2ba45d666c390b745faca7454709cf3}\label{namespacever2_ac2ba45d666c390b745faca7454709cf3}} 
+\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} {\bfseries ver2\+::\+P\+\_\+\+Sector\+Mapping} (string raw\+\_\+addr)
+\item 
+\mbox{\Hypertarget{namespacever2_aca94c8838827ad4ba5fee24b07974539}\label{namespacever2_aca94c8838827ad4ba5fee24b07974539}} 
+\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} {\bfseries ver2\+::\+V\+\_\+\+Sector\+Mapping} (string raw\+\_\+addr)
+\item 
+int \mbox{\hyperlink{namespacever2_a82063db6c421969a2e5a17e82f66f39e}{ver2\+::horizontal\+Corridor\+Special\+Case\+\_\+\+G\+\_\+V}} (\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} first\+\_\+addr, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} second\+\_\+addr, int first\+\_\+row\+\_\+opposite)
+\begin{DoxyCompactList}\small\item\em handling the special case of the addresses in the same horizontal corridor (the same row) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacever2_a9252e22233e5b2ca581694fe76733ca4}\label{namespacever2_a9252e22233e5b2ca581694fe76733ca4}} 
+int {\bfseries ver2\+::horizontal\+Corridor\+Special\+Case\+\_\+\+P\+\_\+\+GP} (\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} first\+\_\+addr, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} second\+\_\+addr, int first\+\_\+row\+\_\+opposite)
+\item 
+\mbox{\Hypertarget{namespacever2_aa57eaf00d257d015ecf235c503886748}\label{namespacever2_aa57eaf00d257d015ecf235c503886748}} 
+int {\bfseries ver2\+::get\+Distance\+In\+SectorG} (\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} first\+\_\+addr, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} second\+\_\+addr)
+\item 
+\mbox{\Hypertarget{namespacever2_ab8e28ef9f592e53040759e38e864dda4}\label{namespacever2_ab8e28ef9f592e53040759e38e864dda4}} 
+int {\bfseries ver2\+::get\+Distance\+In\+SectorV} (\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} first\+\_\+addr, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} second\+\_\+addr)
+\item 
+\mbox{\Hypertarget{namespacever2_a91cd6eb9466cef4e607b725434dd3719}\label{namespacever2_a91cd6eb9466cef4e607b725434dd3719}} 
+int {\bfseries ver2\+::get\+Distance\+In\+SectorP} (\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} first\+\_\+addr, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} second\+\_\+addr)
+\item 
+\mbox{\Hypertarget{namespacever2_aab84012eed2ad73f2df1e928c9d44288}\label{namespacever2_aab84012eed2ad73f2df1e928c9d44288}} 
+int {\bfseries ver2\+::get\+Distance\+In\+Sector\+GP} (\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} first\+\_\+addr, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} second\+\_\+addr)
+\item 
+\mbox{\Hypertarget{namespacever2_a9c6adf2c127b71cdb67a8c63c70ecd72}\label{namespacever2_a9c6adf2c127b71cdb67a8c63c70ecd72}} 
+int {\bfseries ver2\+::get\+Distance\+Between\+Sectors\+\_\+\+G\+\_\+V} (\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} first\+\_\+addr, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} second\+\_\+addr)
+\item 
+\mbox{\Hypertarget{namespacever2_ab52f18856d43f1a76a12dfcf5acdfdcf}\label{namespacever2_ab52f18856d43f1a76a12dfcf5acdfdcf}} 
+int {\bfseries ver2\+::get\+Distance\+Between\+Sectors\+\_\+\+G\+\_\+P} (\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} first\+\_\+addr, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} second\+\_\+addr)
+\item 
+\mbox{\Hypertarget{namespacever2_a196f8b6c862df329f7f7dc3fc75fa213}\label{namespacever2_a196f8b6c862df329f7f7dc3fc75fa213}} 
+int {\bfseries ver2\+::get\+Distance\+Between\+Sectors\+\_\+\+G\+\_\+\+GP} (\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} first\+\_\+addr, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} second\+\_\+addr)
+\item 
+\mbox{\Hypertarget{namespacever2_a800b7c3d0506cd0ceece852cc3112fe5}\label{namespacever2_a800b7c3d0506cd0ceece852cc3112fe5}} 
+int {\bfseries ver2\+::get\+Distance\+Between\+Sectors\+\_\+\+V\+\_\+P} (\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} first\+\_\+addr, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} second\+\_\+addr)
+\item 
+\mbox{\Hypertarget{namespacever2_a19ab61720081dd5acb0b02e4022ffc51}\label{namespacever2_a19ab61720081dd5acb0b02e4022ffc51}} 
+int {\bfseries ver2\+::get\+Distance\+Between\+Sectors\+\_\+\+V\+\_\+\+GP} (\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} first\+\_\+addr, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} second\+\_\+addr)
+\item 
+\mbox{\Hypertarget{namespacever2_a198087ebbc2c51120fd7e7c3a4002217}\label{namespacever2_a198087ebbc2c51120fd7e7c3a4002217}} 
+int {\bfseries ver2\+::get\+Distance\+Between\+Sectors\+\_\+\+GP\+\_\+P} (\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} first\+\_\+addr, \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} second\+\_\+addr)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_a011025ccb377af9c8366df4eee8e7a61}\label{waddress__functions_8hpp_a011025ccb377af9c8366df4eee8e7a61}} 
+const float {\bfseries sec\+V\+::x\+\_\+offset} = 25.\+0
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_ae7693ff783006ed179d67dc4027f2781}\label{waddress__functions_8hpp_ae7693ff783006ed179d67dc4027f2781}} 
+const float {\bfseries sec\+V\+::y\+\_\+offset} = 0.\+0
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_ae8d5280e4e22eeffbd55a9984582bccc}\label{waddress__functions_8hpp_ae8d5280e4e22eeffbd55a9984582bccc}} 
+const float {\bfseries sec\+V\+::horizontal\+\_\+corridor\+\_\+width} = 24.\+0
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_a2b3e8c98b6144a97a65c49a85a222a93}\label{waddress__functions_8hpp_a2b3e8c98b6144a97a65c49a85a222a93}} 
+const float {\bfseries sec\+V\+::middle\+\_\+vertical\+\_\+cor\+\_\+width} = 37.\+0
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_a36e9d6d3bc6bceb0d1cad956ce839989}\label{waddress__functions_8hpp_a36e9d6d3bc6bceb0d1cad956ce839989}} 
+const float {\bfseries sec\+V\+::side\+\_\+middle\+\_\+vertical\+\_\+cor\+\_\+width} = 31.\+0
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_a9f14b353ac87f660ea7db16033c75b9d}\label{waddress__functions_8hpp_a9f14b353ac87f660ea7db16033c75b9d}} 
+const float {\bfseries sec\+V\+::side\+\_\+side\+\_\+vertical\+\_\+cor\+\_\+width} = 5.\+0
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_adbebf3766667ff0ac9f5567861d4d166}\label{waddress__functions_8hpp_adbebf3766667ff0ac9f5567861d4d166}} 
+const float {\bfseries sec\+V\+::small\+\_\+cell\+\_\+depth} = 4.\+0f
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_a9f7a86cdfd1ade4f05a067c150c47dbd}\label{waddress__functions_8hpp_a9f7a86cdfd1ade4f05a067c150c47dbd}} 
+const float {\bfseries sec\+V\+::big\+\_\+cell\+\_\+depth} = 6.\+0f
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_ab3e0ef9b4779a3753ab67e75eaf4c098}\label{waddress__functions_8hpp_ab3e0ef9b4779a3753ab67e75eaf4c098}} 
+const float {\bfseries sec\+V\+::pallet\+\_\+cell\+\_\+depth} = 12.\+0f
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_a5f2d81f98ea35d6e72ce54ab1d241575}\label{waddress__functions_8hpp_a5f2d81f98ea35d6e72ce54ab1d241575}} 
+const float {\bfseries sec\+V\+::big\+\_\+cell\+\_\+width} = 13.\+0f
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_affba49fc5e4fba3ee1770c5e94e64c7c}\label{waddress__functions_8hpp_affba49fc5e4fba3ee1770c5e94e64c7c}} 
+const float {\bfseries sec\+V\+::small\+\_\+cell\+\_\+width} = 1.\+3f
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_a72a9563219bee402d9f2bba2787de5c3}\label{waddress__functions_8hpp_a72a9563219bee402d9f2bba2787de5c3}} 
+const float {\bfseries sec\+V\+::pallet\+\_\+cell\+\_\+width} = 10.\+0f
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_a0e2cb2234d2da091ad88ed04c8af1821}\label{waddress__functions_8hpp_a0e2cb2234d2da091ad88ed04c8af1821}} 
+const int {\bfseries sec\+V\+::first\+\_\+row\+\_\+opposite} = 0
+\item 
+const vector$<$ int $>$ \mbox{\hyperlink{waddress__functions_8hpp_aadb3005a4fc023e539360250575f48b4}{sec\+V\+::vertical\+\_\+corridors}}
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_a917427bdb8eb6baa46ef3399b12b0af2}\label{waddress__functions_8hpp_a917427bdb8eb6baa46ef3399b12b0af2}} 
+const vector$<$ string $>$ {\bfseries sec\+V\+::rows\+\_\+380\+\_\+celled} = \{\char`\"{}BB\char`\"{}, \char`\"{}DD\char`\"{}\}
+\item 
+const map$<$ int, int $>$ \mbox{\hyperlink{waddress__functions_8hpp_a617cec8f3e5309848e500189a9459b62}{sec\+V\+::\+V\+\_\+\+East\+\_\+exits}}
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_a7d268922f8ba512ce228aaddd3c4249a}\label{waddress__functions_8hpp_a7d268922f8ba512ce228aaddd3c4249a}} 
+const int {\bfseries sec\+V\+::y\+\_\+for\+\_\+south\+\_\+exits} = y\+\_\+offset + pallet\+\_\+cell\+\_\+depth + 2 $\ast$ horizontal\+\_\+corridor\+\_\+width + 2 $\ast$ small\+\_\+cell\+\_\+depth + 2 $\ast$ big\+\_\+cell\+\_\+depth + horizontal\+\_\+corridor\+\_\+width $\ast$ 0.\+5
+\item 
+const map$<$ int, int $>$ \mbox{\hyperlink{waddress__functions_8hpp_a2f942868a0d5060df314dc3f72656364}{sec\+V\+::\+V\+\_\+\+South\+\_\+exits}}
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_ac276fd28117a1445dfe48ceab40b52cc}\label{waddress__functions_8hpp_ac276fd28117a1445dfe48ceab40b52cc}} 
+const float {\bfseries sec\+G\+::x\+\_\+offset} = 40.\+0
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_a5b34695f24911a405ef8d6e5dc6edcbe}\label{waddress__functions_8hpp_a5b34695f24911a405ef8d6e5dc6edcbe}} 
+const float {\bfseries sec\+G\+::y\+\_\+offset} = 130.\+0 + sec\+V\+::y\+\_\+offset
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_a0e7136d579c2d1d6495945380e3da2d0}\label{waddress__functions_8hpp_a0e7136d579c2d1d6495945380e3da2d0}} 
+const float {\bfseries sec\+G\+::horizontal\+\_\+corridor\+\_\+width} = 16.\+0
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_adfc49fe4b1c1fe736d7cee76d2a80e79}\label{waddress__functions_8hpp_adfc49fe4b1c1fe736d7cee76d2a80e79}} 
+const float {\bfseries sec\+G\+::middle\+\_\+vertical\+\_\+cor\+\_\+width} = 37.\+0
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_a1fb7e183267dad00aec4e348c1ce7c50}\label{waddress__functions_8hpp_a1fb7e183267dad00aec4e348c1ce7c50}} 
+const float {\bfseries sec\+G\+::side\+\_\+middle\+\_\+vertical\+\_\+cor\+\_\+width} = 31.\+0
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_a23485001bf8afb7ec68887d2bc857a0f}\label{waddress__functions_8hpp_a23485001bf8afb7ec68887d2bc857a0f}} 
+const float {\bfseries sec\+G\+::side\+\_\+side\+\_\+vertical\+\_\+cor\+\_\+width} = 20.\+0
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_acdb2b1e0207ed1688916382233b90854}\label{waddress__functions_8hpp_acdb2b1e0207ed1688916382233b90854}} 
+const float {\bfseries sec\+G\+::cell\+\_\+depth} = 4.\+0f
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_ad9e80381aefd6d33b162cd2159775072}\label{waddress__functions_8hpp_ad9e80381aefd6d33b162cd2159775072}} 
+const float {\bfseries sec\+G\+::big\+\_\+cell\+\_\+width} = 13.\+0f
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_a7f71b49a67ed827b48676ffad67d5fd6}\label{waddress__functions_8hpp_a7f71b49a67ed827b48676ffad67d5fd6}} 
+const float {\bfseries sec\+G\+::small\+\_\+cell\+\_\+width} = 1.\+6f
+\item 
+const vector$<$ int $>$ \mbox{\hyperlink{waddress__functions_8hpp_ae2fb150eb4fa110c01a8e4e7afe3a596}{sec\+G\+::vertical\+\_\+corridors}}
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_af339cc378e8952a7731b7d9fa930780e}\label{waddress__functions_8hpp_af339cc378e8952a7731b7d9fa930780e}} 
+const vector$<$ int $>$ {\bfseries sec\+G\+::rows\+\_\+246\+\_\+celled} = \{0, 1, 2, 3, 36, 37, 38, 39, 40\}
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_a2e0e69bb7e2bad0eda9d711bbce9b7fd}\label{waddress__functions_8hpp_a2e0e69bb7e2bad0eda9d711bbce9b7fd}} 
+const int {\bfseries sec\+G\+::first\+\_\+row\+\_\+opposite} = 1
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_ac172edf5effbedf23ef943629d3e1ae1}\label{waddress__functions_8hpp_ac172edf5effbedf23ef943629d3e1ae1}} 
+const \mbox{\hyperlink{structGRAPH__POINT__T}{GRAPH\+\_\+\+POINT\+\_\+T}} {\bfseries sec\+G\+::\+G\+\_\+north\+\_\+exit} = \{\char`\"{}G00\char`\"{}, (int)y\+\_\+offset, 0, 545 + (int)x\+\_\+offset\}
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_af240bf08e35ab34066eb02f9b8d98235}\label{waddress__functions_8hpp_af240bf08e35ab34066eb02f9b8d98235}} 
+const \mbox{\hyperlink{structGRAPH__POINT__T}{GRAPH\+\_\+\+POINT\+\_\+T}} {\bfseries sec\+G\+::\+G\+\_\+lower\+\_\+exit} = \{\char`\"{}G00\char`\"{}, (int)(y\+\_\+offset + 448 + 24 + 24), 0, vertical\+\_\+corridors\mbox{[}4\mbox{]} + (int)(side\+\_\+side\+\_\+vertical\+\_\+cor\+\_\+width $\ast$ 0.\+5)\}
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_ad7dfaba01da622c4f5e621bfe8d5006e}\label{waddress__functions_8hpp_ad7dfaba01da622c4f5e621bfe8d5006e}} 
+const float {\bfseries sec\+P\+::x\+\_\+offset} = 714.\+0 + sec\+G\+::x\+\_\+offset
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_a937e05758e5b9f3708e222584a8df627}\label{waddress__functions_8hpp_a937e05758e5b9f3708e222584a8df627}} 
+const float {\bfseries sec\+P\+::y\+\_\+offset} = 115.\+0 + sec\+V\+::y\+\_\+offset
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_a7c04d4fd194a0b4272df98675cdff1ea}\label{waddress__functions_8hpp_a7c04d4fd194a0b4272df98675cdff1ea}} 
+const float {\bfseries sec\+P\+::horizontal\+\_\+corridor\+\_\+width} = 20.\+0
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_a1db4bc1c3a5cee3d451dc47dbe073688}\label{waddress__functions_8hpp_a1db4bc1c3a5cee3d451dc47dbe073688}} 
+const float {\bfseries sec\+P\+::vertical\+\_\+cor\+\_\+width} = 34.\+0
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_ac06e8d9e036f99a1999eea37715a6692}\label{waddress__functions_8hpp_ac06e8d9e036f99a1999eea37715a6692}} 
+const float {\bfseries sec\+P\+::cell\+\_\+depth} = 10.\+0f
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_a0397be4e9c2e55a6223a9441cc1699c0}\label{waddress__functions_8hpp_a0397be4e9c2e55a6223a9441cc1699c0}} 
+const float {\bfseries sec\+P\+::cell\+\_\+width} = 9.\+5f
+\item 
+const vector$<$ int $>$ \mbox{\hyperlink{waddress__functions_8hpp_a671efe68c0d103d659f1ea5ac4cc1814}{sec\+P\+::vertical\+\_\+corridors}}
+\item 
+const vector$<$ int $>$ \mbox{\hyperlink{waddress__functions_8hpp_a5f027879884a2d2b1339ebf4297ee094}{sec\+P\+::horizontal\+\_\+cooridors}}
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_a08a52cef777dc588e075ea762a226448}\label{waddress__functions_8hpp_a08a52cef777dc588e075ea762a226448}} 
+const int {\bfseries sec\+P\+::first\+\_\+column\+\_\+opposite} = 1
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_a667e68ff077483f3dff0f26051188832}\label{waddress__functions_8hpp_a667e68ff077483f3dff0f26051188832}} 
+const \mbox{\hyperlink{structGRAPH__POINT__T}{GRAPH\+\_\+\+POINT\+\_\+T}} {\bfseries sec\+P\+::\+P\+\_\+middle\+\_\+exit} = \{\char`\"{}P00\char`\"{}, (int)horizontal\+\_\+cooridors\mbox{[}0\mbox{]}, 0, (int)x\+\_\+offset\}
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_a3d2f4c81d3aee6abee0817da0db2a019}\label{waddress__functions_8hpp_a3d2f4c81d3aee6abee0817da0db2a019}} 
+const \mbox{\hyperlink{structGRAPH__POINT__T}{GRAPH\+\_\+\+POINT\+\_\+T}} {\bfseries sec\+P\+::\+P\+\_\+north\+\_\+exit} = \{\char`\"{}P00\char`\"{}, (int)y\+\_\+offset, 0, (int)x\+\_\+offset\}
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_a1533106b00b308994b58a641d53a3644}\label{waddress__functions_8hpp_a1533106b00b308994b58a641d53a3644}} 
+const \mbox{\hyperlink{structGRAPH__POINT__T}{GRAPH\+\_\+\+POINT\+\_\+T}} {\bfseries sec\+P\+::\+P\+\_\+south\+\_\+exit} = \{\char`\"{}P00\char`\"{}, (int)y\+\_\+offset + 683, 0, (int)x\+\_\+offset\}
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_a9af50bc307f7d89b487f58e03455d151}\label{waddress__functions_8hpp_a9af50bc307f7d89b487f58e03455d151}} 
+const float {\bfseries sec\+GP\+::x\+\_\+offset} = 545.\+0 + sec\+G\+::x\+\_\+offset
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_ace2698d7abc7bb05a35a04a3b2191335}\label{waddress__functions_8hpp_ace2698d7abc7bb05a35a04a3b2191335}} 
+const float {\bfseries sec\+GP\+::y\+\_\+offset} = 134.\+0 + sec\+G\+::y\+\_\+offset
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_a01e4d2eddddc6fc3e5a7d0e6c50db336}\label{waddress__functions_8hpp_a01e4d2eddddc6fc3e5a7d0e6c50db336}} 
+const float {\bfseries sec\+GP\+::horizontal\+\_\+corridor\+\_\+width} = 32.\+0
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_aca4b3b4620ae72025f6d30ca7d04967f}\label{waddress__functions_8hpp_aca4b3b4620ae72025f6d30ca7d04967f}} 
+const float {\bfseries sec\+GP\+::vertical\+\_\+cor\+\_\+width} = 18.\+0
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_ab94a5f2625f26dffe119ee8a71198e11}\label{waddress__functions_8hpp_ab94a5f2625f26dffe119ee8a71198e11}} 
+const float {\bfseries sec\+GP\+::cell\+\_\+gap} = 2.\+9f
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_af39274d574dd9d431e829a7c33511625}\label{waddress__functions_8hpp_af39274d574dd9d431e829a7c33511625}} 
+const float {\bfseries sec\+GP\+::cell\+\_\+depth} = 6.\+0f
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_afd99a8180065b9605cfceb9f58e07593}\label{waddress__functions_8hpp_afd99a8180065b9605cfceb9f58e07593}} 
+const float {\bfseries sec\+GP\+::cell\+\_\+width} = 11.\+7f
+\item 
+const vector$<$ int $>$ \mbox{\hyperlink{waddress__functions_8hpp_a9359a398392895ce87c8ce7972df5075}{sec\+GP\+::vertical\+\_\+corridors}}
+\item 
+const vector$<$ int $>$ \mbox{\hyperlink{waddress__functions_8hpp_a12304c14f4c2bff9f88232272a310167}{sec\+GP\+::horizontal\+\_\+corridors}}
+\item 
+\mbox{\Hypertarget{waddress__functions_8hpp_ac2b48d276bd7486a387a7896893a8981}\label{waddress__functions_8hpp_ac2b48d276bd7486a387a7896893a8981}} 
+const int {\bfseries sec\+GP\+::first\+\_\+column\+\_\+opposite} = 1
+\item 
+const vector$<$ \mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}} $>$ \mbox{\hyperlink{waddress__functions_8hpp_a9f7c9d45be2f1dfe67be0e8ffcc6d16f}{sec\+GP\+::\+GP\+\_\+exits}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+translated with gcc version 12.\+2.\+1 
+
+\begin{DoxyAuthor}{Author}
+Jan Holáň, xholan11 (\href{mailto:xholan11@vutbr.cz}{\texttt{ xholan11@vutbr.\+cz}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2023-\/05-\/01
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{waddress__functions_8hpp_a9f7c9d45be2f1dfe67be0e8ffcc6d16f}\label{waddress__functions_8hpp_a9f7c9d45be2f1dfe67be0e8ffcc6d16f}} 
+\index{waddress\_functions.hpp@{waddress\_functions.hpp}!GP\_exits@{GP\_exits}}
+\index{GP\_exits@{GP\_exits}!waddress\_functions.hpp@{waddress\_functions.hpp}}
+\doxysubsubsection{\texorpdfstring{GP\_exits}{GP\_exits}}
+{\footnotesize\ttfamily const vector$<$\mbox{\hyperlink{structSECTOR__ADDR__T}{SECTOR\+\_\+\+ADDR\+\_\+T}}$>$ sec\+GP\+::\+GP\+\_\+exits}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}GP0"{}}, horizontal\_corridors[0], 0, (int)(vertical\_corridors[2] + vertical\_cor\_width * 0.5 + 30)\},}
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}GP0"{}}, horizontal\_corridors[1], 0, (int)(vertical\_corridors[2] + vertical\_cor\_width * 0.5 + 30)\},}
+\DoxyCodeLine{        \{\textcolor{stringliteral}{"{}GP0"{}}, horizontal\_corridors[2], 0, (int)(vertical\_corridors[2] + vertical\_cor\_width * 0.5 + 30)\},}
+\DoxyCodeLine{    \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{waddress__functions_8hpp_a5f027879884a2d2b1339ebf4297ee094}\label{waddress__functions_8hpp_a5f027879884a2d2b1339ebf4297ee094}} 
+\index{waddress\_functions.hpp@{waddress\_functions.hpp}!horizontal\_cooridors@{horizontal\_cooridors}}
+\index{horizontal\_cooridors@{horizontal\_cooridors}!waddress\_functions.hpp@{waddress\_functions.hpp}}
+\doxysubsubsection{\texorpdfstring{horizontal\_cooridors}{horizontal\_cooridors}}
+{\footnotesize\ttfamily const vector$<$int$>$ sec\+P\+::horizontal\+\_\+cooridors}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{        (int)(y\_offset),}
+\DoxyCodeLine{        (int)(y\_offset + 48 * cell\_width + 0.5 * horizontal\_corridor\_width),}
+\DoxyCodeLine{        (int)(y\_offset + 48 * cell\_width + horizontal\_corridor\_width + 10 * cell\_width + 0.5 * horizontal\_corridor\_width)\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{waddress__functions_8hpp_a12304c14f4c2bff9f88232272a310167}\label{waddress__functions_8hpp_a12304c14f4c2bff9f88232272a310167}} 
+\index{waddress\_functions.hpp@{waddress\_functions.hpp}!horizontal\_corridors@{horizontal\_corridors}}
+\index{horizontal\_corridors@{horizontal\_corridors}!waddress\_functions.hpp@{waddress\_functions.hpp}}
+\doxysubsubsection{\texorpdfstring{horizontal\_corridors}{horizontal\_corridors}}
+{\footnotesize\ttfamily const vector$<$int$>$ sec\+GP\+::horizontal\+\_\+corridors}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{        (int)(y\_offset -\/ 0.5 * horizontal\_corridor\_width),}
+\DoxyCodeLine{        (int)(y\_offset + 6 * cell\_width + 2 * cell\_gap + 0.5 * horizontal\_corridor\_width),}
+\DoxyCodeLine{        (int)(y\_offset + 26 * cell\_width + 13 * cell\_gap + 1.5 * horizontal\_corridor\_width)\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{waddress__functions_8hpp_a617cec8f3e5309848e500189a9459b62}\label{waddress__functions_8hpp_a617cec8f3e5309848e500189a9459b62}} 
+\index{waddress\_functions.hpp@{waddress\_functions.hpp}!V\_East\_exits@{V\_East\_exits}}
+\index{V\_East\_exits@{V\_East\_exits}!waddress\_functions.hpp@{waddress\_functions.hpp}}
+\doxysubsubsection{\texorpdfstring{V\_East\_exits}{V\_East\_exits}}
+{\footnotesize\ttfamily const map$<$int, int$>$ sec\+V\+::\+V\+\_\+\+East\+\_\+exits}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{        \{vertical\_corridors[4], y\_offset + pallet\_cell\_depth + horizontal\_corridor\_width * 0.5\},}
+\DoxyCodeLine{        \{vertical\_corridors[4], y\_offset + pallet\_cell\_depth + horizontal\_corridor\_width + small\_cell\_depth + big\_cell\_depth + horizontal\_corridor\_width * 0.5\},}
+\DoxyCodeLine{        \{vertical\_corridors[4], y\_offset + pallet\_cell\_depth + 2 * horizontal\_corridor\_width + 2 * small\_cell\_depth + 2 * big\_cell\_depth + horizontal\_corridor\_width * 0.5\},}
+\DoxyCodeLine{    \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{waddress__functions_8hpp_a2f942868a0d5060df314dc3f72656364}\label{waddress__functions_8hpp_a2f942868a0d5060df314dc3f72656364}} 
+\index{waddress\_functions.hpp@{waddress\_functions.hpp}!V\_South\_exits@{V\_South\_exits}}
+\index{V\_South\_exits@{V\_South\_exits}!waddress\_functions.hpp@{waddress\_functions.hpp}}
+\doxysubsubsection{\texorpdfstring{V\_South\_exits}{V\_South\_exits}}
+{\footnotesize\ttfamily const map$<$int, int$>$ sec\+V\+::\+V\+\_\+\+South\+\_\+exits}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{        \{vertical\_corridors[1], y\_for\_south\_exits\},}
+\DoxyCodeLine{        \{vertical\_corridors[2], y\_for\_south\_exits\},}
+\DoxyCodeLine{        \{vertical\_corridors[3], y\_for\_south\_exits\}\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{waddress__functions_8hpp_aadb3005a4fc023e539360250575f48b4}\label{waddress__functions_8hpp_aadb3005a4fc023e539360250575f48b4}} 
+\index{waddress\_functions.hpp@{waddress\_functions.hpp}!vertical\_corridors@{vertical\_corridors}}
+\index{vertical\_corridors@{vertical\_corridors}!waddress\_functions.hpp@{waddress\_functions.hpp}}
+\doxysubsubsection{\texorpdfstring{vertical\_corridors}{vertical\_corridors}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily const vector$<$int$>$ sec\+V\+::vertical\+\_\+corridors}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{        (int)(x\_offset + side\_side\_vertical\_cor\_width * 0.5),                                                                                                                                }
+\DoxyCodeLine{        (int)(x\_offset + side\_side\_vertical\_cor\_width + 10.0 * big\_cell\_width + side\_middle\_vertical\_cor\_width * 0.5),                                                                       }
+\DoxyCodeLine{        (int)(x\_offset + side\_side\_vertical\_cor\_width + (10 + 10) * big\_cell\_width + side\_middle\_vertical\_cor\_width + middle\_vertical\_cor\_width * 0.5),                                      }
+\DoxyCodeLine{        (\textcolor{keywordtype}{int})(x\_offset + side\_side\_vertical\_cor\_width + (10 + 10 + 8) * big\_cell\_width + side\_middle\_vertical\_cor\_width + middle\_vertical\_cor\_width + side\_middle\_vertical\_cor\_width * 0.5), }
+\DoxyCodeLine{        (int)(x\_offset + side\_side\_vertical\_cor\_width + (10 + 10 + 8 + 10) * big\_cell\_width + side\_middle\_vertical\_cor\_width + middle\_vertical\_cor\_width + side\_middle\_vertical\_cor\_width + side\_side\_vertical\_cor\_width * 0.5)\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{waddress__functions_8hpp_ae2fb150eb4fa110c01a8e4e7afe3a596}\label{waddress__functions_8hpp_ae2fb150eb4fa110c01a8e4e7afe3a596}} 
+\index{waddress\_functions.hpp@{waddress\_functions.hpp}!vertical\_corridors@{vertical\_corridors}}
+\index{vertical\_corridors@{vertical\_corridors}!waddress\_functions.hpp@{waddress\_functions.hpp}}
+\doxysubsubsection{\texorpdfstring{vertical\_corridors}{vertical\_corridors}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily const vector$<$int$>$ sec\+G\+::vertical\+\_\+corridors}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{        (int)(x\_offset + side\_side\_vertical\_cor\_width * 0.5),                                                                                                                               }
+\DoxyCodeLine{        (int)(x\_offset + side\_side\_vertical\_cor\_width + 7.0 * big\_cell\_width + side\_middle\_vertical\_cor\_width * 0.5),                                                                       }
+\DoxyCodeLine{        (int)(x\_offset + side\_side\_vertical\_cor\_width + (7 + 10) * big\_cell\_width + side\_middle\_vertical\_cor\_width + middle\_vertical\_cor\_width * 0.5),                                      }
+\DoxyCodeLine{        (\textcolor{keywordtype}{int})(x\_offset + side\_side\_vertical\_cor\_width + (7 + 10 + 7) * big\_cell\_width + side\_middle\_vertical\_cor\_width + middle\_vertical\_cor\_width + side\_middle\_vertical\_cor\_width * 0.5), }
+\DoxyCodeLine{        (int)(x\_offset + side\_side\_vertical\_cor\_width + (7 + 10 + 7) * big\_cell\_width + side\_middle\_vertical\_cor\_width + middle\_vertical\_cor\_width + side\_middle\_vertical\_cor\_width + 7.0 * big\_cell\_width + side\_side\_vertical\_cor\_width * 0.5)\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{waddress__functions_8hpp_a671efe68c0d103d659f1ea5ac4cc1814}\label{waddress__functions_8hpp_a671efe68c0d103d659f1ea5ac4cc1814}} 
+\index{waddress\_functions.hpp@{waddress\_functions.hpp}!vertical\_corridors@{vertical\_corridors}}
+\index{vertical\_corridors@{vertical\_corridors}!waddress\_functions.hpp@{waddress\_functions.hpp}}
+\doxysubsubsection{\texorpdfstring{vertical\_corridors}{vertical\_corridors}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily const vector$<$int$>$ sec\+P\+::vertical\+\_\+corridors}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{        (int)(x\_offset), }
+\DoxyCodeLine{        (int)(x\_offset + 2 * cell\_depth + vertical\_cor\_width * 0.5),}
+\DoxyCodeLine{        (int)(x\_offset + 4 * cell\_depth + vertical\_cor\_width * 1.5),}
+\DoxyCodeLine{        (int)(x\_offset + 6 * cell\_depth + vertical\_cor\_width * 2.5)\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{waddress__functions_8hpp_a9359a398392895ce87c8ce7972df5075}\label{waddress__functions_8hpp_a9359a398392895ce87c8ce7972df5075}} 
+\index{waddress\_functions.hpp@{waddress\_functions.hpp}!vertical\_corridors@{vertical\_corridors}}
+\index{vertical\_corridors@{vertical\_corridors}!waddress\_functions.hpp@{waddress\_functions.hpp}}
+\doxysubsubsection{\texorpdfstring{vertical\_corridors}{vertical\_corridors}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily const vector$<$int$>$ sec\+GP\+::vertical\+\_\+corridors}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{        (int)(x\_offset + cell\_depth + vertical\_cor\_width * 0.5), }
+\DoxyCodeLine{        (int)(x\_offset + 2 * cell\_depth + vertical\_cor\_width * 1.5),}
+\DoxyCodeLine{        (int)(x\_offset + 4 * cell\_depth + vertical\_cor\_width * 2.5)\}}
+
+\end{DoxyCode}

@@ -1,0 +1,109 @@
+\hypertarget{classOItem}{}\doxysection{OItem Class Reference}
+\label{classOItem}\index{OItem@{OItem}}
+
+
+class representing the item in order (with its address, and all description) -\/\texorpdfstring{$>$}{>} Order Item  
+
+
+
+
+{\ttfamily \#include $<$Warehouse\+Picking\+Opt.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classOItem_a93932567677bdd621d8253b725b60bbb}{OItem}} (int \mbox{\hyperlink{classCustomer}{Customer}}, int Product, string Address\+Code, int Qty)
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classOItem_a87ad2ee503cb23d47b36abd9bb66dd93}\label{classOItem_a87ad2ee503cb23d47b36abd9bb66dd93}} 
+void {\bfseries add\+Item\+Specification} (\mbox{\hyperlink{classItemSpecification}{Item\+Specification}} itspec)
+\begin{DoxyCompactList}\small\item\em adding the item specification \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classOItem_a0e1073225322f3b17a055a6a94a0b111}{get\+Weight}} ()
+\begin{DoxyCompactList}\small\item\em getter of item weight \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classOItem_a7f6cd135892c1f9afca560e7c2c01ffb}{get\+Volume}} ()
+\begin{DoxyCompactList}\small\item\em getter of item volume \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classOItem_a33cd3ed9b3a34032c4b5bd88c603a38c}\label{classOItem_a33cd3ed9b3a34032c4b5bd88c603a38c}} 
+void {\bfseries count\+Weight\+And\+Volume} ()
+\begin{DoxyCompactList}\small\item\em function for counting the volume and weight of this item (because this item can include more units) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classOItem_a5d858af2dbc3b18ce0b2e82e6f67fe8b}\label{classOItem_a5d858af2dbc3b18ce0b2e82e6f67fe8b}} 
+int {\bfseries Customer}
+\item 
+\mbox{\Hypertarget{classOItem_ad1ccf9bedcb9516fb2aaa40cdb511de1}\label{classOItem_ad1ccf9bedcb9516fb2aaa40cdb511de1}} 
+int {\bfseries Product}
+\item 
+\mbox{\Hypertarget{classOItem_a8f5ee0b69b13af722ca870b34cc7733a}\label{classOItem_a8f5ee0b69b13af722ca870b34cc7733a}} 
+string {\bfseries Address}
+\item 
+\mbox{\Hypertarget{classOItem_aa9e10ba4d024ebe2046c529e4bc130e8}\label{classOItem_aa9e10ba4d024ebe2046c529e4bc130e8}} 
+int {\bfseries Qty}
+\item 
+\mbox{\Hypertarget{classOItem_a5077ea50008ecca2ef45acd5ecc8af76}\label{classOItem_a5077ea50008ecca2ef45acd5ecc8af76}} 
+\mbox{\hyperlink{classWAddress}{WAddress}} $\ast$ {\bfseries waddress}
+\begin{DoxyCompactList}\small\item\em address in its representation for algorithm proposes \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classOItem_affc6812e935df6cec4988d8616a82781}\label{classOItem_affc6812e935df6cec4988d8616a82781}} 
+map$<$ \mbox{\hyperlink{classItemSpecification_aedd19f5203635ecca7622e962998b53c}{Item\+Specification\+::\+Type}}, \mbox{\hyperlink{classItemSpecification}{Item\+Specification}} $>$ {\bfseries item\+\_\+spec}
+\begin{DoxyCompactList}\small\item\em item specification reference \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+class representing the item in order (with its address, and all description) -\/\texorpdfstring{$>$}{>} Order Item 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classOItem_a93932567677bdd621d8253b725b60bbb}\label{classOItem_a93932567677bdd621d8253b725b60bbb}} 
+\index{OItem@{OItem}!OItem@{OItem}}
+\index{OItem@{OItem}!OItem@{OItem}}
+\doxysubsubsection{\texorpdfstring{OItem()}{OItem()}}
+{\footnotesize\ttfamily OItem\+::\+OItem (\begin{DoxyParamCaption}\item[{int}]{Customer,  }\item[{int}]{Product,  }\item[{string}]{Address\+Code,  }\item[{int}]{Qty }\end{DoxyParamCaption})}
+
+
+
+constructor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{classCustomer}{Customer}}} & \mbox{\hyperlink{classCustomer}{Customer}} number -\/ used for recognition which items belong to one customer \\
+\hline
+{\em Product} & Product number -\/ used for recognition which item specification belongs to which item \\
+\hline
+{\em Address} & Address code string -\/ the string, which contains exact position of item in warehouse in 3D coordinates \\
+\hline
+{\em Qty} & Quantity of units in this item \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classOItem_a7f6cd135892c1f9afca560e7c2c01ffb}\label{classOItem_a7f6cd135892c1f9afca560e7c2c01ffb}} 
+\index{OItem@{OItem}!getVolume@{getVolume}}
+\index{getVolume@{getVolume}!OItem@{OItem}}
+\doxysubsubsection{\texorpdfstring{getVolume()}{getVolume()}}
+{\footnotesize\ttfamily float OItem\+::get\+Volume (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter of item volume 
+
+\begin{DoxyReturn}{Returns}
+volume of item as float -\/ ALL OF THE UNITS INCLUDED 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classOItem_a0e1073225322f3b17a055a6a94a0b111}\label{classOItem_a0e1073225322f3b17a055a6a94a0b111}} 
+\index{OItem@{OItem}!getWeight@{getWeight}}
+\index{getWeight@{getWeight}!OItem@{OItem}}
+\doxysubsubsection{\texorpdfstring{getWeight()}{getWeight()}}
+{\footnotesize\ttfamily float OItem\+::get\+Weight (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter of item weight 
+
+\begin{DoxyReturn}{Returns}
+weight of item as float -\/ ALL OF THE UNITS INCLUDED 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{WarehousePickingOpt_8h}{Warehouse\+Picking\+Opt.\+h}}\item 
+\mbox{\hyperlink{oitem_8cpp}{oitem.\+cpp}}\end{DoxyCompactItemize}

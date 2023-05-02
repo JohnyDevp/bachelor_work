@@ -1,0 +1,136 @@
+\hypertarget{classCart}{}\doxysection{Cart Class Reference}
+\label{classCart}\index{Cart@{Cart}}
+
+
+class representing one \mbox{\hyperlink{classCart}{Cart}} loaded with items from customers  
+
+
+
+
+{\ttfamily \#include $<$Warehouse\+Picking\+Opt.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCart_af087401837f1a96eedb62c9e1e797e84}{Cart}} (vector$<$ \mbox{\hyperlink{classCartShelf}{Cart\+Shelf}} $>$ cart\+\_\+shelf\+\_\+vect)
+\begin{DoxyCompactList}\small\item\em not in use but ready //\+TODO \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCart_a1615f55a5b43f9d8abf3a82cec9e5859}{load\+Customer}} (\mbox{\hyperlink{classSolverConfiguration}{Solver\+Configuration}} \&sc, \mbox{\hyperlink{classCustomer}{Customer}} \&customer, bool can\+\_\+be\+\_\+partly\+\_\+loaded=false, vector$<$ \mbox{\hyperlink{classBox}{Box}} $>$ $\ast$non\+\_\+loaded\+\_\+boxes=NULL)
+\begin{DoxyCompactList}\small\item\em function for attaching customer to some cart \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classCart_a9d3550249c9e89c8d44f7d2817bcc5af}{get\+Cart\+Free\+Space}} ()
+\begin{DoxyCompactList}\small\item\em getter for whole free space on cart \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{classCustomer}{Customer}} $>$ \mbox{\hyperlink{classCart_ab910d70953027ac1225567fe528d1c33}{get\+Customer\+Vector}} ()
+\begin{DoxyCompactList}\small\item\em getter for the built customer list \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{classOItem}{OItem}} $>$ \mbox{\hyperlink{classCart_a3d451240355ec6b2ec19b69aa46da65b}{get\+Item\+Vector}} ()
+\item 
+\mbox{\Hypertarget{classCart_ace9677e64a0a29e2e5cfc54f23c06020}\label{classCart_ace9677e64a0a29e2e5cfc54f23c06020}} 
+vector$<$ \mbox{\hyperlink{classCartOItem}{Cart\+OItem}} $>$ {\bfseries get\+Cart\+OItem\+Vector} ()
+\item 
+\mbox{\Hypertarget{classCart_ae2076ebe51b8d44320b1b58aa20d6bdc}\label{classCart_ae2076ebe51b8d44320b1b58aa20d6bdc}} 
+vector$<$ \mbox{\hyperlink{classCartShelf}{Cart\+Shelf}} $>$ {\bfseries get\+Cart\+Shelves\+Vector} ()
+\item 
+\mbox{\Hypertarget{classCart_a530892b6bda3f9815c95992cdde25a1c}\label{classCart_a530892b6bda3f9815c95992cdde25a1c}} 
+void {\bfseries set\+Cart\+OItem\+Vector} (vector$<$ \mbox{\hyperlink{classCartOItem}{Cart\+OItem}} $>$ \+\_\+cartoitem\+\_\+vect)
+\begin{DoxyCompactList}\small\item\em setter \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCart_ab0dbb9608f9406efdc5796d29c9688bd}{add\+To\+Estimated\+Walked\+Distance}} (int dist)
+\begin{DoxyCompactList}\small\item\em function for counting the distance which is any person supposed to walk when handling this cart \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCart_a258e6895c4e4f6ca2f92ec7e3681771b}\label{classCart_a258e6895c4e4f6ca2f92ec7e3681771b}} 
+int {\bfseries get\+Estimated\+Walked\+Distance} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+class representing one \mbox{\hyperlink{classCart}{Cart}} loaded with items from customers 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCart_af087401837f1a96eedb62c9e1e797e84}\label{classCart_af087401837f1a96eedb62c9e1e797e84}} 
+\index{Cart@{Cart}!Cart@{Cart}}
+\index{Cart@{Cart}!Cart@{Cart}}
+\doxysubsubsection{\texorpdfstring{Cart()}{Cart()}}
+{\footnotesize\ttfamily Cart\+::\+Cart (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classCartShelf}{Cart\+Shelf}} $>$}]{cart\+\_\+shelf\+\_\+vect }\end{DoxyParamCaption})}
+
+
+
+not in use but ready //\+TODO 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cart\+\_\+shelf\+\_\+vect} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCart_ab0dbb9608f9406efdc5796d29c9688bd}\label{classCart_ab0dbb9608f9406efdc5796d29c9688bd}} 
+\index{Cart@{Cart}!addToEstimatedWalkedDistance@{addToEstimatedWalkedDistance}}
+\index{addToEstimatedWalkedDistance@{addToEstimatedWalkedDistance}!Cart@{Cart}}
+\doxysubsubsection{\texorpdfstring{addToEstimatedWalkedDistance()}{addToEstimatedWalkedDistance()}}
+{\footnotesize\ttfamily void Cart\+::add\+To\+Estimated\+Walked\+Distance (\begin{DoxyParamCaption}\item[{int}]{dist }\end{DoxyParamCaption})}
+
+
+
+function for counting the distance which is any person supposed to walk when handling this cart 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dist} & distance to be counted \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCart_a9d3550249c9e89c8d44f7d2817bcc5af}\label{classCart_a9d3550249c9e89c8d44f7d2817bcc5af}} 
+\index{Cart@{Cart}!getCartFreeSpace@{getCartFreeSpace}}
+\index{getCartFreeSpace@{getCartFreeSpace}!Cart@{Cart}}
+\doxysubsubsection{\texorpdfstring{getCartFreeSpace()}{getCartFreeSpace()}}
+{\footnotesize\ttfamily float Cart\+::get\+Cart\+Free\+Space (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter for whole free space on cart 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCart_ab910d70953027ac1225567fe528d1c33}\label{classCart_ab910d70953027ac1225567fe528d1c33}} 
+\index{Cart@{Cart}!getCustomerVector@{getCustomerVector}}
+\index{getCustomerVector@{getCustomerVector}!Cart@{Cart}}
+\doxysubsubsection{\texorpdfstring{getCustomerVector()}{getCustomerVector()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{classCustomer}{Customer}} $>$ Cart\+::get\+Customer\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter for the built customer list 
+
+\begin{DoxyReturn}{Returns}
+list of customers 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCart_a3d451240355ec6b2ec19b69aa46da65b}\label{classCart_a3d451240355ec6b2ec19b69aa46da65b}} 
+\index{Cart@{Cart}!getItemVector@{getItemVector}}
+\index{getItemVector@{getItemVector}!Cart@{Cart}}
+\doxysubsubsection{\texorpdfstring{getItemVector()}{getItemVector()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{classOItem}{OItem}} $>$ Cart\+::get\+Item\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+vector with items in cart 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCart_a1615f55a5b43f9d8abf3a82cec9e5859}\label{classCart_a1615f55a5b43f9d8abf3a82cec9e5859}} 
+\index{Cart@{Cart}!loadCustomer@{loadCustomer}}
+\index{loadCustomer@{loadCustomer}!Cart@{Cart}}
+\doxysubsubsection{\texorpdfstring{loadCustomer()}{loadCustomer()}}
+{\footnotesize\ttfamily bool Cart\+::load\+Customer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSolverConfiguration}{Solver\+Configuration}} \&}]{sc,  }\item[{\mbox{\hyperlink{classCustomer}{Customer}} \&}]{customer,  }\item[{bool}]{can\+\_\+be\+\_\+partly\+\_\+loaded = {\ttfamily false},  }\item[{vector$<$ \mbox{\hyperlink{classBox}{Box}} $>$ $\ast$}]{non\+\_\+loaded\+\_\+boxes = {\ttfamily NULL} }\end{DoxyParamCaption})}
+
+
+
+function for attaching customer to some cart 
+
+
+\begin{DoxyParams}{Parameters}
+{\em customer} & the customer to be loaded \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean according to the whether the customer fit the free space in cart or not 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{WarehousePickingOpt_8h}{Warehouse\+Picking\+Opt.\+h}}\item 
+\mbox{\hyperlink{cart_8cpp}{cart.\+cpp}}\end{DoxyCompactItemize}

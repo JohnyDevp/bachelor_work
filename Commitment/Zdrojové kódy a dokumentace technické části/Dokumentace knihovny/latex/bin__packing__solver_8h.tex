@@ -1,0 +1,58 @@
+\hypertarget{bin__packing__solver_8h}{}\doxysection{bin\+\_\+packing\+\_\+solver.\+h File Reference}
+\label{bin__packing__solver_8h}\index{bin\_packing\_solver.h@{bin\_packing\_solver.h}}
+
+
+translated with gcc version 12.\+2.\+1  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$list$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Warehouse\+Picking\+Opt.\+h\char`\"{}}\newline
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacebp__solver}{bp\+\_\+solver}}
+\begin{DoxyCompactList}\small\item\em namespace covering all the algorithms for BPP \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespacebp__solver_ac8a5b4224b9b0cba310ec2010cffdb37}{bp\+\_\+solver\+::base\+Line\+FFD}} (vector$<$ \mbox{\hyperlink{classOItem}{OItem}} $>$ item\+\_\+vect, vector$<$ \mbox{\hyperlink{classBox}{Box}} $>$ $\ast$box\+\_\+vect, \mbox{\hyperlink{classBox}{Box}} box\+\_\+type)
+\begin{DoxyCompactList}\small\item\em used in base line solution \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacebp__solver_ac0d6aa7aca6b09f5806b8f96a0d81cf2}{bp\+\_\+solver\+::main\+Solution1\+DFFD\+\_\+one\+Box\+Type}} (vector$<$ \mbox{\hyperlink{classOItem}{OItem}} $>$ item\+\_\+vect, vector$<$ \mbox{\hyperlink{classBox}{Box}} $>$ $\ast$box\+\_\+vect, \mbox{\hyperlink{classBox}{Box}} box\+\_\+type)
+\item 
+void \mbox{\hyperlink{namespacebp__solver_a1726c8bea9fcbab6e744ed7ae00c764f}{bp\+\_\+solver\+::main\+Solution1\+DFFDS\+\_\+multiple\+Box\+Types}} (vector$<$ \mbox{\hyperlink{classOItem}{OItem}} $>$ item\+\_\+vect, vector$<$ \mbox{\hyperlink{classBox}{Box}} $>$ $\ast$box\+\_\+vect, vector$<$ \mbox{\hyperlink{classBox}{Box}} $>$ box\+\_\+types)
+\item 
+void \mbox{\hyperlink{namespacebp__solver_af57175d98dda9b72c94ed86b34366aec}{bp\+\_\+solver\+::main\+Solution3\+DBP\+\_\+one\+Box\+\_\+python\+Script}} (vector$<$ \mbox{\hyperlink{classOItem}{OItem}} $>$ item\+\_\+vect, vector$<$ \mbox{\hyperlink{classBox}{Box}} $>$ $\ast$box\+\_\+vect, \mbox{\hyperlink{classBox}{Box}} box\+\_\+type)
+\item 
+void \mbox{\hyperlink{namespacebp__solver_a0d7ee34d91ac66d9acf5b079922c7095}{bp\+\_\+solver\+::main\+Solution3\+DBP\+\_\+\+FFDS\+\_\+multi\+Box\+Types\+\_\+python\+Script}} (vector$<$ \mbox{\hyperlink{classOItem}{OItem}} $>$ item\+\_\+vect, vector$<$ \mbox{\hyperlink{classBox}{Box}} $>$ $\ast$box\+\_\+vect, vector$<$ \mbox{\hyperlink{classBox}{Box}} $>$ box\+\_\+types)
+\item 
+void \mbox{\hyperlink{namespacebp__solver_a776a3bbf5d33ee3291be51f63549bc43}{bp\+\_\+solver\+::main\+Solution3\+DBP\+\_\+multiple\+Box\+Types\+\_\+count\+Defined\+\_\+python\+Script}} (vector$<$ \mbox{\hyperlink{classOItem}{OItem}} $>$ item\+\_\+vect, vector$<$ \mbox{\hyperlink{classBox}{Box}} $>$ $\ast$box\+\_\+vect, vector$<$ pair$<$ \mbox{\hyperlink{classBox}{Box}}, int $>$ $>$ box\+\_\+types\+\_\+count)
+\item 
+bool \mbox{\hyperlink{namespacebp__solver_a3a432fd877f82ac047044d8b20265e71}{bp\+\_\+solver\+::bp\+Solver\+\_\+1\+D\+\_\+fit\+Boxes\+To\+Shelves\+In\+Cart}} (vector$<$ \mbox{\hyperlink{classBox}{Box}} $>$ box\+\_\+vect, vector$<$ \mbox{\hyperlink{classCartShelf}{Cart\+Shelf}} $>$ $\ast$out\+\_\+shelf\+\_\+vect, bool is\+\_\+one\+\_\+piced)
+\begin{DoxyCompactList}\small\item\em function for filling shelves in cart with boxes of items \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacebp__solver_aed1f44488afe0e500a7236d347e6b8a2}{bp\+\_\+solver\+::bp\+Solver\+\_\+1\+D\+\_\+partly\+Load\+Boxes\+To\+Shelves\+In\+Cart}} (vector$<$ \mbox{\hyperlink{classBox}{Box}} $>$ box\+\_\+vect, vector$<$ \mbox{\hyperlink{classCartShelf}{Cart\+Shelf}} $>$ $\ast$out\+\_\+shelf\+\_\+vect, vector$<$ \mbox{\hyperlink{classBox}{Box}} $>$ $\ast$non\+\_\+loaded\+\_\+box\+\_\+vect, vector$<$ \mbox{\hyperlink{classBox}{Box}} $>$ $\ast$loaded\+\_\+box\+\_\+ptr\+\_\+vect)
+\item 
+\mbox{\Hypertarget{namespacebp__solver_aa9706f38d4f4ad8f1793be05ae9e337d}\label{namespacebp__solver_aa9706f38d4f4ad8f1793be05ae9e337d}} 
+bool {\bfseries bp\+\_\+solver\+::add\+Box\+Item\+To\+Existing\+\_\+one\+Itemized\+\_\+\+Box\+\_\+1D} (\mbox{\hyperlink{classBox}{Box}} box, \mbox{\hyperlink{classBoxItem}{Box\+Item}} box\+\_\+item)
+\item 
+bool \mbox{\hyperlink{namespacebp__solver_a7f95ed9b92f1629263e83b95ed0248c1}{bp\+\_\+solver\+::add\+Box\+Item\+To\+Existing\+\_\+one\+Itemized\+\_\+\+Box\+\_\+3D}} (\mbox{\hyperlink{classBox}{Box}} box, \mbox{\hyperlink{classBoxItem}{Box\+Item}} box\+\_\+item)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+translated with gcc version 12.\+2.\+1 
+
+\begin{DoxyAuthor}{Author}
+Jan Holáň, xholan11 (\href{mailto:xholan11@vutbr.cz}{\texttt{ xholan11@vutbr.\+cz}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2023-\/05-\/01
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}

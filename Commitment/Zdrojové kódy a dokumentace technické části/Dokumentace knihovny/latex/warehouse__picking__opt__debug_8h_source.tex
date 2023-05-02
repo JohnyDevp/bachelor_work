@@ -1,0 +1,41 @@
+\hypertarget{warehouse__picking__opt__debug_8h_source}{}\doxysection{warehouse\+\_\+picking\+\_\+opt\+\_\+debug.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#ifndef \_DEBUG\_H\_}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#define \_DEBUG\_H\_}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}stdbool.h"{}}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{WarehousePickingOpt_8h}{WarehousePickingOpt.h}}"{}}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{21 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{24 \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} is\_debug\_on = \textcolor{keyword}{false};}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{keyword}{class }\mbox{\hyperlink{classCustomer}{Customer}};}
+\DoxyCodeLine{27 \textcolor{keyword}{class }\mbox{\hyperlink{classCart}{Cart}};}
+\DoxyCodeLine{28 \textcolor{keyword}{class }\mbox{\hyperlink{classBoxItem}{BoxItem}};}
+\DoxyCodeLine{29 \textcolor{keyword}{class }\mbox{\hyperlink{classBox}{Box}};}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define DEBUG\_MSG(msg, ...) is\_debug\_on ? fprintf(stderr, msg, \#\#\_\_VA\_ARGS\_\_) : 0}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{35 \textcolor{keywordtype}{void} \mbox{\hyperlink{warehouse__picking__opt__debug_8cpp_a21826988ac5e9be190f266199ee0390c}{debugCustomerMultimap}}(multimap<\textcolor{keywordtype}{int}, \mbox{\hyperlink{classCustomer}{Customer}}, greater<int>> cust\_mult);}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{39 \textcolor{keywordtype}{void} \mbox{\hyperlink{warehouse__picking__opt__debug_8cpp_ac9f3d9d8d46a228d8cb5083245bf0e63}{debugCustomer}}(\mbox{\hyperlink{classCustomer}{Customer}} cust);}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{43 \textcolor{keywordtype}{void} \mbox{\hyperlink{warehouse__picking__opt__debug_8cpp_a9073bb0d404f63fa860283f1932ea93f}{debugCustomerBoxItems}}(vector<BoxItem> boxitem\_vect);}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{47 \textcolor{keywordtype}{void} \mbox{\hyperlink{warehouse__picking__opt__debug_8cpp_ab2ee21d6d7b5f08eda3c8c76a69f2e5b}{debugCustomerBoxes}}(vector<Box> box\_vect);}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{51 \textcolor{keywordtype}{void} \mbox{\hyperlink{warehouse__picking__opt__debug_8cpp_a9467b0e9eb1c1e85c0af7b36376a033a}{debugCartsCustomers}}(list<Cart> cart\_list);}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{56 \textcolor{keywordtype}{void} \mbox{\hyperlink{warehouse__picking__opt__debug_8cpp_a44bc683e93a5973b221110ffd7dc7ff4}{debugCartsOItems}}(list<Cart> cart\_list, \textcolor{keywordtype}{bool} additional\_spec = \textcolor{keyword}{false});}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{60 \textcolor{keywordtype}{void} \mbox{\hyperlink{warehouse__picking__opt__debug_8cpp_a56af5cb8f69bdd73843cff9f34e871bd}{debugCartsBoxes}}(list<Cart> cart\_list);}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
