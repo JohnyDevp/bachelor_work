@@ -139,7 +139,7 @@
      </sizepolicy>
     </property>
     <property name="text">
-     <string>RUN LOADING CARTS</string>
+     <string>START CREATING CARTS</string>
     </property>
    </widget>
    <widget class="QComboBox" name="cmbGroupingAlg">
