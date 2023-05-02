@@ -5,7 +5,7 @@
 #include <iostream>
 #include <math.h>
 
-#include "./../bachelor_work_code/src/WarehousePickingOpt.h"
+#include "./libs/WarehouseOptimizationLib/WarehousePickingOpt.h"
 #include "helper.h"
 
 typedef struct : public SECTOR_ADDR_T
@@ -572,7 +572,7 @@ inline namespace ver2
             {
                 return distance_tmp;
             }
-            
+
             // for the next part of computation order the two addresses from left to right
             if (first_addr.x_coord > second_addr.x_coord)
                 swap(first_addr, second_addr);

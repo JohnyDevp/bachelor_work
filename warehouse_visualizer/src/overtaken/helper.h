@@ -5,7 +5,7 @@
 #include <string>
 #include <fstream>
 #include <iostream>
-#include "./../bachelor_work_code/src/WarehousePickingOpt.h"
+#include "./libs/WarehouseOptimizationLib/WarehousePickingOpt.h"
 
 using namespace std;
 using json = nlohmann::json;

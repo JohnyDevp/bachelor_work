@@ -2,7 +2,7 @@
 
 #include "debug.h"
 
-#include "./../libs/json/include/nlohmann/json.hpp"
+#include <nlohmann/json.hpp>
 #include <filesystem>
 #include <iostream>
 #include <fstream>
